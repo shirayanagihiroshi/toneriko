@@ -2,10 +2,10 @@
 
 //------モジュールスコープ変数s--------
   const fs       = require('fs'),
-        iconv    = require('iconv-lite');
+        iconv    = require('iconv-lite'),
+        outputFile = 'scoringResult.csv';
   let   answer, records, record, data, str, i, j;
 
-//------ユーティリティメソッドs--------
   // ア,イ,ウ,エ,オ,カ,キ,ク,ケ,コ,サ,シ,ス,セ,ソ,タ,チ,ツ,テ,ト,ナ,ニ,ヌ,ネ,ノ,ハ,ヒ,フ,ヘ,ホ
   // 答えの設定
   // 得点を与える問題ごとに要素を作る
@@ -26,6 +26,8 @@
              score : 3,
              kind  : 0}
            ];
+
+//------ユーティリティメソッドs--------
 //------ユーティリティメソッドe--------
 
 //------メイン部s--------
@@ -34,6 +36,9 @@
      if ( data != null ) {
        str = iconv.decode(data, 'Shift_JIS');
 
+       // 結果ファイルの用意
+       fs.writeFileSync(outputFile, 'scoringResult\n');
+
        records = str.split(/\n/);        // 改行で区切る。これが一人分。
        for (i = 0; i < records.length; i++) {
          let markPos = 2, //マー君の仕様上、最初は通番、次はIDで、2から回答の内容
@@ -41,13 +46,15 @@
          record = records[i].split(','); // さらにコンマで区切る。これがマーク単位。
                                          // 一人分を採点できる形にしたもの
          // 答えを設定したかたまり毎のloop
+         // なお、マイナスなどがあるので、すべて文字列として比較する
          for (j = 0; j < answer.length; j++) {
-           let k, incorrectFlg = false;
+           let k, lst = [],
+               incorrectFlg = false;
 
            // 指定の解(の順)のみ許容
            if ( answer[j].kind == 0 ) {
              for (k = 0; k < answer[j].ans.length; k++, markPos++) {
-               if ( answer[j].ans[k] != record[markPos]) {
+               if ( String(answer[j].ans[k]) != String(record[markPos]) ) {
                  incorrectFlg = true;
                }
              }
@@ -56,11 +63,23 @@
              }
 
            // 順不同
-           } else if ( answer[j].kind == 0)  {
-
+           } else if ( answer[j].kind == 1)  {
+             // この回答に対するマーク内容をリストにして
+             for (k = 0; k < answer[j].ans.length; k++, markPos++) {
+               lst.push( String(record[markPos]) );
+             }
+             // 該当の正解を含んでいれば加点
+             for (k = 0; k < answer[j].ans.length; k++) {
+               if ( lst.includes( String(answer[j].ans[k]) ) ) {
+                 personScore += answer[j].score;
+               }
+             }
            }
          }
-         console.log(record[0] + ':' + personScore);
+         // 結果を書き込み
+         if (i != 0) {
+           fs.appendFileSync(outputFile, record[0] + ',' + record[1] + ',' + String(personScore) + '\n');
+         }
        }
      }
   } else {
