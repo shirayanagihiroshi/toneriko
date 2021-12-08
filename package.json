@@ -1,0 +1,22 @@
+{
+  "name": "toneriko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scoring.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shirayanagihiroshi/toneriko.git"
+  },
+  "author": "shirayanagi hiroshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shirayanagihiroshi/toneriko/issues"
+  },
+  "homepage": "https://github.com/shirayanagihiroshi/toneriko#readme",
+  "dependencies": {
+    "iconv-lite": "^0.6.3"
+  }
+}

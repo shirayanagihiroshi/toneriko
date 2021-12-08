@@ -1,0 +1,4 @@
+# npm install ** でインストールされるモノたちは管理しない
+/node_modules/
+# データも保持しない
+*.csv
