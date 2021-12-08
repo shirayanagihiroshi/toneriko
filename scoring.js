@@ -4,7 +4,7 @@
   const fs       = require('fs'),
         iconv    = require('iconv-lite'),
         outputFile = 'scoringResult.csv';
-  let   answer, records, record, data, str, i, j;
+  let   answer, records, data, str, i, j;
 
   // ア,イ,ウ,エ,オ,カ,キ,ク,ケ,コ,サ,シ,ス,セ,ソ,タ,チ,ツ,テ,ト,ナ,ニ,ヌ,ネ,ノ,ハ,ヒ,フ,ヘ,ホ
   // 答えの設定
@@ -42,9 +42,9 @@
        records = str.split(/\n/);        // 改行で区切る。これが一人分。
        for (i = 0; i < records.length; i++) {
          let markPos = 2, //マー君の仕様上、最初は通番、次はIDで、2から回答の内容
-             personScore = 0;
-         record = records[i].split(','); // さらにコンマで区切る。これがマーク単位。
-                                         // 一人分を採点できる形にしたもの
+             personScore = 0,
+             record = records[i].split(','); // さらにコンマで区切る。これがマーク単位。
+                                             // 一人分を採点できる形にしたもの
          // 答えを設定したかたまり毎のloop
          // なお、マイナスなどがあるので、すべて文字列として比較する
          for (j = 0; j < answer.length; j++) {
