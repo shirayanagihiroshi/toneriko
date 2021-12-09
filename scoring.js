@@ -13,18 +13,36 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans   : [5],
-             score : 2,
-             kind  : 0},
-             {ans  : [1,1,0,0],
-             score : 2,
-             kind  : 0},
-             {ans  : [3],
-             score : 3,
-             kind  : 0},
-             {ans  : [1,9,0],
-             score : 3,
-             kind  : 0}
+  answer = [{ans  : [5],         score : 2, kind : 0},
+             {ans : [1,1,0,0],   score : 2, kind : 0},
+             {ans : [3],         score : 3, kind : 0},
+             {ans : [1,9,0],     score : 3, kind : 0},
+             {ans : [6,0],       score : 2, kind : 0},
+             {ans : [5,3],       score : 3, kind : 0},
+             {ans : [2],         score : 3, kind : 0},
+             {ans : [5],         score : 3, kind : 0},
+             {ans : [5],         score : 3, kind : 0},
+             {ans : [2,1,5,3],   score : 3, kind : 0},
+             {ans : [5,7,3],     score : 3, kind : 0},
+
+             {ans : [1,7],       score : 2, kind : 0},
+             {ans : [1,2,5],     score : 3, kind : 0},
+             {ans : [2],         score : 3, kind : 0},
+             {ans : [1],         score : 3, kind : 0},
+             {ans : ['-',5,1,3,3,3], score : 4, kind  : 0},
+             {ans : [3],         score : 3, kind : 0},
+             {ans : [3,4],       score : 2, kind : 1},
+             {ans : [4],         score : 2, kind : 0},
+             {ans : [1,4,6],     score : 2, kind : 1},
+
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [6],         score : 2, kind : 0},
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [2,1],       score : 2, kind : 0},
+             {ans : [1,6,8,0],   score : 3, kind : 0},
+             {ans : [5,4,0],     score : 3, kind : 0},
+             {ans : [2,9,4,0],   score : 3, kind : 0},
+             {ans : [5,7,9,6],   score : 3, kind : 0}
            ];
 
 //------ユーティリティメソッドs--------
@@ -48,11 +66,12 @@
          // 答えを設定したかたまり毎のloop
          // なお、マイナスなどがあるので、すべて文字列として比較する
          for (j = 0; j < answer.length; j++) {
-           let k, lst = [],
-               incorrectFlg = false;
+           let k;
 
            // 指定の解(の順)のみ許容
            if ( answer[j].kind == 0 ) {
+             let incorrectFlg = false;
+
              for (k = 0; k < answer[j].ans.length; k++, markPos++) {
                if ( String(answer[j].ans[k]) != String(record[markPos]) ) {
                  incorrectFlg = true;
@@ -64,6 +83,8 @@
 
            // 順不同
            } else if ( answer[j].kind == 1)  {
+             let lst = [];
+
              // この回答に対するマーク内容をリストにして
              for (k = 0; k < answer[j].ans.length; k++, markPos++) {
                lst.push( String(record[markPos]) );
