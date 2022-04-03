@@ -107,4 +107,4 @@
     console.log("ファイル名を指定してください。例 node scoring xxxx.csv");
   }
 //------メイン部e--------
-//
+// 
