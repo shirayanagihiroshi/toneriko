@@ -13,36 +13,85 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans  : [5],         score : 2, kind : 0},
-             {ans : [1,1,0,0],   score : 2, kind : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [1,9,0],     score : 3, kind : 0},
-             {ans : [6,0],       score : 2, kind : 0},
-             {ans : [5,3],       score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [2,1,5,3],   score : 3, kind : 0},
-             {ans : [5,7,3],     score : 3, kind : 0},
+  answer = [{ans  : [2],         score : 1, kind : 0}, // 1
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
 
-             {ans : [1,7],       score : 2, kind : 0},
-             {ans : [1,2,5],     score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [1],         score : 3, kind : 0},
-             {ans : ['-',5,1,3,3,3], score : 4, kind  : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [3,4],       score : 2, kind : 1},
-             {ans : [4],         score : 2, kind : 0},
-             {ans : [1,4,6],     score : 2, kind : 1},
+             {ans : [2],         score : 1, kind : 0}, // 2
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [6,7],       score : 1, kind : 1},
+             {ans : [3],         score : 1, kind : 0},
 
-             {ans : [3],         score : 2, kind : 0},
-             {ans : [6],         score : 2, kind : 0},
-             {ans : [3],         score : 2, kind : 0},
-             {ans : [2,1],       score : 2, kind : 0},
-             {ans : [1,6,8,0],   score : 3, kind : 0},
-             {ans : [5,4,0],     score : 3, kind : 0},
-             {ans : [2,9,4,0],   score : 3, kind : 0},
-             {ans : [5,7,9,6],   score : 3, kind : 0}
+             {ans : [2],         score : 1, kind : 0}, // 3
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+
+             {ans : [3],         score : 1, kind : 0}, // 4
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+
+             {ans : [2],         score : 1, kind : 0}, // 5
+             {ans : [1,3],       score : 1, kind : 1},
+
+             {ans : [9],         score : 1, kind : 0}, // 6
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : ['A'],       score : 1, kind : 0},
+             {ans : ['D'],       score : 1, kind : 0},
+             {ans : ['B'],       score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+
+             {ans : [4],         score : 1, kind : 0}, // 7
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+
+             {ans : [3],         score : 1, kind : 0}, // 8
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+
+             {ans : [6],         score : 1, kind : 0}, // 9
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+
+             {ans : [2],         score : 1, kind : 0}, // 10
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+
+             {ans : [2],         score : 1, kind : 0}, // 11
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [8],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+
+             {ans : [9],         score : 1, kind : 0}, // 12
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [8],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0}
            ];
 
 //------ユーティリティメソッドs--------
