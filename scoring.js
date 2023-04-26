@@ -13,36 +13,19 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans  : [5],         score : 2, kind : 0},
-             {ans : [1,1,0,0],   score : 2, kind : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [1,9,0],     score : 3, kind : 0},
-             {ans : [6,0],       score : 2, kind : 0},
-             {ans : [5,3],       score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [2,1,5,3],   score : 3, kind : 0},
-             {ans : [5,7,3],     score : 3, kind : 0},
-
-             {ans : [1,7],       score : 2, kind : 0},
-             {ans : [1,2,5],     score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [1],         score : 3, kind : 0},
-             {ans : ['-',5,1,3,3,3], score : 4, kind  : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [3,4],       score : 2, kind : 1},
-             {ans : [4],         score : 2, kind : 0},
-             {ans : [1,4,6],     score : 2, kind : 1},
-
-             {ans : [3],         score : 2, kind : 0},
-             {ans : [6],         score : 2, kind : 0},
-             {ans : [3],         score : 2, kind : 0},
-             {ans : [2,1],       score : 2, kind : 0},
-             {ans : [1,6,8,0],   score : 3, kind : 0},
-             {ans : [5,4,0],     score : 3, kind : 0},
-             {ans : [2,9,4,0],   score : 3, kind : 0},
-             {ans : [5,7,9,6],   score : 3, kind : 0}
+  answer = [{ans  : [4,8,4,'A',8],    score : 8, kind : 0},
+             {ans : [1,4,'B',1,'A'],  score : 8, kind : 0},
+             {ans : [7,'A',5,6,'A'],  score : 8, kind : 0},
+             {ans : [1,'A',7,4,5],    score : 8, kind : 0},
+             {ans : [5,9,8,9,8],      score : 8, kind : 0},
+             {ans : [5,1,6],          score : 8, kind : 0},
+             {ans : [4],              score : 5, kind : 0},
+             {ans : [1,8,5,1,8,5],    score : 8, kind : 0},
+             {ans : [6,6,6],          score : 8, kind : 0},
+             {ans : ['B',6,1,5],      score : 8, kind : 0},
+             {ans : [7,4,3,6],        score : 5, kind : 0},
+             {ans : [8,6,4,'C'],      score : 8, kind : 0}
+	    
            ];
 
 //------ユーティリティメソッドs--------
