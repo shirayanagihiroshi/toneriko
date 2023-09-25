@@ -13,99 +13,81 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans  : [1],         score : 1, kind : 0},
+  answer = [{ans  : [5],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
              {ans : ['A'],       score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+             {ans : [8],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : ['B'],       score : 1, kind : 0},
+             {ans : ['C'],       score : 1, kind : 0},
+
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : [8],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+             {ans : ['B'],       score : 1, kind : 0},
+             {ans : ['A'],       score : 1, kind : 0},
+
+             {ans : [1],         score : 1, kind : 0},
+
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [9],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : ['A'],       score : 1, kind : 0},
+             {ans : [7],         score : 1, kind : 0},
+             {ans : ['B'],       score : 1, kind : 0},
+
+             {ans : [4],         score : 1, kind : 0},
+             {ans : [2],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+
+             {ans : [5],         score : 1, kind : 0},
+
+             {ans : [7],         score : 1, kind : 0},
+             {ans : [3],         score : 1, kind : 0},
+             {ans : [1],         score : 1, kind : 0},
+             {ans : [6],         score : 1, kind : 0},
+             {ans : [5],         score : 1, kind : 0},
+
+             {ans : [3,2],       score : 1, kind : 0},
              {ans : ['G'],       score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [9],         score : 1, kind : 0},
-             {ans : [7],         score : 1, kind : 0},
-             {ans : ['I'],       score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [4],         score : 1, kind : 0},
-             {ans : ['A'],       score : 1, kind : 0},
-             {ans : [9],         score : 1, kind : 0},
              {ans : [8],         score : 1, kind : 0},
-             {ans : [7],         score : 1, kind : 0},
-             {ans : ['B'],       score : 1, kind : 0},
+             {ans : ['H'],       score : 1, kind : 0},
              {ans : ['C'],       score : 1, kind : 0},
-
-             {ans : ['1･2･3･4･5'], score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [9],         score : 1, kind : 0},
-             {ans : ['A'],       score : 1, kind : 0},
-
-             {ans : [9],         score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [1],         score : 1, kind : 0},
-
-             {ans : [7],         score : 1, kind : 0},
-             {ans : [8],         score : 1, kind : 0},
-             {ans : [9],         score : 1, kind : 0},
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : ['C'],       score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
-             {ans : ['B'],       score : 1, kind : 0},
-
-             {ans : [1],         score : 1, kind : 0},
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [8],         score : 1, kind : 0},
-             {ans : ['C'],       score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : ['A'],       score : 1, kind : 0},
-
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [7],         score : 1, kind : 0},
-             {ans : [8],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : ['A'],       score : 1, kind : 0},
-
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [1],         score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [7],         score : 1, kind : 0},
-             {ans : [9],         score : 1, kind : 0},
-             {ans : ['B'],       score : 1, kind : 0},
-             {ans : ['A'],       score : 1, kind : 0},
-
-             {ans : [1],         score : 1, kind : 0},
-
-             {ans : [4],         score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [1],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-
-             {ans : [6],         score : 1, kind : 0},
-
-             {ans : [7],         score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
-             {ans : [1],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-
-             {ans : [1],         score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
-             {ans : [6],         score : 1, kind : 0},
-             {ans : [5],         score : 1, kind : 0},
-             {ans : [4],         score : 1, kind : 0},
-
              {ans : [1],         score : 1, kind : 0},
              {ans : [5],         score : 1, kind : 0},
-             {ans : [2],         score : 1, kind : 0},
-             {ans : [3],         score : 1, kind : 0},
+             {ans : [4],         score : 1, kind : 0},
+             {ans : ['E'],       score : 1, kind : 0},
+
              {ans : [4],         score : 1, kind : 0}
            ];
 
