@@ -78,7 +78,7 @@
              {ans : [6],         score : 1, kind : 0},
              {ans : [5],         score : 1, kind : 0},
 
-             {ans : [3,2],       score : 1, kind : 0},
+             {ans : [3,2],       score : 1, kind : 1},
              {ans : ['G'],       score : 1, kind : 0},
              {ans : [8],         score : 1, kind : 0},
              {ans : ['H'],       score : 1, kind : 0},
