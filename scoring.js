@@ -13,31 +13,41 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans  : [4,'C',6],        score : 6, kind : 0},
-             {ans : [8,6],            score : 6, kind : 0},
-             {ans : [1,5],            score : 2, kind : 0},
-             {ans : [4],              score : 2, kind : 0},
-             {ans : [6],              score : 2, kind : 0},
-             {ans : [4,'A',5],        score : 6, kind : 0},
-             {ans : [7,6],            score : 5, kind : 0},
-             {ans : [1,7],            score : 5, kind : 0},
-             {ans : [9,5,8,4,5],      score : 6, kind : 0},
+  answer = [{ans  : [1,5,4,4],        score : 3, kind : 0}, // 問1 (1)
+             {ans : [4,7],            score : 3, kind : 0}, // (2)
+             {ans : [1,6,5],          score : 3, kind : 0}, // (3)
+             {ans : [4,6],            score : 3, kind : 0}, // (3)
+             {ans : [6,5],            score : 3, kind : 0}, // (4)
+             {ans : [4,4,1,6],        score : 3, kind : 0}, // (5)
+             {ans : [1,6],            score : 3, kind : 0}, // (6)
+             {ans : [7,8],            score : 4, kind : 0}, // (7)
+             {ans : [8],              score : 4, kind : 0}, // (8)
 
-             {ans : [5],              score : 2, kind : 0},
-             {ans : [1,6,5],          score : 6, kind : 0},
-             {ans : [1],              score : 2, kind : 0},
-             {ans : [1],              score : 2, kind : 0},
-             {ans : [4],              score : 2, kind : 0},
-             {ans : ['A'],            score : 2, kind : 0},
-             {ans : [8,6,'C'],        score : 6, kind : 0},
-             {ans : [9],              score : 4, kind : 0},
-             {ans : [4,'B',3],        score : 4, kind : 0},
-             {ans : [4,'B',3],        score : 6, kind : 0},
-             {ans : [6,3,3,4,5,8],    score : 6, kind : 0},
-             {ans : [5],              score : 6, kind : 0},
-             {ans : [1],              score : 6, kind : 0},
-             {ans : [5],              score : 6, kind : 0}
-	    
+             {ans : [7,'C',8,'C'],    score : 4, kind : 0}, //問2 (1)
+             {ans : [1,4,5,6,5],      score : 4, kind : 0}, // (1)
+             {ans : [4,5,4,6],        score : 6, kind : 0}, // (2)
+             {ans : [5,6],            score : 4, kind : 0}, // (2)
+             {ans : [1,6,5,5,8],      score : 4, kind : 0}, // (3)
+             {ans : [6,5,5],          score : 4, kind : 0}, // (4)
+
+             {ans : [6],              score : 3, kind : 0}, // 問3 (1)
+             {ans : [1,'C'],          score : 4, kind : 0}, // (2)
+             {ans : [4,6,8],          score : 4, kind : 0}, // (2)
+             {ans : [7,7,'C',9,9,'A'], score : 4, kind : 0}, // (3)
+             {ans : [6,5,4,5,1,4],    score : 4, kind : 0}, // (4)
+
+             {ans : [1,5,6],          score : 1, kind : 0}, // 問4 (1)
+             {ans : [4,3],            score : 2, kind : 0}, //
+             {ans : [7,3],            score : 2, kind : 0}, //
+             {ans : [6,8],            score : 2, kind : 0}, //
+             {ans : [6,8,6],          score : 2, kind : 0}, // (2)
+             {ans : [6],              score : 2, kind : 0}, //
+             {ans : [3],              score : 2, kind : 0}, //
+             {ans : [9],              score : 2, kind : 0}, // (3)
+             {ans : [1],              score : 1, kind : 0}, //
+             {ans : [5,6],            score : 1, kind : 0}, //
+             {ans : [6,7],            score : 3, kind : 0}  //
+
            ];
 
 //------ユーティリティメソッドs--------
