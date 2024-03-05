@@ -110,6 +110,7 @@
        for (i = 0; i < records.length; i++) {
          let markPos = 2, //マー君の仕様上、最初は通番、次はIDで、2から回答の内容
              personScore = 0,
+             personScoreStr = "", // 設問(加点する部分)ごとの得点を表示。これらの合計がpersonScoreになるはず。
              record = records[i].split(','); // さらにコンマで区切る。これがマーク単位。
                                              // 一人分を採点できる形にしたもの
          // 答えを設定したかたまり毎のloop
@@ -128,6 +129,9 @@
              }
              if (!incorrectFlg) {
                personScore += answer[j].score;
+               personScoreStr += ',' + String(answer[j].score);
+             } else {
+               personScoreStr += ',0';
              }
 
            // 順不同
@@ -142,13 +146,16 @@
              for (k = 0; k < answer[j].ans.length; k++) {
                if ( lst.includes( String(answer[j].ans[k]) ) ) {
                  personScore += answer[j].score;
+                 personScoreStr += ',' + String(answer[j].score);
+               } else {
+                 personScoreStr += ',0';
                }
              }
            }
          }
          // 結果を書き込み
          if (i != 0) {
-           fs.appendFileSync(outputFile, record[0] + ',' + record[1] + ',' + String(personScore) + '\n');
+           fs.appendFileSync(outputFile, record[0] + ',' + record[1] + personScoreStr +  ',' + String(personScore) + '\n');
          }
        }
      }
