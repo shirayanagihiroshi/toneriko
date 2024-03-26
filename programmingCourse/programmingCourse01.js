@@ -38,8 +38,7 @@ function kakunin01() {
 // 例題2　実行してみてチェックする
 function kakunin02() {
   confirmationTemplate('#inputBox02', '#result02', function (testStr) {
-    let retval,
-      codeStr =
+    let codeStr =
       'maisuu = 0;'         + // あらかじめ別の値を入れておいて変化をみる
       testStr               +
       'let r;'              +
@@ -49,17 +48,15 @@ function kakunin02() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    retval = Function (codeStr)();
-    return retval; 
+    return Function (codeStr)();
   });
 }
 
 // 例題3　実行してみてチェックする
 function kakunin03() {
   confirmationTemplate('#inputBox03', '#result03', function (testStr) {
-    let retval,
-      codeStr =
-      'schoolname = "";'         + // あらかじめ別の値を入れておいて変化をみる
+    let codeStr =
+      'schoolname = "";'    + // あらかじめ別の値を入れておいて変化をみる
       testStr               +
       'let r;'              +
       'if(schoolname == "日体") {'  +
@@ -68,16 +65,14 @@ function kakunin03() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    retval = Function (codeStr)();
-    return retval; 
+    return Function (codeStr)();
   });
 }
 
 // 例題4　実行してみてチェックする
 function kakunin04() {
   confirmationTemplate('#inputBox04', '#result04', function (testStr) {
-    let retval,
-      codeStr =
+    let codeStr =
       'function test (yen) {' + // 関数にして何度も呼んでチェック
       testStr                 +
       'return kakaku;'        +
@@ -89,8 +84,31 @@ function kakunin04() {
       '  r = false;'          +
       '}'                     +
       'return r';
-    retval = Function (codeStr)();
-    return retval; 
+    return Function (codeStr)();
+  });
+}
+
+// 例題5　文字列チェックと実行してみてチェックの併用
+function kakunin05() {
+  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+    let pattern = /for/;
+
+    if (testStr.match(pattern)) {
+      let codeStr =
+        'function test () {' + // 関数にして呼んでチェック
+        testStr               +
+        'return x;'           +
+        '}'                   +
+        'if (test()==45) {'   +
+        '  r = true;'         +
+        '} else {'            +
+        '  r = false;'        +
+        '}'                   +
+        'return r';
+      return  Function (codeStr)();
+    } else {
+      return false;
+    }
   });
 }
 
