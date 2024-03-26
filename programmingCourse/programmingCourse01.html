@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+  <title>プログラミング講座 ver.01</title>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse01.css">
+  <script src="programmingCourse01.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 ver.01</h1>
+  <p>第1回の目標：javascriptの基本的な文法を再確認する。</p>
+
+  <h2>1.変数の宣言</h2>
+  <p>これからこの変数を使うぞ！と約束することを<span class="stronger">変数の宣言</span>といい、<span class="stronger">let 変数名</span>と書く。;(セミコロン)は命令文の終わりを表す。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  let maisuu;
+  </pre>
+  <p>例題1 変数heightを宣言せよ</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>2.変数に値を代入する</h2>
+  <p>数学の変数と同じように、変数には値を代入することができる。値には数値や文字列などがあり、この種別を<span class="stronger">型</span>を呼ぶことがある。変数が型を持つ言語とそうでない言語があり、javascriptは後者である。(つまり一つの変数にどんな値でも代入できる)</p>
+  <p><span class="stronger">変数名 = 値</span>というように書く。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  maisuu = 10;
+  </pre>
+  <p>例題2 変数maisuuに50を代入せよ</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <h2>3.変数に値を代入する。その2</h2>
+  <p><span class="stronger">文字列</span>はシングルクォーテーションか、ダブルクオーテーションで挟みこんで表現する。クオーテーションに挟まれた部分(文字列データ)でのみ全角が許され、他の命令はすべて半角で書く。クオーテーションも半角で書く。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  myname = "ひろし";
+  </pre>
+  <p>例題3 変数schoolnameに"日体"を代入せよ</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <h2>4.条件分岐</h2>
+  <p>条件によって処理する内容を変えたいときは条件分岐式(<span class="stronger">if文</span>)を使う。下の例のように書くが、この例では x >= 18 が条件であり、これが真のときに、customerへ"成人"を代入し、条件が偽のとき、customerへ"未成年"を代入している。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  if (x >= 18) {
+    customer = "成人";
+  } else {
+    customer = "未成年";
+  }
+  </pre>
+  <p>例題4 変数yenの値が1000以上であれば変数kakakuに"高い"を、そうでなければkakakuに"安い"を代入せよ</p>
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <p>このドキュメントの内容に何かあれば白柳先生まで</p>
+</div>
+</body>
+<html>
+
