@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <head>
   <title>プログラミング講座 ver.01</title>
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
   <link rel="stylesheet" href="programmingCourse01.css">
   <script src="programmingCourse01.js"></script>
@@ -55,6 +58,16 @@
     customer = "未成年";
   }
   </pre>
+  <p>フローチャートで表すと以下である</p>
+  <div class="mermaid">
+    graph TB
+    A([開始]) --> B{x>18}
+    B -->|yes| C[customer=成人]
+    B -->|no| D[customer=未成年]
+    C --> E([終了])
+    D --> E
+  </div>
+
   <p>例題4 変数yenの値が1000以上であれば変数kakakuに"高い"を、そうでなければkakakuに"安い"を代入せよ</p>
   <textarea id="inputBox04"></textarea>
   <button onClick="kakunin04()">確認する</button>
@@ -87,6 +100,22 @@
     <li>i++ (これが実行されるとiは3になる)</li>
     <li>i < 3 (このときiは3であるから偽である。繰り返しは終わる)</li>
   </ol>
+  <p>フローチャートで表すと以下である</p>
+  <div class="mermaid">
+    graph TB
+    A([開始])
+    B[i=0]
+    C{i<3}
+    D[x=x+i]
+    E[i++]
+    F([終了])
+    A --> B
+    B --> C
+    C -->|yes| D
+    D --> E
+    E --> C
+    C --->|no| F
+  </div>
   <p>例題5 変数xへ0を代入せよ。その後、for文を用いて変数 x へ 0 から 9 までの値を順に足せ。</p>
   <textarea id="inputBox05"></textarea>
   <button onClick="kakunin05()">確認する</button>
