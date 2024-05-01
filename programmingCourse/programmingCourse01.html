@@ -61,7 +61,7 @@
   <p>フローチャートで表すと以下である</p>
   <div class="mermaid">
     graph TB
-    A([開始]) --> B{x>18}
+    A([開始]) --> B{xは18以上?}
     B -->|yes| C[customer=成人]
     B -->|no| D[customer=未成年]
     C --> E([終了])
@@ -73,9 +73,51 @@
   <button onClick="kakunin04()">確認する</button>
   <div id="result04">結果:</div>
 
-  <h2>5.繰り返し</h2>
+  <h2>5.条件分岐2</h2>
+  <p>if文においてelse節は無くてもよい。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  if (v > 60) {
+    message = "スピード出しすぎだよ";
+  }
+  </pre>
+  <p>また、複数の条件を設定することもできる。</p>
+  <pre class="prettyprint lang-js linenums">
+  if (point > 80) {
+    grade = "優";
+  } else if (point > 60) {
+    grade = "良";
+  } else if (point > 40) {
+    grade = "可";
+  } else {
+    grade = "不可";
+  }
+  </pre>
+
+  <p>上の例をフローチャートで表すと以下である</p>
+  <div class="mermaid">
+    graph TB
+    A([開始]) --> B{80より大きい?}
+    B -->|yes| C[gradeに優を設定]
+    B -->|no| D{60より大きい?}
+    D -->|yes| E[gradeに良を設定]
+    D -->|no| F{40より大きい?}
+    F -->|yes| G[gradeに可を設定]
+    F -->|no| H[gradeに不可を設定]
+    C --> J([終了])
+    E --> J([終了])
+    G --> J([終了])
+    H --> J([終了])
+  </div>
+
+  <p>例題5 変数sizeの値が500以上であれば変数messageに"big"を、変数sizeの値が300以上500未満であれば変数messageに"normal"を、変数sizeの値が300未満ならmessageに"small"を設定せよ。</p>
+  <textarea id="inputBox05"></textarea>
+  <button onClick="kakunin05()">確認する</button>
+  <div id="result05">結果:</div>
+
+  <h2>6.繰り返し</h2>
   <p>同じ手順を繰り返すことがコンピュータの得意技である。繰り返しの構文にはいくつかの種類があり、下の例は<span class="stronger">for文</span>である。
-  forに続く括弧の中は3つ部分からなり、i = 0は繰り返しの始まる前に一度だけ実行される。i < 5 は繰り返しが続行されるための条件である。
+  forに続く括弧の中は3つ部分からなり、i = 0は繰り返しの始まる前に一度だけ実行される。i < 3 は繰り返しが続行されるための条件である。
   これが真である間 x = x + i; が実行される。 x = x + i; が実行された後、i++が実行される。（i++ は i = i + 1 と同じ）
   </p>
   <p>例</p>
@@ -117,9 +159,9 @@
     C --->|no| F
   </div>
   <p>例題5 変数xへ0を代入せよ。その後、for文を用いて変数 x へ 0 から 9 までの値を順に足せ。</p>
-  <textarea id="inputBox05"></textarea>
-  <button onClick="kakunin05()">確認する</button>
-  <div id="result05">結果:</div>
+  <textarea id="inputBox06"></textarea>
+  <button onClick="kakunin06()">確認する</button>
+  <div id="result06">結果:</div>
 
   <p>このドキュメントの内容に何かあれば白柳先生まで</p>
 </div>

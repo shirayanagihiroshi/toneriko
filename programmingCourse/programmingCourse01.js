@@ -41,6 +41,7 @@ function kakunin02() {
     let codeStr =
       'maisuu = 0;'         + // あらかじめ別の値を入れておいて変化をみる
       testStr               +
+      ';'                   +
       'let r;'              +
       'if(maisuu == 50) {'  +
       '  r = true;'         +
@@ -58,6 +59,7 @@ function kakunin03() {
     let codeStr =
       'schoolname = "";'    + // あらかじめ別の値を入れておいて変化をみる
       testStr               +
+      ';'                   +
       'let r;'              +
       'if(schoolname == "日体") {'  +
       '  r = true;'         +
@@ -75,6 +77,7 @@ function kakunin04() {
     let codeStr =
       'function test (yen) {' + // 関数にして何度も呼んでチェック
       testStr                 +
+      ';'                   +
       'return kakaku;'        +
       '}'                     +
       'if (test(100)=="安い" && test(999)=="安い" &&' +
@@ -88,15 +91,37 @@ function kakunin04() {
   });
 }
 
-// 例題5　文字列チェックと実行してみてチェックの併用
+// 例題5　実行してみてチェックする
 function kakunin05() {
   confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+    let codeStr =
+      'function test (size) {' + // 関数にして何度も呼んでチェック
+      testStr                  +
+      ';'                      +
+      'return message;'        +
+      '}'                     +
+      'if (test(500)=="big" && test(501)=="big" &&' +
+      'test(499)=="normal" &&  test(300)=="normal" &&' + 
+      'test(299)=="small" &&  test(0)=="small" ) {'  +
+      '  r = true;'           +
+      '} else {'              +
+      '  r = false;'          +
+      '}'                     +
+      'return r';
+    return Function (codeStr)();
+  });
+}
+
+// 例題6　文字列チェックと実行してみてチェックの併用
+function kakunin06() {
+  confirmationTemplate('#inputBox06', '#result06', function (testStr) {
     let pattern = /for/;
 
     if (testStr.match(pattern)) {
       let codeStr =
         'function test () {' + // 関数にして呼んでチェック
         testStr               +
+        ';'                   +
         'return x;'           +
         '}'                   +
         'if (test()==45) {'   +

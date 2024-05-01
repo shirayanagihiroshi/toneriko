@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+  <title>プログラミング講座 ver.02</title>
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse02.css">
+  <script src="programmingCourse02.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 ver.02</h1>
+  <p>第2回の目標：javascriptの基本的な文法をもう少し再確認する。</p>
+
+  <h2>1.繰り返し(while)</h2>
+  <p><span class="stronger">while文</span>でも繰り返す処理を行える。
+  <p>whileに続くカッコの中に繰り返しが続行されるための条件を書く。下記の例では、変数iの値が10より小さいあいだ、3行目と4行目が繰り返し実行される。3行目のconsole.log(i)は変数iの値をログとして表示する命令である。4行目のi++を行わないと無限ループに陥るため、注意が必要である。
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+    i = 0;
+    while (i < 10) {
+      console.log(i);
+      i++;
+    }
+  </pre>
+  <p>フローチャートで表すと以下である</p>
+  <div class="mermaid">
+    graph TB
+    A([開始])
+    B[i=0]
+    C{i<10}
+    D[iの値を表示する]
+    E[i++]
+    F([終了])
+    A --> B
+    B --> C
+    C -->|yes| D
+    D --> E
+    E --> C
+    C --->|no| F
+  </div>
+
+  <p>例題1 変数xへ0を代入せよ。その後、while文を用いて変数 x へ 0 から 9 までの値を順に足せ。</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>2.配列の操作</h2>
+  <p>一つの変数が1個の箱だとすると、配列は箱がいくつか並んだものである。</p>
+  <p>配列の何番目のデータであるかを指定することで、データにアクセスできる。何番目のデータであるかを指定する際には、<span class="stronger">0から数え始める</span>ことに注意する。下記の例では、変数xに配列fruitsの0番目のもの（つまり"バナナ"）を代入している。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  fruits = ["バナナ", "りんご", "みかん"];
+  x = fruits[0];
+  </pre>
+  <p>配列の長さとは、配列を箱が並んだものと見たときの並んだ箱の個数である。配列名.lengthで参照できる。下記の例では変数xに配列fruitsの長さ（つまり3）を代入している。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  fruits = ["バナナ", "りんご", "みかん"];
+  x = fruits.length;
+  </pre>
+  <p>配列の内容を後から変更することもできる。下記の例では配列fruitsの1番目を"柿"にしている。つまり、配列fruitsは["バナナ", "柿", "みかん"]になる。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  fruits = ["バナナ", "りんご", "みかん"];
+  fruits[1] = "柿";
+  </pre>
+  <p>長さが0の配列を用意することもできる。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  fruits = [];
+  </pre>
+  <p>配列の長さを増やすような変更も可能である。下記の例では、配列fruitsは["バナナ", "りんご", "みかん","すいか"]になる。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  fruits = [];
+  fruits[0] = "バナナ";
+  fruits[1] = "りんご";
+  fruits[2] = "みかん";
+  fruits[3] = "すいか";
+  </pre>
+  <p>例題2 配列flowerを用意し、データが["ばら","たんぽぽ","すみれ","さくら"]になるようにせよ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+
+  <p>このドキュメントの内容に何かあれば白柳先生まで</p>
+</div>
+</body>
+<html>
+
