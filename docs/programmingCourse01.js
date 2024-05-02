@@ -57,11 +57,11 @@ function kakunin02() {
 function kakunin03() {
   confirmationTemplate('#inputBox03', '#result03', function (testStr) {
     let codeStr =
-      'schoolname = "";'    + // あらかじめ別の値を入れておいて変化をみる
+      'menu = "";'    + // あらかじめ別の値を入れておいて変化をみる
       testStr               +
       ';'                   +
       'let r;'              +
-      'if(schoolname == "日体") {'  +
+      'if(menu == "焼き魚定食") {'  +
       '  r = true;'         +
       '} else {'            +
       '  r = false;'        +

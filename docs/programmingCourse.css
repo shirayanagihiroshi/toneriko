@@ -1,5 +1,11 @@
-body{
+﻿body{
   background-color : #b0e0e6;
+}
+
+textarea{
+  resize: vertical;
+  height : 80px;
+  width  : 640px;
 }
 
 .box1{
