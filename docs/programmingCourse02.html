@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>javascript プログラミング講座 ver.02</title>
+  <meta charset="utf-8">
   <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
   <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({startOnLoad:true});</script>
@@ -81,12 +82,20 @@
   fruits[2] = "みかん";
   fruits[3] = "すいか";
   </pre>
-  <p>例題2 配列flowerを用意し、データが["ばら","たんぽぽ","すみれ","さくら"]になるようにせよ。</p>
+  <p>例題2 配列flowerを用意し、値が["ばら","たんぽぽ","すみれ","さくら"]になるようにせよ。</p>
   <textarea id="inputBox02"></textarea>
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
 
-  <p>
+  <h2>3.繰り返しの処理と配列の操作</h2>
+  <p>繰り返しの処理と配列は相性が良い。配列の各データを順に読み取ったり設定したりすることができるからである。下記の例では、配列numbersに0か9までの数を設定している。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  numbers = [];
+  for (i = 0; i<10; i++) {
+    numbers[i] = i;
+  }
+  </pre>
     <a href="programmingCourse01.html">第1回へ</a> <a href="index.html">目次へ</a> 
   </p>
 </div>
