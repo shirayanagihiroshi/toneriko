@@ -65,3 +65,24 @@ function kakunin03() {
   });
 }
 
+// 例題3　実行してみてチェックする
+function kakunin04() {
+  confirmationTemplate('#inputBox04', '#result04', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(myMath(0) == 4 &&'   +
+      '   myMath(1) == 2 &&'   +
+      '   myMath(2) == 2 &&'   +
+      '   myMath(3) == 4 &&'   +
+      '   myMath(4) == 8) {' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}
+

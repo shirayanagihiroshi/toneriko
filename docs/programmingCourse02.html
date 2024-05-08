@@ -6,6 +6,7 @@
   <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({startOnLoad:true});</script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML"></script>
   <link rel="stylesheet" href="programmingCourse.css">
   <script src="programmingCourse.js"></script>
   <script src="programmingCourse02.js"></script>
@@ -102,6 +103,40 @@
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
 
+  <h2>4.関数</h2>
+  <p>数学と同じように関数を利用できる。</p>
+  <pre class="prettyprint lang-js linenums">
+  function triangleArea(side, height) {
+    return side * angle * 0.5;
+  }
+
+  myTriangle = triangleArea(5, 8);
+  console.log(myTriangle);
+  </pre>
+  <p>上の例では、1～3行目でtriangleAreaという関数を定義している。関数を定義するタイミングでは、関数の中身の処理は実行されない。5行目でtriangleArea関数を呼び出しており、このとき初めて関数の中身である2行目の命令が実行される。つまり、パラメータの辺(side)と高さ(height)から三角形の面積を計算して返す。関数から返された値はmyTriangle変数に格納され、6行目で表示される。</p>
+  <pre class="prettyprint lang-js linenums">
+  function showWarning(str) {
+    console.log("warning!!" + str);
+    return;
+  }
+
+  showWarning("何度か");
+  showWarning("関数を");
+  showWarning("呼びます");
+  </pre>
+  <p>関数は値を返さなくてもよい。上の例では、1～4行目でshowWarningという関数を定義している。この関数はstrというパラメータを引き受けるが、特になにも返却しない(3行目のreturnで何も指定していないことに注目)。これを実行するとコンソールに以下の内容が表示される。</p>
+  <pre>
+ warning!!何度か
+ warning!!関数を
+ warning!!呼びます
+  </pre>
+  <p>例題4 入力\(x\)に対して\(x^2 - 3x + 4\)を出力する関数myMathを定義せよ。</p>
+
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <p>
     <a href="programmingCourse01.html">第1回へ</a> <a href="index.html">目次へ</a> 
   </p>
 </div>
