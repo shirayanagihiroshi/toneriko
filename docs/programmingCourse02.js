@@ -65,7 +65,7 @@ function kakunin03() {
   });
 }
 
-// 例題3　実行してみてチェックする
+// 例題4　実行してみてチェックする
 function kakunin04() {
   confirmationTemplate('#inputBox04', '#result04', function (testStr) {
     let codeStr =
@@ -86,3 +86,23 @@ function kakunin04() {
   });
 }
 
+// 例題5　実行してみてチェックする
+function kakunin05() {
+  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(myAdd(5,7) == 18    &&' +
+      '   myAdd(3,3) == -1    &&' +
+      '   myAdd(2,1) == -1    &&' +
+      '   myAdd(10,20) == 165 &&' +
+      '   myAdd(0,5) == 15 ) {'   +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}

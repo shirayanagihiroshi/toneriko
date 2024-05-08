@@ -15,7 +15,7 @@
 <div class="box1">
 
   <h1>プログラミング講座 ver.02</h1>
-  <p>第2回の目標：javascriptの基本的な文法をもう少し再確認する。</p>
+  <p>第2回の目標：javascriptの基本的な文法をもう少し確認する。</p>
 
   <h2>1.繰り返し(while)</h2>
   <p><span class="stronger">while文</span>でも繰り返す処理を行える。
@@ -45,7 +45,7 @@
     C --->|no| F
   </div>
 
-  <p>例題1 変数xへ0を代入せよ。その後、while文を用いて変数 x へ 0 から 9 までの値を順に足せ。</p>
+  <p class="reidaibox"><span class="reidai">例題1</span> 変数xへ0を代入せよ。その後、while文を用いて変数 x へ 0 から 9 までの値を順に足せ。</p>
   <textarea id="inputBox01"></textarea>
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
@@ -84,7 +84,7 @@
   fruits[2] = "みかん";
   fruits[3] = "すいか";
   </pre>
-  <p>例題2 配列flowerを用意し、値が0番目から順に"ばら","たんぽぽ","すみれ","さくら"になるようにせよ。</p>
+  <p class="reidaibox"><span class="reidai">例題2</span> 配列flowerを用意し、値が0番目から順に"ばら","たんぽぽ","すみれ","さくら"になるようにせよ。</p>
   <textarea id="inputBox02"></textarea>
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
@@ -98,7 +98,7 @@
     numbers[i] = i;
   }
   </pre>
-  <p>例題3 配列oddNumberを用意し、1,3,5,・・・と奇数を小さい順に10個格納せよ。</p>
+  <p class="reidaibox"><span class="reidai">例題3</span> 配列oddNumberを用意し、1,3,5,・・・と奇数を小さい順に10個格納せよ。</p>
   <textarea id="inputBox03"></textarea>
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
@@ -130,11 +130,91 @@
  warning!!関数を
  warning!!呼びます
   </pre>
-  <p>例題4 入力\(x\)に対して\(x^2 - 3x + 4\)を出力する関数myMathを定義せよ。</p>
+  <p class="reidaibox"><span class="reidai">例題4</span> 入力\(x\)に対して\(x^2 - 3x + 4\)を出力する関数myMathを定義せよ。</p>
 
   <textarea id="inputBox04"></textarea>
   <button onClick="kakunin04()">確認する</button>
   <div id="result04">結果:</div>
+
+  <h2>5.変数のスコープ</h2>
+  <p>変数のスコープとは変数の有効範囲である。</p>
+  <pre class="prettyprint lang-js linenums">
+  {
+    let variableA;
+
+    variableAを用いた色々な処理
+  }
+  ここでvariableAを使おうとするとエラー
+  </pre>
+  <p>{と}に囲まれた範囲をブロックという。上記では1行目から5行目が1つのブロックである。ブロック内でletを用いて定義された変数は、そのブロック内でのみ有効であり、ブロック外からアクセスするとエラーが起きる。
+このようなスコープをブロックスコープという。関数やif文などでもブロックはつくられる。
+  </p>
+  <pre class="prettyprint lang-js linenums">
+  function funcX{
+    let variableA;
+
+    variableAを用いた色々な処理
+  }
+
+  function funcY{
+    let variableA;
+
+    variableAを用いた色々な処理
+  }
+  </pre>
+  <p>
+    通常1つのブロックに同じ名前の変数は1つのみ許されるが、上記のように別々のブロックであれば、それぞれで同じ名前の変数が使える。
+  </p>
+
+  <pre class="prettyprint lang-js linenums">
+  let variableA;
+
+  function funcX{
+    variableAを用いた処理ができる
+  }
+
+  function funcY{
+    variableAを用いた処理ができる
+  }
+
+  variableAを用いた処理ができる
+  </pre>
+  <p>
+    上記のように、すべてのブロックの外側で変数を宣言すると、すべての箇所からこの変数にアクセスできる。このようなスコープをグローバルスコープという。
+  </p>
+  <p>
+    スコープが広いと変数の動きを把握しにくいため、<span class="stronger">変数のスコープはなるべく狭くする</span>のがうまいプログラムを作るコツである。
+  </p>
+
+  <pre class="prettyprint lang-js linenums">
+  function funcX{
+    var variableA;
+
+    variableAを用いた色々な処理
+  }
+  </pre>
+  <p>
+    上記のようにletでなくvarを使った変数の宣言もできるが、これは古い書き方なのでしてはいけない。
+  </p>
+
+  <pre class="prettyprint lang-js linenums">
+  function funcX{
+    variableA; (let を忘れた！！)
+
+    variableAを用いた色々な処理
+  }
+
+  function funcY{
+    variableAを用いた処理をするかも知れない
+  }
+  </pre>
+  <p>
+    上記のようにletを書き忘れると、変数がグローバルスコープ持つことになり、思わぬ挙動をする可能性があるので注意が必要である。
+  </p>
+  <p class="reidaibox"><span class="reidai">例題5</span> 2つのパラメータ(整数)を受け取り、1つめのパラメータの値から2つめのパラメータの値までを足した値を返す関数myAddを作れ。例：myAdd(5,7)を呼ぶと18が返る。ただし、2つめのパラメータの値が1つめのパラメータの値より大きくない場合は、-1を返せ。</p>
+  <textarea id="inputBox05"></textarea>
+  <button onClick="kakunin05()">確認する</button>
+  <div id="result05">結果:</div>
 
   <p>
     <a href="programmingCourse01.html">第1回へ</a> <a href="index.html">目次へ</a> 

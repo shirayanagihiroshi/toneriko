@@ -17,6 +17,17 @@ textarea{
   color : red;
 }
 
+.reidaibox{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: double 5px #4ec4d3;
+}
+
+.reidai{
+  color : green;
+  font-weight : bold;
+}
+
 .prettyprint ol.linenums > li {
  list-style-type: decimal; 
 }
