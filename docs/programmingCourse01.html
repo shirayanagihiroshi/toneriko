@@ -7,6 +7,7 @@
   <script>mermaid.initialize({startOnLoad:true});</script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
   <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
   <script src="programmingCourse01.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
   <p>第1回の目標：javascriptの基本的な文法を再確認する。</p>
 
   <h2>1.変数の宣言</h2>
-  <p>これからこの変数を使うぞ！と約束することを<span class="stronger">変数の宣言</span>といい、<span class="stronger">let 変数名</span>と書く。;(セミコロン)は命令文の終わりを表す。</p>
+  <p>これからこの変数を使うぞ！と約束することを<span class="stronger">変数の宣言</span>といい、<span class="stronger">let 変数名</span>と書く。;(セミコロン)は命令文の終わりを表す。なお例の行頭にある数字.は行の番号であり、入力の必要はない。</p>
   <p>例</p>
   <pre class="prettyprint lang-js linenums">
   let maisuu;
@@ -118,7 +119,7 @@
 
   <h2>6.繰り返し</h2>
   <p>同じ手順を繰り返すことがコンピュータの得意技である。繰り返しの構文にはいくつかの種類があり、下の例は<span class="stronger">for文</span>である。
-  forに続く括弧の中は3つ部分からなり、i = 0は繰り返しの始まる前に一度だけ実行される。i < 3 は繰り返しが続行されるための条件である。
+  forに続く括弧の中は;(セミコロン)で区切られた3つの部分からなり、i = 0は繰り返しの始まる前に一度だけ実行される。i < 3 は繰り返しが続行されるための条件である。
   これが真である間 x = x + i; が実行される。 x = x + i; が実行された後、i++が実行される。（i++ は i = i + 1 と同じ）
   </p>
   <p>例</p>
@@ -128,20 +129,20 @@
     x = x + i;
   }
   </pre>
-  <p>この例で実行される命令は以下である。</p>
+  <p>この例では以下の順に命令が実行される。</p>
   <ol>
     <li>x = 0 (for文の前の命令)</li>
     <li>i = 0</li>
-    <li>i < 3 (このときiは0であるから真である)</li>
+    <li>i < 3 の判定(このときiは0であるから真であり、繰り返しは続行される)</li>
     <li>x = x + i (このとき i は 0。つまり x の値は変わらない。)</li>
     <li>i++ (これが実行されると i は 1 になる)</li>
-    <li>i < 3 (このときiは1であるから真である)</li>
+    <li>i < 3 の判定(このときiは1であるから真であり、繰り返しは続行される)</li>
     <li>x = x + i (このとき i は1。これが実行されると x は1大きくなる)</li>
     <li>i++ (これが実行されるとiは2になる)</li>
-    <li>i < 3 (このときiは2であるから真である)</li>
+    <li>i < 3 の判定(このときiは2であるから真であり、繰り返しは続行される)</li>
     <li>x = x + i (このとき i は2。これが実行されると x は2大きくなる)</li>
     <li>i++ (これが実行されるとiは3になる)</li>
-    <li>i < 3 (このときiは3であるから偽である。繰り返しは終わる)</li>
+    <li>i < 3 の判定(このときiは3であるから偽である。繰り返しは終わる)</li>
   </ol>
   <p>フローチャートで表すと以下である</p>
   <div class="mermaid">
