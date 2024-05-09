@@ -5,6 +5,25 @@ function kakunin01() {
       testStr               +
       ';'                   +
       'let r;'              +
+      'if(plusMinus(-1) == "負の数です" && ' +
+      '   plusMinus(0)  == "零です"     && ' +
+      '   plusMinus(1)  == "正の数です" ) {' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}
+
+// 例題5　実行してみてチェックする
+function kakunin05() {
+  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
       'if(fizzbuzz(1) == "-"     && fizzbuzz(2) == "-"    && fizzbuzz(3) == "fizz"  &&' +
       '   fizzbuzz(4) == "-"     && fizzbuzz(5) == "buzz" && fizzbuzz(6) == "fizz"  &&' +
       '   fizzbuzz(7) == "-"     && fizzbuzz(8) == "-"    && fizzbuzz(9) == "fizz"  &&' +

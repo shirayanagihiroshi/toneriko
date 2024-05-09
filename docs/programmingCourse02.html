@@ -151,13 +151,13 @@
 このようなスコープをブロックスコープという。関数やif文などでもブロックはつくられる。
   </p>
   <pre class="prettyprint lang-js linenums">
-  function funcX{
+  function funcX(){
     let variableA;
 
     variableAを用いた色々な処理
   }
 
-  function funcY{
+  function funcY(){
     let variableA;
 
     variableAを用いた色々な処理
@@ -170,11 +170,11 @@
   <pre class="prettyprint lang-js linenums">
   let variableA;
 
-  function funcX{
+  function funcX(){
     variableAを用いた処理ができる
   }
 
-  function funcY{
+  function funcY(){
     variableAを用いた処理ができる
   }
 
@@ -188,7 +188,7 @@
   </p>
 
   <pre class="prettyprint lang-js linenums">
-  function funcX{
+  function funcX(){
     var variableA;
 
     variableAを用いた色々な処理
@@ -199,13 +199,13 @@
   </p>
 
   <pre class="prettyprint lang-js linenums">
-  function funcX{
+  function funcX(){
     variableA; (let を忘れた！！)
 
     variableAを用いた色々な処理
   }
 
-  function funcY{
+  function funcY(){
     variableAを用いた処理をするかも知れない
   }
   </pre>
@@ -216,6 +216,31 @@
   <textarea id="inputBox05"></textarea>
   <button onClick="kakunin05()">確認する</button>
   <div id="result05">結果:</div>
+
+  <h2>6.インデント</h2>
+  <p>ブロックの中身にはインデント(字下げ)を施す。インデントは半角スペース2個や半角スペース4個やtabを使う。(いくつかの流儀がある)。javascriptは半角スペースやtabを無視するので、プログラムとしてはインデントは特に意味はなく、人間がプログラムを見やすくするための工夫である。<span class="stronger">全角スペースは使ってはいけない</span>。</p>
+  <pre class="prettyprint lang-js linenums">
+  function funcX(height, width){
+    let squareArea;
+    let Message;
+
+    squareArea = height * width;
+
+    if (squareArea > 100) {
+      Message = "this is big square";
+
+      if (squareArea > 1000) {
+        Message = "this is very big square";
+      }
+    } else {
+      Message = "this is small square";
+    }
+
+    さまざまな処理
+  }
+  </pre>
+  <p>上の例では、2～17行目は関数のブロックの中であるので、全体的にインデントされている。ここでは半角スペース2個を使っている。8～12行目、14行目はif文のブロックの中なので、そこからさらにインデントされている。11行目はその中のif文のブロックの中なので、さらにさらにインデントされている。</p>
+  <p>javascriptの文法としては{}がブロックを表すが、プログラマは普通インデントのレベルでプログラムの構造を見るためインデントは正確に行うのがよい。他の言語、例えばpythonではインデントが文法の一部であり、インデントでブロックを表す。</p>
 
   <p>
     <a href="programmingCourse01.html">第1回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse03.html">第3回へ</a> 
