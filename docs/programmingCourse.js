@@ -20,3 +20,23 @@ function confirmationTemplate(questionID, resultID, confirmationF) {
     setResult(resultID, '×(' + String(e) + ')');
   }
 }
+
+// 配列比較関数
+function compareArray(arrayA, arrayB) {
+  let retval = false;
+  if ( (Array.isArray(arrayA) == true) &&
+       (Array.isArray(arrayB) == true) &&
+       (arrayA.length == arrayB.length) ) {
+    let i, num = arrayA.length;
+    for (i = 0; i < num; i++) {
+      if (arrayA[i] == arrayB[i]) {
+        if(i == num - 1) {
+          retval = true;
+        }
+      } else {
+        break;
+      }
+    }
+  }
+  return retval;
+}
