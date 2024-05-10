@@ -19,7 +19,29 @@ function kakunin01() {
 
 // 例題2　実行してみてチェックする
 function kakunin02() {
-  reidai2Answer = function (paraA,paraB) {
+  confirmationTemplate('#inputBox02', '#result02', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(myFactorial(1)  == 1 && ' +
+      '   myFactorial(2)  == 2 && ' +
+      '   myFactorial(3)  == 6 && ' +
+      '   myFactorial(4)  == 24 && ' +
+      '   myFactorial(5)  == 120 && ' +
+      '   myFactorial(10)  == 3628800 ) {' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}
+
+// 例題3　実行してみてチェックする
+function kakunin03() {
+  reidai3Answer = function (paraA,paraB) {
     let i,
       returnValue = 1;
     for(i = 0; i < paraB; i++) {
@@ -28,7 +50,7 @@ function kakunin02() {
     return returnValue;
   };
 
-  confirmationTemplate('#inputBox02', '#result02', function (testStr) {
+  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -46,9 +68,9 @@ function kakunin02() {
   });
 }
 
-// 例題3　実行してみてチェックする
-function kakunin03() {
-  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
+// 例題4　実行してみてチェックする
+function kakunin04() {
+  confirmationTemplate('#inputBox04', '#result04', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
