@@ -55,10 +55,10 @@ function kakunin03() {
       testStr               +
       ';'                   +
       'let r;'              +
-      'if( myExp(2,0) == reidai2Answer(2,0) && ' +
-      '    myExp(3,1) == reidai2Answer(3,1) && ' +
-      '    myExp(4,2) == reidai2Answer(4,2) && ' +
-      '    myExp(5,3) == reidai2Answer(5,3) ) {'  +
+      'if( myExp(2,0) == reidai3Answer(2,0) && ' +
+      '    myExp(3,1) == reidai3Answer(3,1) && ' +
+      '    myExp(4,2) == reidai3Answer(4,2) && ' +
+      '    myExp(5,3) == reidai3Answer(5,3) ) {'  +
       '  r = true;'         +
       '} else {'            +
       '  r = false;'        +

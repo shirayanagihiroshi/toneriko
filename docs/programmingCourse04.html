@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 ver.04</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse04.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 ver.04</h1>
+  <p>第4回の目標：javascriptのやや複雑な機能を確認する。</p>
+
+  <h2>1.オブジェクト</h2>
+  <p>整数値や文字列などの基本的なデータ型の他に、オブジェクトという概念がある。一つのオブジェクトはいくつかの基本的なデータ型のデータやいくつかのオブジェクトを含む。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  person = { name   : "ひろし" ,
+             age    : 45       ,
+             height : 186      ,
+             weight : 75        };
+  </pre>
+  <p>上の例ではpersonという変数の値としてオブジェクトを設定している。</p>
+  <p>オブジェクトは<span class="stronger">プロパティ</span>を持ち、プロパティは<span class="stronger">キーとなる名前</span>と<span class="stronger">値</span>の<span class="stronger">組</span>である。</p>
+  <p>上の例では、nameプロパティの値を"ひろし"に設定し、ageプロパティの値を45に設定し、・・・をしている。通常オブジェクトは何らかの意味をもつひとまとまりのデータである。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  person = { name   : "ひろし" ,
+             age    : 55       ,
+             height : 186      ,
+             weight : 75        };
+
+  passengerWeight = person.weight;
+
+  person.age = 45;
+  </pre>
+  <p>オブジェクトに格納されている値を使う場合、上の例の6行目のようにする。ここではpassengerWeight変数にpersonに格納されたオブジェクトのweightプロパティの値を設定している。</p>
+
+  <p>オブジェクトに格納されている値を変更する場合、上の例の8行目のようにする。ここではpersonに格納されたオブジェクトのageプロパティの値を45に更新している。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  car = { };
+  </pre>
+  <p>プロパティを持たないオブジェクトを作ることもできる。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  car = { };
+
+  car.color = "red";
+  </pre>
+  <p>オブジェクトへ新たなプロパティを設定することもできる。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> nameプロパティとageプロパティを持つオブジェクトをパラメータとして受け取り、ageが18未満である場合は、"〇〇は未成年"を返し、ageが18以上の場合は"〇〇は成人"を返す関数checkSeijinを定義せよ。〇〇はnameプロパティの値である。また文字列は+で結合することができる。</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  students = [ { name: "鈴木", math: 80 },
+               { name: "高橋", math: 70 },
+               { name: "佐藤", math: 90 },
+               { name: "田中", math: 75 },
+               { name: "渡辺", math: 85 } ];
+
+  function sumMath (argArray) {
+    let i;
+    let sum = 0;
+
+    for (i = 0; i < argArray.length; i++) {
+      sum = sum + argArray[i].math;
+    }
+    return sum;
+  }
+
+  x = sumMath(students);
+  </pre>
+  <p>オブジェクトのリストを扱うこともできる。上の例ではリストのmathプロパティの値たちの合計を計算する関数を定義して呼んでいる。結果的にxには400が格納される。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> mathプロパティとenglishプロパティを持つオブジェクトのリストを受け取り、mathプロパティの値たちの平均と、englishプロパティの値たちの平均を比べ、mathプロパティの方が大きければ"math"を、englishプロパティの方が大きければ"english"を、等しければ"same"を返す関数mathOrEnglishを定義せよ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> nameプロパティとmathプロパティを持つオブジェクトのリストを受け取り、最もmathプロパティの大きいオブジェクトのnameプロパティの値を返す関数goodAtMathを定義せよ。なお、最もmathプロパティが大きい者が複数いれば、nameプロパティの値をリストの順にコンマ(,)で連結して返せ。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p>
+    <a href="programmingCourse03.html">第3回へ</a> <a href="index.html">目次へ</a> 第5回へ
+  </p>
+</div>
+</body>
+<html>
+
