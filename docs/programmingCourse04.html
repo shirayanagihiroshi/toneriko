@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <title>javascript プログラミング講座 ver.04</title>
+  <title>javascript プログラミング講座 第4回</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="programmingCourse.css">
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
@@ -10,7 +10,7 @@
 <body>
 <div class="box1">
 
-  <h1>プログラミング講座 ver.04</h1>
+  <h1>プログラミング講座 第4回</h1>
   <p>第4回の目標：javascriptのやや複雑な機能を確認する。</p>
 
   <h2>1.オブジェクト</h2>
@@ -80,19 +80,65 @@
 
   x = sumMath(students);
   </pre>
-  <p>オブジェクトのリストを扱うこともできる。上の例ではリストのmathプロパティの値たちの合計を計算する関数を定義して呼んでいる。結果的にxには400が格納される。</p>
+  <p>オブジェクトの配列を扱うこともできる。上の例ではmathプロパティの値たちの合計を計算する関数を定義して呼んでいる。結果的にxには400が格納される。</p>
 
-  <p class="reidaibox"><span class="reidai">例題2</span> mathプロパティとenglishプロパティを持つオブジェクトのリストを受け取り、mathプロパティの値たちの平均と、englishプロパティの値たちの平均を比べ、mathプロパティの方が大きければ"math"を、englishプロパティの方が大きければ"english"を、等しければ"same"を返す関数mathOrEnglishを定義せよ。</p>
+  <p class="reidaibox"><span class="reidai">例題2</span> mathプロパティとenglishプロパティを持つオブジェクトの配列を受け取り、mathプロパティの値たちの平均と、englishプロパティの値たちの平均を比べ、mathプロパティの方が大きければ"math"を、englishプロパティの方が大きければ"english"を、等しければ"same"を返す関数mathOrEnglishを定義せよ。</p>
   <textarea id="inputBox02"></textarea>
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
 
-  <p class="reidaibox"><span class="reidai">例題3</span> nameプロパティとmathプロパティを持つオブジェクトのリストを受け取り、最もmathプロパティの大きいオブジェクトのnameプロパティの値を返す関数goodAtMathを定義せよ。なお、最もmathプロパティが大きい者が複数いれば、nameプロパティの値をリストの順にコンマ(,)で連結して返せ。</p>
+  <p class="reidaibox"><span class="reidai">例題3</span> nameプロパティとmathプロパティを持つオブジェクトの配列を受け取り、最もmathプロパティの大きいオブジェクトのnameプロパティの値を返す関数goodAtMathを定義せよ。なお、最もmathプロパティが大きい者が複数いれば、nameプロパティの値を配列の順にコンマ(,)で連結して返せ。</p>
   <textarea id="inputBox03"></textarea>
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
 
-  <p>
+  <h2>2.高階関数</h2>
+  <p>関数もオブジェクトである。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  multiFunc = function (x) {
+    return x * 2;
+  };
+
+  y = multiFunc(10);
+  </pre>
+  <p>上の例では、1から3行目で変数multiFuncに引数を2倍して返す関数を代入している。変数multiFuncに代入されている関数を呼び出すには5行目のようにする。結果的に変数yには20が代入される。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  student = { name      : "太郎" ,
+              classroom : "1-1" ,
+              greeting  : function () {
+                            console.log("hi! I am " + this.name );
+                          }
+            }
+
+  student.greeting();
+  </pre>
+  <p>オブジェクトのプロパティとして、関数を定義することもできる。上の例では、変数studentにオフジェクトを代入しているが、greetingプロパティにログを出力する関数を設定している。この関数を呼び出すには8行目のようにする。結果的にコンソールに"hi! I am 太郎"が出力される。このようにオブジェクトが持つ関数を<span class="stronger">メソッド</span>と呼ぶことがある。なお、4行目で使わているthisは特殊なキーワードで、このメソッドを持つオブジェクトを指す。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  let myArray = [1, 5, 3, 7, 4, 2, 9, 6, 11];
+
+  f = function (item) {
+        if (item % 2 == 0) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+  resultArray = myArray.filter(f)
+  </pre>
+  <p>関数をパラメータにとる関数を<span class="stronger">高階関数</span>という。上の例では、11行目のfilterが配列myArrayのメソッドであり、高階関数である。filterに渡す関数は3から9行目で定義し、変数fへ代入している。fはパラメータが2で割り切れるならtrueを返し、そうでなければfalseを返す。filterはmyArrayの配列の一つ一つを関数fに渡し、fがtrueを返したものからなる新しい配列を作って返す。結果的に、resultArrayには[2, 4, 6]が代入される。</p>
+  <p>上の例の処理は繰り返しによっても実現できるが、高階関数を上手に使うと簡潔に分かりやすくプログラミングができる。</p>
+
+  <p class="reidaibox"><span class="reidai">例題4</span> aa</p>
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
     <a href="programmingCourse03.html">第3回へ</a> <a href="index.html">目次へ</a> 第5回へ
   </p>
 </div>
