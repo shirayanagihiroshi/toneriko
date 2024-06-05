@@ -98,4 +98,26 @@ function kakunin03() {
   });
 }
 
+// 例題4　文字列チェックと実行してみてチェックの併用
+function kakunin04() {
+  confirmationTemplate('#inputBox04', '#result04', function (testStr) {
+    let pattern = /filter/;
+
+    if (testStr.match(pattern)) {
+      let codeStr =
+        testStr               +
+        'if ( compareArray(oddArray([1,2,3,4,5,6,7]), [1,3,5,7])      && ' +
+        '     compareArray(oddArray([1]), [1])                        && ' +
+        '     compareArray(oddArray([1,3,5,7,9,11]), [1,3,5,7,9,11]) )  {' +
+        '  r = true;'         +
+        '} else {'            +
+        '  r = false;'        +
+        '}'                   +
+        'return r';
+      return  Function (codeStr)();
+    } else {
+      return false;
+    }
+  });
+}
 
