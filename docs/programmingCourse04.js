@@ -121,3 +121,67 @@ function kakunin04() {
   });
 }
 
+// オブジェクトの配列比較関数
+function compareObjArray(arrayA, arrayB) {
+  let retval = false;
+  if ( (Array.isArray(arrayA) == true) &&
+       (Array.isArray(arrayB) == true) &&
+       (arrayA.length == arrayB.length) ) {
+    let i, num = arrayA.length;
+    for (i = 0; i < num; i++) {
+      if ( (arrayA[i].name == arrayB[i].name) &&
+           (arrayA[i].math == arrayB[i].math) &&
+           (arrayA[i].english == arrayB[i].english) ) {
+        if(i == num - 1) {
+          retval = true;
+        }
+      } else {
+        break;
+      }
+    }
+  }
+  return retval;
+}
+
+// 例題5　文字列チェックと実行してみてチェックの併用
+function kakunin05() {
+  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+    let pattern = /filter/;
+
+    if (testStr.match(pattern)) {
+      let codeStr =
+        testStr               +
+        'let testData1 = [ { name:"ひろし",   ' +
+        '                    math    : 5,     ' +
+        '                    english : 2 },   ' +
+        '                  { name:"たけし",   ' +
+        '                    math    : 5,     ' +
+        '                    english : 6 },   ' +
+        '                  { name:"しげる",   ' +
+        '                    math    : 5,     ' +
+        '                    english : 5 }];  ' +
+        'let testData2 = [ { name:"ひろし",   ' +
+        '                    math    : 15,    ' +
+        '                    english : 12 },  ' +
+        '                  { name:"たけし",   ' +
+        '                    math    : 12,    ' +
+        '                    english : 20 },  ' +
+        '                  { name:"しげる",   ' +
+        '                    math    : 30,    ' +
+        '                    english : 25 },  ' +
+        '                  { name:"たま",     ' +
+        '                    math    : 51,    ' +
+        '                    english : 60 }]; ' +
+        'if ( compareObjArray(goodAtEnglish(testData1), [{name:"たけし",math:5,english:6}])      && ' +
+        '     compareObjArray(goodAtEnglish(testData2), [{name:"たけし",math:12,english:20},{name:"たま",math:51,english:60}]) ) {' +
+        '  r = true;'         +
+        '} else {'            +
+        '  r = false;'        +
+        '}'                   +
+        'return r';
+      return  Function (codeStr)();
+    } else {
+      return false;
+    }
+  });
+}
