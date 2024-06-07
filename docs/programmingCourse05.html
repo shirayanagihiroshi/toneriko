@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第5回</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse05.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第5回</h1>
+  <p>第5回の目標：javascriptとHTML</p>
+
+  <h2>1.HTMLの基本</h2>
+  <p>HTML(HyperText Markup Language)はwebページを記述するための言語である。ブラウザ(今見ているアプリケーションです！)は主にwebサーバからwebページを取得し、それを読み解釈し画面表示する。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+    &lt;body&gt;
+      &lt;p&gt;
+        this is a pen.
+        that is a pen.
+        I am a pen too.
+      &lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+  <p>のように記述するとthis is a pen.that is a pen.I am a pen too.のみが表示される。つまりタグ自体は表示されない。</p>
+  <p>&lt;html&gt;のようなものを<span class="stronger">タグ</span>という。タグには、&lt;html&gt;のように<span class="stronger">開く</span>タグと&lt;/html&gt;のように<span class="stronger">閉じる</span>タグがある。閉じるタグは開くタグと似ているが/を含む。開くタグと閉じるタグで<span class="stronger">対象を挟むことで文章の構造を示す</span>。</p>
+  <p>タグの種類は沢山あり、どのタグで挟むかで、どのような構造を示すのかが決まる。</p>
+  <p>例えば&lt;p&gt;は段落を表す。5行目から7行目は&lt;p&gt;と&lt;/p&gt;で挟まれており、これにより5行目から7行目までが一つの段落であることが示されている。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;img src="画像ファイル名"&gt;
+  </pre>
+  <p>タグによっては閉じるタグを省略する。例えば&lt;img&gt;タグは画像を表すが、閉じるタグは省略する。上の例は"画像ファイル名"で指定した画像を表示することを意味する。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;ul&gt;
+    &lt;li&gt;リンゴ&lt;/li&gt;
+    &lt;li&gt;ミカン&lt;/li&gt;
+    &lt;li&gt;トマト&lt;/li&gt;
+  &lt;/ul&gt;
+  </pre>
+  <p>タグは入れ子にすることができる。&lt;ul&gt;は番号なしリストを表し、&lt;li&gt;はリスト項目を表す。</p>
+  <ul>
+    <li>リンゴ</li>
+    <li>ミカン</li>
+    <li>トマト</li>
+  </ul>
+  <p>このように表示される。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;button id ="ID1234"&gt;参加申込&lt;/button&gt;
+  </pre>
+  <p>htmlの要素は属性を持つことができる。上の例ではidという属性を持ち、その値は"ID1234"である。</p>
+  <button id ="ボタンID">参加申込</button>
+  <p>このように表示される。この例では属性を持っているが、まだ使用してはいない。</p>
+
+  <h2>2.javascriptとHTML</h2>
+  <p>HTMLは静的なものだが、javascriptはwebページを動的に変更できる。</p>
+
+  <p>例：HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;script src="removeList.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;ul&gt;
+        &lt;li&gt;リンゴ&lt;/li&gt;
+        &lt;li&gt;ミカン&lt;/li&gt;
+        &lt;li id="ID1234"&gt;トマト&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button onclick="removeTomato()"&gt;削除&lt;/button&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+  <p>例：javascript(removeList.js)</p>
+  <pre class="prettyprint lang-js linenums">
+  function removeTomato () {
+    let element = document.getElementById("ID1234");
+    element.remove();
+  }
+  </pre>
+  <p>HTMLの4行目は、javascriptファイル(removeList.js)を読み込む命令である。この書き方だと、htmlファイルと同じフォルダにremoveList.jsが存在しなければならない。</p>
+  <p>HTMLの10行目はリストのアイテムの一つであるトマトにID(ID1234)が指定してある。</p>
+  <p>HTMLの12行目はボタンが押されたときに呼ばれる関数を登録するものである。ここではremoveTomato関数が登録されている。</p>
+  <p>removeList.jsではremoveTomato関数が定義されている。2行目のdocument.getElementByIdは、HTMLの中から指定のIDを持つhtml要素を取得する。</p>
+  <p>ここでは、elementに&lt;li id="ID1234"&gt;トマト&lt;/li&gt;が代入されいるイメージである。続く3行目では該当のhtml要素を削除しており、結果的に以下のように動く。</p>
+  <ul>
+    <li>リンゴ</li>
+    <li>ミカン</li>
+    <li id="ID1234">トマト</li>
+  </ul>
+  <button onclick="removeTomato()">削除</button>
+
+  <p>
+    <a href="programmingCourse04.html">第4回へ</a> <a href="index.html">目次へ</a> 第6回へ
+  </p>
+</div>
+</body>
+<html>
+
