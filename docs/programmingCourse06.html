@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第6回</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse06.js"></script>
+  <style type="text/css">
+    #ID1238{
+      position : relative;
+      top      : 10px;
+      left     : 30px;
+      color    : red;
+    }
+  </style>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第6回</h1>
+  <p>第6回の目標：HTMLとCSSの関係を理解する。</p>
+
+  <h2>1.CSSの基本</h2>
+  <p>CSS(Cascading Style Sheets)はwebページの見た目を設定するための言語である。HTMLで文章の構造を決め、CSSで文章の見た目を決めるという役割分担がある。</p>
+  <p>例:HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="hungry.css"&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;p id="ID1238"&gt;
+    I want something eat.
+  &lt;/p&gt;
+
+  ～省略～
+  </pre>
+  <p>例:css(hungry.css)</p>
+  <pre class="prettyprint lang-js linenums">
+  #ID1238{
+    position : relative;
+    top      : 20px;
+    left     : 30px;
+    color    : red;
+  }
+  </pre>
+
+  <p>上の例では、HTMLの4行目でCSSファイルを読み込んでいる。この書き方だと、htmlファイルと同じフォルダにhungry.cssが存在しなければならない。HTMLの9行目のp要素にはidとしてID1238が設定されている。</p>
+  <p>CSSの1行目はidの値がID1238である要素に対する設定を記述するという意味である。先頭の#はidによる指定で要素を特定しようとしていることを表す。</p>
+  <p>CSSの2行目から4行目は要素の表示位置を設定している。HTMLの要素は特別な指定をしなければ、ブラウザによって自動的に配置されるが、position:relativeは、この自動的に決まる位置を基準とし位置を指定するという意味である。</p>
+  <p>3行目は縦方向の位置の指定である。自動的に決まる位置から、20px下に表示することを表す。</p>
+  <p>4行目は横方向の位置の指定である。自動的に決まる位置から、30px右に表示することを表す。</p>
+  <p>5行目は文字色の設定で、文字色をredに指定している。</p>
+
+  <h2>2.javascriptとCSS</h2>
+  <p>javascriptで動的にHTMLを変更できたように、javascriptでCSSも動的に変更できる。</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="hungry.css"&gt;
+    &lt;script src="hungry.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;p id="ID1238" onclick="changeColor()"&gt;
+    I want something eat.
+  &lt;/p&gt;
+
+  ～省略～
+  </pre>
+  <p>例:css(hungry.css)</p>
+  <pre class="prettyprint lang-js linenums">
+  #ID1238{
+    position : relative;
+    top      : 20px;
+    left     : 30px;
+    color    : red;
+  }
+  </pre>
+
+  <p>例:javascript(hungry.js)</p>
+  <pre class="prettyprint lang-js linenums">
+  function changeColor() {
+    let element = document.getElementById("ID1238");
+    element.style.color = "blue";
+  }
+  </pre>
+  <p>一つ前の例とほぼ同じだが、HTMLの5行目でjavascriptファイルを読み込んでいる。また、10行目でp要素をクリックしたときに呼ばれる関数を設定している。</p>
+  <p>javascriptの3行目でcssの設定を変更しており、cssのcolorをblueへ変更している。これによりp要素をクリックすると文字色が青くなる。以下のように動く。</p>
+  <p id="ID1238" onclick="changeColor()">
+    I want something eat.
+  </p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 下にidが"ID1239"であるp要素がある。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いてI like green.の文字色をgreenにせよ。</p>
+  <p id="ID1239">I like green.</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <!--<div id="result01">結果:</div>-->
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 下にidが"ID1240"であるp要素がある。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いて、ボタンを押す度にblink!の色をred, blueで切り替えよ。</p>
+  <p id="ID1240">blink!</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <!--<div id="result02">結果:</div>-->
+
+  <h2>3.タイマー処理</h2>
+
+  <p>
+    <a href="programmingCourse05.html">第5回へ</a> <a href="index.html">目次へ</a> 第7回へ
+  </p>
+</div>
+</body>
+<html>
+
