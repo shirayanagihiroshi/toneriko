@@ -2,8 +2,11 @@
 <head>
   <title>javascript プログラミング講座 第5回</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="programmingCourse.css">
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
   <script src="programmingCourse.js"></script>
   <script src="programmingCourse05.js"></script>
 </head>
@@ -11,7 +14,7 @@
 <div class="box1">
 
   <h1>プログラミング講座 第5回</h1>
-  <p>第5回の目標：javascriptとHTML</p>
+  <p>第5回の目標：HTMLの基本とjavascriptでHTMLを操作する処理を理解する。</p>
 
   <h2>1.HTMLの基本</h2>
   <p>HTML(HyperText Markup Language)はwebページを記述するための言語である。ブラウザ(今見ているアプリケーションです！)は主にwebサーバからwebページを取得し、それを読み解釈し画面表示する。</p>
@@ -34,36 +37,63 @@
   <p>例えば&lt;p&gt;は段落を表す。5行目から7行目は&lt;p&gt;と&lt;/p&gt;で挟まれており、これにより5行目から7行目までが一つの段落であることが示されている。</p>
   <p>例</p>
   <pre class="prettyprint lang-js linenums">
+  ～省略～
+
   &lt;img src="画像ファイル名"&gt;
+
+  ～省略～
   </pre>
   <p>タグによっては閉じるタグを省略する。例えば&lt;img&gt;タグは画像を表すが、閉じるタグは省略する。上の例は"画像ファイル名"で指定した画像を表示することを意味する。</p>
 
   <p>例</p>
   <pre class="prettyprint lang-js linenums">
-  &lt;ul&gt;
-    &lt;li&gt;リンゴ&lt;/li&gt;
-    &lt;li&gt;ミカン&lt;/li&gt;
-    &lt;li&gt;トマト&lt;/li&gt;
-  &lt;/ul&gt;
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+    &lt;body&gt;
+      &lt;p&gt;
+        I like fruits.
+      &lt;/p&gt;
+      &lt;/ul&gt;
+        &lt;li&gt;リンゴ&lt;/li&gt;
+        &lt;li&gt;ミカン&lt;/li&gt;
+        &lt;li&gt;トマト&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
   </pre>
-  <p>タグは入れ子にすることができる。&lt;ul&gt;は番号なしリストを表し、&lt;li&gt;はリスト項目を表す。</p>
+  <p>タグは入れ子にすることができる。入れ子で要素の<span class="stronger">親子関係</span>を表す。上の例では、htmlはbodyの<span class="stronger">親</span>であり、bodyはhtmlの<span class="stronger">子</span>である。同じように、bodyの<span class="stronger">子</span>はpとulであり、ulの<span class="stronger">子</span>は3つのliである。同じ親に属する子たちを<span class="stronger">兄弟</span>という。上の例では、pとulが<span class="stronger">兄弟</span>であり、3つのliも<span class="stronger">兄弟</span>である。</p>
+  <p>htmlは以下のような<span class="stronger">ツリー構造</span>をしている。</p>
+  <div class="mermaid">
+    graph TB
+    A[html] --> B[body]
+    B --> C[p]
+    B --> D[ul]
+    D --> E[li]
+    D --> F[li]
+    D --> G[li]
+  </div>
+  <p>なおタグの意味としては、&lt;ul&gt;は番号なしリスト、&lt;li&gt;はリスト項目を表し、ブラウザでは以下のよう表示される。</p>
+  <p>I like fruits.</p>
   <ul>
     <li>リンゴ</li>
     <li>ミカン</li>
     <li>トマト</li>
   </ul>
-  <p>このように表示される。</p>
 
   <p>例</p>
   <pre class="prettyprint lang-js linenums">
+  ～省略～
+
   &lt;button id ="ID1234"&gt;参加申込&lt;/button&gt;
+
+  ～省略～
   </pre>
-  <p>htmlの要素は属性を持つことができる。上の例ではidという属性を持ち、その値は"ID1234"である。</p>
+  <p>htmlの要素は属性を持つことができる。上の例ではbutton要素がidという属性を持ち、その値は"ID1234"である。</p>
+  <p>buttonはボタンであり、以下のように表示される。この例では属性を持っているが、まだ使用してはいない。</p>
   <button id ="ボタンID">参加申込</button>
-  <p>このように表示される。この例では属性を持っているが、まだ使用してはいない。</p>
 
   <h2>2.javascriptとHTML</h2>
-  <p>HTMLは静的なものだが、javascriptはwebページを動的に変更できる。</p>
+  <p>HTMLは静的なものだが、javascriptはwebページを動的に変更したり、様々な処理を行ったりできる。</p>
 
   <p>例：HTML</p>
   <pre class="prettyprint lang-js linenums">
@@ -90,16 +120,60 @@
   }
   </pre>
   <p>HTMLの4行目は、javascriptファイル(removeList.js)を読み込む命令である。この書き方だと、htmlファイルと同じフォルダにremoveList.jsが存在しなければならない。</p>
-  <p>HTMLの10行目はリストのアイテムの一つであるトマトにID(ID1234)が指定してある。</p>
+  <p>HTMLの10行目はリスト項目の一つであるトマトにID(ID1234)が指定してある。</p>
   <p>HTMLの12行目はボタンが押されたときに呼ばれる関数を登録するものである。ここではremoveTomato関数が登録されている。</p>
   <p>removeList.jsではremoveTomato関数が定義されている。2行目のdocument.getElementByIdは、HTMLの中から指定のIDを持つhtml要素を取得する。</p>
-  <p>ここでは、elementに&lt;li id="ID1234"&gt;トマト&lt;/li&gt;が代入されいるイメージである。続く3行目では該当のhtml要素を削除しており、結果的に以下のように動く。</p>
+  <p>ここでは、elementに&lt;li id="ID1234"&gt;トマト&lt;/li&gt;が代入されるイメージである。続く3行目では該当のhtml要素を削除しており、結果的に以下のように動く。</p>
   <ul>
     <li>リンゴ</li>
     <li>ミカン</li>
     <li id="ID1234">トマト</li>
   </ul>
   <button onclick="removeTomato()">削除</button>
+
+  <p>例：HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;script src="addList.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;ul id="ID1235"&gt;
+        &lt;li&gt;リンゴ&lt;/li&gt;
+        &lt;li&gt;ミカン&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button onclick="addPotate()"&gt;追加&lt;/button&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  </pre>
+  <p>例：javascript(removeList.js)</p>
+  <pre class="prettyprint lang-js linenums">
+  function addPotate () {
+    let parent = document.getElementById("ID1235");
+    let child = document.createElement('li');
+    child.innerHTML = "ポテト";
+    parent.appendChild(child);
+  }
+  </pre>
+  <p>上の例では、javascriptの3行目でli要素を生成している。4行目でli要素の表示文言をポテトに設定し、5行目でul要素の子として設定している。追加ボタンが押されるとこの関数が呼ばれ、以下のように動く。</p>
+  <ul id="ID1235">
+    <li>リンゴ</li>
+    <li>ミカン</li>
+  </ul>
+  <button onclick="addPotate()">追加</button>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 下にidが"ID1236"、表示文言は"hello"であるp要素がある。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いてhelloをgood byeに変更せよ。</p>
+  <p id="ID1236">hello</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <!--<div id="result01">結果:</div>-->
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 下にidが"ID1237"であるul要素がある。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いてリストへ"国語", "数学", "英語"を追加せよ。</p>
+  <ul id="ID1237"><li>初期値</li></ul>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <!--<div id="result02">結果:</div>-->
 
   <p>
     <a href="programmingCourse04.html">第4回へ</a> <a href="index.html">目次へ</a> 第6回へ
