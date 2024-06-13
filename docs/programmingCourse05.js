@@ -11,6 +11,26 @@ function addPotate () {
   parent.appendChild(child);
 }
 
+let sampleCountupNumber = 0;
+let sampleMyTimer = 0;
+
+function intervalFunction () {
+  let element = document.getElementById("ID1238");
+  sampleCountupNumber++;
+  element.innerHTML = String(sampleCountupNumber);
+}
+
+function countupStart() {
+  if (sampleMyTimer == 0) {
+    sampleMyTimer = setInterval(intervalFunction, 1000);
+  }
+}
+
+function countupStop() {
+  clearInterval(sampleMyTimer);
+  sampleMyTimer = 0;
+}
+
 function kakunin01() {
   let textField = document.querySelector('#inputBox01');
 
@@ -21,6 +41,14 @@ function kakunin01() {
 
 function kakunin02() {
   let textField = document.querySelector('#inputBox02');
+
+  Function (textField.value)();
+
+  return;
+}
+
+function kakunin03() {
+  let textField = document.querySelector('#inputBox03');
 
   Function (textField.value)();
 

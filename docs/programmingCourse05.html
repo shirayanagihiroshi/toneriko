@@ -175,6 +175,74 @@
   <button onClick="kakunin02()">確認する</button>
   <!--<div id="result02">結果:</div>-->
 
+  <h2>3.タイマー処理</h2>
+  <p>何秒後かに処理を行いたいときや、何秒かの間隔で処理を行いたいときはjavascriptの環境が用意しているタイマーを使う。</p>
+  <p>setInterval関数は、指定された間隔(ミリ秒)ごとに指定された関数を呼ぶ。この登録を取り消したいときはclearInterval関数を使う。</p>
+  <p>setInterval関数はパラメータとして関数を引き受けるので高階関数である。</p>
+  <p>例:HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;head&gt;
+    &lt;script src="countup.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;p id="ID1238"&gt;
+    countup
+  &lt;/p&gt;
+
+  &lt;button onClick="countupStart()"&gt;
+    開始
+  &lt;/button&gt;
+
+  &lt;button onClick="countupStop()"&gt;
+    停止
+  &lt;/button&gt;
+
+  ～省略～
+  </pre>
+
+  <p>例:javascript(countup.js)</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  let countupNumber = 0;
+  let myTimer = 0; //タイマーIDは0でない。0はタイマー動作中でない印。
+
+  function intervalFunction () {
+    let element = document.getElementById("ID1238");
+    countupNumber++;
+    element.innerHTML = String(countupNumber);
+  }
+
+  function countupStart() {
+    if (myTimer == 0) {
+      myTimer = setInterval(intervalFunction, 1000);
+    }
+  }
+
+  function countupStop() {
+    clearInterval(myTimer);
+    myTimer = 0;
+  }
+  </pre>
+
+  <p>以下のように動く。</p>
+  <p id="ID1238">countup</p>
+  <button onClick="countupStart()">開始</button><button onClick="countupStop()">停止</button>
+
+  <p>上の例では、6行目で宣言したintervalFunction関数が1秒(1000ミリ秒)間隔で呼ばれるように、14行目のsetIntervalで登録している。</p>
+  <p>setIntervalはタイマーIDを返す。19行目のclearIntervalはタイマーIDを指定してタイマーでの呼び出しの停止をしている。</p>
+  <p>タイマー登録後、タイマーを停止するまでは、再度タイマーの登録を行わない。これを実現するために13行目でタイマーIDが0のときのみ処理を行い、20行目でタイマー停止時にタイマーIDを0にしている。</p>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> 下にidが"ID1239"であるp要素がある。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いて1秒ごとにp要素の数値を1ずつ減らせ。ヒント：文字列で表された数値を数値に変換するにはNumber("数値に変換したい文字列")関数を使う。また、本来タイマーはどこかで止めるべきだが、ここでは気にしないとする。</p>
+  <p id="ID1239">100</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <!--<div id="result03">結果:</div>-->
+
   <p>
     <a href="programmingCourse04.html">第4回へ</a> <a href="index.html">目次へ</a> 第6回へ
   </p>
