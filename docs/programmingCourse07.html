@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第7回</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse07.js"></script>
+  <style type="text/css">
+    table{
+      border-spacing : 0px;
+    }
+    td{
+      border : 0px;
+      height : 5px;
+      width  : 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第7回</h1>
+  <p>第7回の目標：練習問題をこなしてプログラミングに慣れる。</p>
+
+  <h2>1.セルオートマトン(1次元)</h2>
+  <p>セル(四角)が1列に並ぶ世界を考える。セルには生き物がいる場合(1)といない場合(0)がある。セルAとAの両隣(の計3つのセル)にどのように生き物がいるかで、次の世代のセルAに生き物がいるかどうかが決まる。</p>
+  <p>この次の世代を決めるルールを次のように表す。</p>
+  <p>例:javascript</p>
+  <pre class="prettyprint lang-js linenums">
+// 左:ある世代のAの左隣とAとAの右隣　右：次の世代のA
+let rule = [["111", 0],
+            ["110", 1],
+            ["101", 0],
+            ["100", 1],
+            ["011", 1],
+            ["010", 0],
+            ["001", 1],
+            ["000", 0]];
+  </pre>
+  <p>101個のセルを考え、初期値として、中央のセルは1、その他のセルは0とする。このセル達に対して、先のルールを適用して次の世代、次の世代を計算していく。</p>
+  <p>横1行が一つの世代で、その1行下に次の世代、さらにその1行下に次の世代である。60世代を図示すると以下になる。</p>
+  <table id="ID1246">
+  </table>
+
+  <p>
+    <a href="programmingCourse06.html">第6回へ</a> <a href="index.html">目次へ</a>
+  </p>
+</div>
+</body>
+<html>
+
