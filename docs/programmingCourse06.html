@@ -16,6 +16,14 @@
       left     : 30px;
       color    : red;
     }
+    #ID1244{
+      position : relative;
+      top      : 10px;
+      left     : 10px;
+    }
+    #ID1245{
+      position : relative;
+    }
   </style>
 </head>
 <body>
@@ -113,6 +121,73 @@
   <!--<div id="result02">結果:</div>-->
 
   <h2>3.タイマーで動きを表現する</h2>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="move.css"&gt;
+    &lt;script src="move.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;p id="ID1244"&gt;
+    right and left.
+  &lt;/p&gt;
+
+  ～省略～
+  </pre>
+  <p>例:css(move.css)</p>
+  <pre class="prettyprint lang-js linenums">
+  #ID1244{
+    position : relative;
+    top      : 10px;
+    left     : 10px;
+  }
+  </pre>
+  <p>例:javascript(move.js)</p>
+  <pre class="prettyprint lang-js linenums">
+  window.onload = function () {
+    let myTimer;
+    let myPosition = 10;
+    let myDirection = "right";
+ 
+    function myMove(){
+      let element = document.getElementById("ID1244");
+      // 右へ動いているとき
+      if (myDirection == "right") {
+        myPosition = myPosition + 5;
+        if (myPosition == 100) {
+          myDirection = "left";
+        }
+
+      // 左へ動いているとき
+      } else {
+        myPosition = myPosition - 5;
+        if (myPosition == 0) {
+          myDirection = "right";
+        }
+      }
+      element.style.left = String(myPosition) + "px"; 
+    }
+
+    myTimer = setInterval(myMove, 100);
+  }
+  </pre>
+  <p>上のコードはこのように動く。</p>
+  <p id="ID1244">
+    right and left.
+  </p>
+
+  <p>javascriptの25行目でmyMove関数が100ミリ秒ごとに呼ばれるように登録している。</p>
+  <p>myMove関数では、idがID1244の要素の表示位置(スタイルシートのleft)を5ずつ増やしたり、減らしたりして表示位置を変更しており、これにより文言が動いているように見える。</p>
+  <p>javascriptの1行目はHTMLの読み込みが完了したときにブラウザから呼ばれる関数の登録である。getElementById等はHTMLの読み込み完了後にしかできないためこのようにしている。</p>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> 下にidが"ID1245"であるp要素があり、CSSでpositionはrelativeに設定されている。また、確認するボタンを押すとテキストエリア内の処理が行われる。適切な処理を書いて、more right.を右へ動かし、200px進んだら止まるようにせよ。ヒント：人間がボタンを押すようなときには、HTMLの読み込みは完了しているのでwindow.onloadは気にしなくてよい。</p>
+  <p id="ID1245">more right.</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <!--<div id="result03">結果:</div>-->
 
   <p>
     <a href="programmingCourse05.html">第5回へ</a> <a href="index.html">目次へ</a> 第7回へ
