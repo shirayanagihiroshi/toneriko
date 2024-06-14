@@ -1,6 +1,6 @@
 ﻿//sample
 function changeColor() {
-  let element = document.getElementById("ID1238");
+  let element = document.getElementById("ID1241");
   element.style.color = "blue";
 }
 
