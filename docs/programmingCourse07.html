@@ -46,6 +46,120 @@ let rule = [["111", 0],
   <table id="ID1246">
   </table>
 
+  <p>例:HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="cellAutomaton.css"&gt;
+    &lt;script src="cellAutomaton.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;table id="ID1246"&gt;
+  &lt;/table&gt;
+
+  ～省略～
+  </pre>
+
+  <p>例:CSS(cellAutomaton.css)</p>
+  <pre class="prettyprint lang-js linenums">
+table{
+  border-spacing : 0px;
+}
+
+td{
+  border : 0px;
+  height : 5px;
+  width  : 5px;
+}
+  </pre>
+
+  <p>例:javascript(cellAutomaton.js)</p>
+  <pre class="prettyprint lang-js linenums">
+function applyRule(left_A, A, right_A) {
+  let i;
+  let oldGeneration = String(left_A) + String(A) + String(right_A);
+
+  for (i = 0; i < rule.length; i++) {
+    if (rule[i][0] == oldGeneration) {
+      return rule[i][1];
+    }
+  }
+}
+
+function nextGeneration(world) {
+  let newWorld = [];
+
+  for (i = 0; i <= 100; i++) {
+    // 世界の左端
+    if (i == 0) {
+      newWorld[i] = applyRule(0         , world[i], world[i+1]);
+    // 世界の右端
+    } else if (i == 100) {
+      newWorld[i] = applyRule(world[i-1], world[i], 0         );
+    // 世界の端でないところ
+    } else {
+      newWorld[i] = applyRule(world[i-1], world[i], world[i+1]);
+    }
+  }
+  return newWorld;
+}
+
+window.onload = function () {
+  let world=[];
+  let table = document.getElementById("ID1246");
+  let tr, td, i, j;
+
+  //オートマトンの世界の初期化
+  for (i = 0; i <= 100; i++) {
+    world[i] = 0;
+  }
+  world[50] = 1;
+
+  // 画面表示用テーブルの初期化
+  for (j = 0; j < 60; j++) {
+    tr = document.createElement("tr");
+    for (i = 0; i <= 100; i++) {
+      td = document.createElement("td");
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+
+  // メインの処理
+  for (j = 0; j < table.rows.length; j++) {
+    for (i = 0; i < table.rows[j].cells.length; i++) {
+      let cellColor;
+      if (world[i] == 1) {
+        // 生物がいるところは黒
+        cellColor = "black";
+      } else {
+        // 生物がいないところは背景色
+        cellColor = "#b0e0e6";
+      }
+      table.rows[j].cells[i].style.backgroundColor = cellColor;
+    }
+    // 次の世代を計算する
+    world = nextGeneration(world);
+  }
+}
+  </pre>
+  <p>CSSではテーブルのセルの大きさや、セル同士の区切り線の幅などを設定している。</p>
+  <p>javascriptのapplyRule関数はruleを用いて、次の世代のあるセルに生き物がいるかいないかを判定する。</p>
+  <p>javascriptのnextGeneration関数はapplyRule関数を用いて、101セルある世界の次の世代を計算する。</p>
+  <p>javascriptのwindow.onloadの処理では、オートマトンの世界を宣言して初期化し、表示用のテーブルを生成し、nextGeneration関数で計算しながら60世代分を描画している。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> ライフゲームを実装せよ。ライフゲーム：2次元のセルオートマトンである。セルが縦横に並ぶ世界があり、セルには生き物がいる場合といない場合がある。あるセルAの周囲8マスの生き物の数により、次の世代でセルAに生き物がいるかどうかが決まる。詳しいルールは下に。世代交替させて生き物たの繁殖していくのを眺めるものである。</p>
+  <p>
+    <ul>
+      <li>周囲の生き物の数:1匹以下・・・次のAに生き物はいない(過疎)</li>
+      <li>周囲の生き物の数:2匹　　・・・この世代のAに生き物がいれば、それが生き延びる。Aに生き物がいなければ次もいないまま。</li>
+      <li>周囲の生き物の数:3匹　　・・・次のAに生き物が誕生する</li>
+      <li>周囲の生き物の数:4匹以上・・・次のAに生き物はいない(過密)</li>
+    </ul>
+  </p>
   <p>
     <a href="programmingCourse06.html">第6回へ</a> <a href="index.html">目次へ</a>
   </p>

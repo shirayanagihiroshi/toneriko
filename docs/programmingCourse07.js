@@ -1,5 +1,6 @@
 ﻿//sample
 //ある世代と次の世代の対応
+
 let rule = [["111", 0],
             ["110", 1],
             ["101", 0],
@@ -26,10 +27,10 @@ function nextGeneration(world) {
   for (i = 0; i <= 100; i++) {
     // 世界の左端
     if (i == 0) {
-      newWorld[i] = applyRule("0"       , world[i], world[i+1]);
+      newWorld[i] = applyRule(0         , world[i], world[i+1]);
     // 世界の右端
     } else if (i == 100) {
-      newWorld[i] = applyRule(world[i-1], world[i], "0"       );
+      newWorld[i] = applyRule(world[i-1], world[i], 0         );
     // 世界の端でないところ
     } else {
       newWorld[i] = applyRule(world[i-1], world[i], world[i+1]);
@@ -55,7 +56,6 @@ window.onload = function () {
     tr = document.createElement("tr");
     for (i = 0; i <= 100; i++) {
       td = document.createElement("td");
-      td.innerHTML = " "
       tr.appendChild(td);
     }
     table.appendChild(tr);
