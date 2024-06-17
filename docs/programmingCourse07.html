@@ -2,23 +2,10 @@
 <head>
   <title>javascript プログラミング講座 第7回</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
-  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({startOnLoad:true});</script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
   <link rel="stylesheet" href="programmingCourse.css">
   <script src="programmingCourse.js"></script>
   <script src="programmingCourse07.js"></script>
-  <style type="text/css">
-    table{
-      border-spacing : 0px;
-    }
-    td{
-      border : 0px;
-      height : 5px;
-      width  : 5px;
-    }
-  </style>
 </head>
 <body>
 <div class="box1">
@@ -29,9 +16,44 @@
   <h2>1.セルオートマトン(1次元)</h2>
   <p>セル(四角)が1列に並ぶ世界を考える。セルには生き物がいる場合(1)といない場合(0)がある。セルAとAの両隣(の計3つのセル)にどのように生き物がいるかで、次の世代のセルAに生き物がいるかどうかが決まる。</p>
   <p>この次の世代を決めるルールを次のように表す。</p>
-  <p>例:javascript</p>
+  <table border=1 >
+    <tr><td>ある世代のAの左隣とAとAの右隣</td><td>次の世代のA</td></tr>
+    <tr><td>111</td><td><input type="text" size=1 id="inputtext00" value="0"></td></tr>
+    <tr><td>110</td><td><input type="text" size=1 id="inputtext01" value="1"></td></tr>
+    <tr><td>101</td><td><input type="text" size=1 id="inputtext02" value="0"></td></tr>
+    <tr><td>100</td><td><input type="text" size=1 id="inputtext03" value="1"></td></tr>
+    <tr><td>011</td><td><input type="text" size=1 id="inputtext04" value="1"></td></tr>
+    <tr><td>010</td><td><input type="text" size=1 id="inputtext05" value="0"></td></tr>
+    <tr><td>001</td><td><input type="text" size=1 id="inputtext06" value="1"></td></tr>
+    <tr><td>000</td><td><input type="text" size=1 id="inputtext07" value="0"></td></tr>
+  </table>
+  <p><button onclick="recalc()">再計算</button></p>
+
+  <p>101個のセルを考え、初期値として、中央のセルは1、その他のセルは0とする。このセル達に対して、先のルールを適用して次の世代、次の世代を計算していく。</p>
+  <p>横1行が一つの世代で、その1行下に次の世代、さらにその1行下に次の世代である。60世代を図示すると以下になる。</p>
+
+  <canvas id="ID1246" width="505" height="300"></canvas>
+  <p class="reidaibox"><span class="reidai">例題1</span> 次の世代を決めるルールを変更して、再描画してみよ。（再計算ボタンは上にある）</p>
+
+  <p>例:HTML</p>
   <pre class="prettyprint lang-js linenums">
-// 左:ある世代のAの左隣とAとAの右隣　右：次の世代のA
+  ～省略～
+
+  &lt;head&gt;
+    &lt;script src="cellAutomaton.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+
+  ～省略～
+
+  &lt;canvas id="ID1246" width="505" height="300"&gt;
+  &lt;/canvas&gt;
+
+  ～省略～
+  </pre>
+
+  <p>例:javascript(cellAutomaton.js)</p>
+  <pre class="prettyprint lang-js linenums">
+//ある世代と次の世代の対応
 let rule = [["111", 0],
             ["110", 1],
             ["101", 0],
@@ -40,44 +62,7 @@ let rule = [["111", 0],
             ["010", 0],
             ["001", 1],
             ["000", 0]];
-  </pre>
-  <p>101個のセルを考え、初期値として、中央のセルは1、その他のセルは0とする。このセル達に対して、先のルールを適用して次の世代、次の世代を計算していく。</p>
-  <p>横1行が一つの世代で、その1行下に次の世代、さらにその1行下に次の世代である。60世代を図示すると以下になる。</p>
-  <table id="ID1246">
-  </table>
 
-  <p>例:HTML</p>
-  <pre class="prettyprint lang-js linenums">
-  ～省略～
-
-  &lt;head&gt;
-    &lt;link rel="stylesheet" href="cellAutomaton.css"&gt;
-    &lt;script src="cellAutomaton.js"&gt;&lt;/script&gt;
-  &lt;/head&gt;
-
-  ～省略～
-
-  &lt;table id="ID1246"&gt;
-  &lt;/table&gt;
-
-  ～省略～
-  </pre>
-
-  <p>例:CSS(cellAutomaton.css)</p>
-  <pre class="prettyprint lang-js linenums">
-table{
-  border-spacing : 0px;
-}
-
-td{
-  border : 0px;
-  height : 5px;
-  width  : 5px;
-}
-  </pre>
-
-  <p>例:javascript(cellAutomaton.js)</p>
-  <pre class="prettyprint lang-js linenums">
 function applyRule(left_A, A, right_A) {
   let i;
   let oldGeneration = String(left_A) + String(A) + String(right_A);
@@ -107,51 +92,52 @@ function nextGeneration(world) {
   return newWorld;
 }
 
-window.onload = function () {
-  let world=[];
-  let table = document.getElementById("ID1246");
-  let tr, td, i, j;
 
-  //オートマトンの世界の初期化
+function draw1generation (world, context, offset) {
+  let i;
+  let rect_size = 5;
+
+  context.clearRect(0,offset,505,rect_size);
+  context.fillStyle = "rgb(0, 0, 0)";
+
+  for (i=0; i <= 100; i++) {
+    if (world[i] == 1) {
+      context.fillRect(i*rect_size, offset, rect_size, rect_size);
+    }
+  }
+}
+
+function cellAutomaton() {
+  let world=[];
+  let canvas, i;
+
+  // オートマトンの世界の初期化
   for (i = 0; i <= 100; i++) {
     world[i] = 0;
   }
-  world[50] = 1;
+  world[50] = 1; // 中央に1匹生物を置く
 
-  // 画面表示用テーブルの初期化
-  for (j = 0; j < 60; j++) {
-    tr = document.createElement("tr");
-    for (i = 0; i <= 100; i++) {
-      td = document.createElement("td");
-      tr.appendChild(td);
-    }
-    table.appendChild(tr);
-  }
+  // 描画準備
+  canvas = document.getElementById('ID1246');
+  context = canvas.getContext('2d');
 
-  // メインの処理
-  for (j = 0; j < table.rows.length; j++) {
-    for (i = 0; i < table.rows[j].cells.length; i++) {
-      let cellColor;
-      if (world[i] == 1) {
-        // 生物がいるところは黒
-        cellColor = "black";
-      } else {
-        // 生物がいないところは背景色
-        cellColor = "#b0e0e6";
-      }
-      table.rows[j].cells[i].style.backgroundColor = cellColor;
-    }
-    // 次の世代を計算する
+  for (i = 0; i < 60; i++) {
+    draw1generation(world, context, i*5);
     world = nextGeneration(world);
   }
 }
-  </pre>
-  <p>CSSではテーブルのセルの大きさや、セル同士の区切り線の幅などを設定している。</p>
-  <p>javascriptのapplyRule関数はruleを用いて、次の世代のあるセルに生き物がいるかいないかを判定する。</p>
-  <p>javascriptのnextGeneration関数はapplyRule関数を用いて、101セルある世界の次の世代を計算する。</p>
-  <p>javascriptのwindow.onloadの処理では、オートマトンの世界を宣言して初期化し、表示用のテーブルを生成し、nextGeneration関数で計算しながら60世代分を描画している。</p>
 
-  <p class="reidaibox"><span class="reidai">例題1</span> ライフゲームを実装せよ。ライフゲーム：2次元のセルオートマトンである。セルが縦横に並ぶ世界があり、セルには生き物がいる場合といない場合がある。あるセルAの周囲8マスの生き物の数により、次の世代でセルAに生き物がいるかどうかが決まる。詳しいルールは下に。世代交替させて生き物たの繁殖していくのを眺めるものである。</p>
+window.onload = function () {
+  cellAutomaton();
+}
+  </pre>
+  <p>javascriptの2行目のruleが次の世代を決める。上記の例では、テキストボックスの入力値を読み取って、ルールを変更するような処理は省略されている。</p>
+  <p>applyRule関数はruleを用いて、次の世代のあるセルに生き物がいるかいないかを判定する。</p>
+  <p>nextGeneration関数はapplyRule関数を用いて、101セルある世界の次の世代を計算する。</p>
+  <p>draw1generation関数は1世代分を横1列に描画する。</p>
+  <p>cellAutomaton関数では、オートマトンの世界を宣言して初期化し、nextGeneration関数で計算しながら60世代分を描画している。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> ライフゲームを実装せよ。ライフゲーム：2次元のセルオートマトンである。セルが縦横に並ぶ世界があり、セルには生き物がいる場合といない場合がある。あるセルAの周囲8マスの生き物の数により、次の世代でセルAに生き物がいるかどうかが決まる。詳しいルールは下にある。世代交替させて生き物たの繁殖していくのを眺めるものである。</p>
   <p>
     <ul>
       <li>周囲の生き物の数:1匹以下・・・次のAに生き物はいない(過疎)</li>

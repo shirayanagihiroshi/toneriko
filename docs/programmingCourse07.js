@@ -1,6 +1,5 @@
 ﻿//sample
 //ある世代と次の世代の対応
-
 let rule = [["111", 0],
             ["110", 1],
             ["101", 0],
@@ -9,6 +8,16 @@ let rule = [["111", 0],
             ["010", 0],
             ["001", 1],
             ["000", 0]];
+
+function setRule() {
+  let items = ["inputtext00", "inputtext01", "inputtext02", "inputtext03", "inputtext04", "inputtext05", "inputtext06", "inputtext07"];
+  let i;
+
+  for(i = 0; i < items.length; i++) {
+    obj = document.getElementById(items[i]);
+    rule[i][1] = obj.value;
+  }
+}
 
 function applyRule(left_A, A, right_A) {
   let i;
@@ -39,39 +48,47 @@ function nextGeneration(world) {
   return newWorld;
 }
 
-window.onload = function () {
-  let world=[];
-  let table = document.getElementById("ID1246");
-  let tr, td, i, j;
+function draw1generation (world, context, offset) {
+  let i;
+  let rect_size = 5;
 
-  //オートマトンの世界の初期化
+  context.clearRect(0,offset,505,rect_size);
+  context.fillStyle = "rgb(0, 0, 0)";
+
+  for (i=0; i <= 100; i++) {
+    if (world[i] == 1) {
+      context.fillRect(i*rect_size, offset, rect_size, rect_size);
+    }
+  }
+}
+
+function cellAutomaton() {
+  let world=[];
+  let canvas, i;
+
+  // テキストボックスの値を読み込んでルールを更新する
+  setRule();
+
+  // オートマトンの世界の初期化
   for (i = 0; i <= 100; i++) {
     world[i] = 0;
   }
   world[50] = 1;
 
-  // 画面表示用テーブルの初期化
-  // 静的に<td></td>を沢山書くこともできるが、それは面倒なのでこのように生成
-  for (j = 0; j < 60; j++) {
-    tr = document.createElement("tr");
-    for (i = 0; i <= 100; i++) {
-      td = document.createElement("td");
-      tr.appendChild(td);
-    }
-    table.appendChild(tr);
-  }
+  // 描画準備
+  canvas = document.getElementById('ID1246');
+  context = canvas.getContext('2d');
 
-  // メインの処理
-  for (j = 0; j < table.rows.length; j++) {
-    for (i = 0; i < table.rows[j].cells.length; i++) {
-      let cellColor;
-      if (world[i] == 1) {
-        cellColor = "black";
-      } else {
-        cellColor = "#b0e0e6";
-      }
-      table.rows[j].cells[i].style.backgroundColor = cellColor;
-    }
+  for (i = 0; i < 60; i++) {
+    draw1generation(world, context, i*5);
     world = nextGeneration(world);
   }
+}
+
+window.onload = function () {
+  cellAutomaton();
+}
+
+function recalc() {
+  cellAutomaton();
 }
