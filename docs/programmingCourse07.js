@@ -87,8 +87,107 @@ function cellAutomaton() {
 
 window.onload = function () {
   cellAutomaton();
+
+  // 描画準備 ここの3行だけライフゲーム用
+  lifegameCanvas = document.getElementById('ID1247');
+  lifegameContext = lifegameCanvas.getContext('2d');
 }
 
 function recalc() {
   cellAutomaton();
+}
+
+//以下lifegame
+let lifegameWorld = [];
+let lifegameTimer = 0;
+let lifegameCanvas;
+let lifegameContext;
+
+function startLifegame(){
+  let i,j, r;
+
+  // ランダムで2割りくらいのセルに生き物を配置してスタート
+  if (lifegameWorld.length == 0) { 
+    for (j = 0; j < 100; j++){
+      lifegameWorld[j] = [];
+      for (i = 0; i < 100; i++){
+        r = Math.random();
+        if (r < 0.2) {
+          lifegameWorld[j][i] = 1;
+        } else {
+          lifegameWorld[j][i] = 0;
+        }
+      }
+    }
+  }
+
+  // 180ミリ秒は大体
+  lifegameTimer = setInterval(lifegame, 180);
+}
+
+function stopLifegame() {
+  clearInterval(lifegameTimer);
+}
+
+function lifegame(){
+  drawLifegame(lifegameWorld, lifegameContext);
+  lifegameWorld = nextGenerationLifegame(lifegameWorld);
+}
+
+function drawLifegame (world, context) {
+  let rect_size = 5;
+  let i,j;
+
+  context.clearRect(0,0,500,500);
+  context.fillStyle = "rgb(0, 0, 0)";
+
+  for (j=0; j < 100; j++) {
+    for (i=0; i < 100; i++) {
+      if (world[j][i] == 1) {
+        context.fillRect(i*rect_size,j*rect_size,rect_size,rect_size);
+      }
+    }
+  }
+}
+
+function nextGenerationLifegame(world){
+  let i,j;
+  let temp_world = [];
+  let count_around;
+
+  for (j = 0; j < 100; j++){
+
+    temp_world[j] = [];
+
+    for (i = 0; i < 100; i++){
+      //端の計算はめんどいので適当
+      if(i > 0 && i < 99 && j > 0 && j < 99) {
+        count_around = world[j - 1][i - 1] + world[j - 1][i] + world[j - 1][i + 1] + world[j][i - 1] + world[j][i + 1] + world[j + 1][i - 1] + world[j + 1][i] + world[j + 1][i + 1];
+      } else {
+        count_around = 0;
+      }
+
+      switch (count_around) {
+        case 0:
+        case 1:
+          temp_world[j][i] = 0;
+          break;
+        case 2:
+          temp_world[j][i] = world[j][i];
+          break;
+        case 3:
+          temp_world[j][i] = 1;
+          break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        default:
+          temp_world[j][i] = 0;
+          break;
+      }
+    }
+  }
+  return temp_world;
 }

@@ -137,7 +137,7 @@ window.onload = function () {
   <p>draw1generation関数は1世代分を横1列に描画する。</p>
   <p>cellAutomaton関数では、オートマトンの世界を宣言して初期化し、nextGeneration関数で計算しながら60世代分を描画している。</p>
 
-  <p class="reidaibox"><span class="reidai">例題2</span> ライフゲームを実装せよ。ライフゲーム：2次元のセルオートマトンである。セルが縦横に並ぶ世界があり、セルには生き物がいる場合といない場合がある。あるセルAの周囲8マスの生き物の数により、次の世代でセルAに生き物がいるかどうかが決まる。詳しいルールは下にある。世代交替させて生き物たの繁殖していくのを眺めるものである。</p>
+  <p class="reidaibox"><span class="reidai">例題2</span> ライフゲームを実装せよ。ライフゲーム：2次元のセルオートマトンである。セルが縦横に並ぶ世界があり、セルには生き物がいる場合といない場合がある。あるセルAの周囲8マスの生き物の数により、次の世代でセルAに生き物がいるかどうかが決まる。詳しいルールは下にある。世代交替させて生き物たちが繁殖していくのを眺めるものである。</p>
   <p>
     <ul>
       <li>周囲の生き物の数:1匹以下・・・次のAに生き物はいない(過疎)</li>
@@ -146,6 +146,11 @@ window.onload = function () {
       <li>周囲の生き物の数:4匹以上・・・次のAに生き物はいない(過密)</li>
     </ul>
   </p>
+  <a href="lifegame.zip" download="lifegame.zip">元になるhtmlとcssとjavascriptのセットをダウンロード</a>
+  <p>下のように動く。このサンプルではランダムに2割りくらいのセルに生き物を配置してライフゲームを開始している。</p>
+  <p><button onclick="startLifegame()">開始</button><button onclick="stopLifegame()">停止</button></p>
+  <canvas id="ID1247" width="500" height="500"></canvas>
+
   <p>
     <a href="programmingCourse06.html">第6回へ</a> <a href="index.html">目次へ</a>
   </p>
