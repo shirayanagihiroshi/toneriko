@@ -131,6 +131,22 @@
  warning!!関数を
  warning!!呼びます
   </pre>
+  <pre class="prettyprint lang-js linenums">
+  function isOddNumber(checkTarget) {
+    if ( checkTarget % 2 == 0 ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  if(isOddNumber(varX)) {
+    いろいろな処理
+  }
+  </pre>
+  <p>上の例で、関数isOddNumberは1つのパラメータを受け取る(1行目)。その名前がcheckTargetである。checkTargetの名前は関数の外部では特に意味がないので、関数を定義する人が自由に決めてよい。</p>
+  <p>isOddNumberを呼ぶ人はパラメータを渡す訳だが(上の例だと9行目)、それらが関数内部でどのように名づけられるか気にしない。</p>
+  <p>名前がなんであってもプログラムは動くのであるが、関数やパラメータが何を意味するのか、分かりやすい名前をつけることはプログラムを作る上で非常に大事なことである。</p>
   <p class="reidaibox"><span class="reidai">例題4</span> 入力\(x\)に対して\(x^2 - 3x + 4\)を出力する関数myMathを定義せよ。</p>
 
   <textarea id="inputBox04"></textarea>
