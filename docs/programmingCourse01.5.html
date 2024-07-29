@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第1.5回</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse01.5.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第1.5回</h1>
+  <p>第1.5回の目標：繰り返し処理(for文)ついての理解を深める。</p>
+
+  <h2>1.代入についての補足</h2>
+  <p>繰り返し処理の前に、変数への値の代入について復習する。</p>
+  <p>数学において<span class="stronger">=は等しい</span>ことを表す記号であるが、プログラミングでは<span class="stronger">=は代入</span>を意味する。</p>
+  <p>数学の意味では、〇=□と□=〇に大した違いはない。</p>
+  <p>一方、プログラミングでは〇=□と□=〇は明確に意味が違う。処理の順序としては、=の<span class="stronger">右側</span>が計算され、その結果が=の<span class="stronger">左側</span>の変数へ代入される。</p>
+
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  x = x + 2;
+  </pre>
+  <p>上の例は正しい文法で書かれている。</p>
+  <p>この処理が行われる前のxの値が10であったとし、その後この命令が実行されるとしよう。まず=の右側のx + 2が計算される。12である。この12が=の左側のxへ代入される。結果としてこの命令が実行されると、xの値が2大きくなり、12になる。</p>
+  <p>例</p>
+  <pre class="prettyprint lang-js linenums">
+  x + 2 = x;
+  </pre>
+  <p>上の例は正しくない。=の右側が計算され、その値を=の左側へ代入しようとしても、x + 2には値を代入できないからである。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 変数yの値を2倍にする処理を書け。(yは宣言されていて、既に何かの値が代入されているとする)</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>2.繰り返し処理(for文)についての補足</h2>
+  <p>まずfor文の構造の復習である。</p>
+  <img src="img/programmingCourse01.5.01.png">
+  <p>①は繰り返しが始まって<span class="stronger">最初に1度だけ</span>行われる。通常はループカウンタやインデックスと呼ばれる変数を初期化する。つまりi=0する。</p>
+  <p>②、③、④は繰り返し行われる可能性があり、実行される順番は②、③、④、②、③、④、・・・である。</p>
+  <p>②は繰り返しが<span class="stronger">続行されるための条件</span>、例えば i < 10 のような式である。②の式が正しい間繰り返しが続行される。</p>
+  <p>③はこのfor文で繰り返したい主な処理である。</p>
+  <p>④はループカウンタやインデックスと呼ばれる変数を増やしたり、減らしたりする、i++のような処理である。</p>
+  <p>さて、例えば0から10までの数を足したいと思ったとしよう。</p>
+  <pre class="prettyprint lang-js linenums">
+  sum = 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;
+  </pre>
+  <p>上のように書くことができる。決まった数まで足すのであれば上と同じように書けるが、いくつまで足すのか事前に分からないとき(ユーザ操作で決まるときなど)はどうすればよいのだろうか。</p>
+  <p>繰り返し文で書くと上手くいくことがある。</p>
+  <p>上の足し算を<span class="stronger">分解</span>すると、次のように書ける。</p>
+  <pre class="prettyprint lang-js linenums">
+  sum =  sum + 0;
+  sum =  sum + 1;
+  sum =  sum + 2;
+  sum =  sum + 3;
+  sum =  sum + 4;
+  sum =  sum + 5;
+  sum =  sum + 6;
+  sum =  sum + 7;
+  sum =  sum + 8;
+  sum =  sum + 9;
+  sum =  sum + 10;
+  </pre>
+  <p>同じ形の式が繰り返されているところがポイントである。ただし、sumと足されている値は1ずつ大きくなっている。これをfor文で書くと</p>
+  <pre class="prettyprint lang-js linenums">
+  for (i = 0; i <= 10; i++) {
+    sum =  sum + i;
+  }
+  </pre>
+  <p>である。一つ前の例では沢山あった sum =  sum + □ が1行だけになっていることが分かる。また、いくつまで足すのかを柔軟に変更できるようになったのにも注意しよう。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> for文を使って、変数sumに0から20までの数を足せ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> for文を使って、変数sumに20から30までの数を足せ。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <h2>3.決まった回数の繰り返し</h2>
+  <pre class="prettyprint lang-js linenums">
+  for (i = 0; i < 10; i++) {
+    処理A
+  }
+  </pre>
+  <p>上の例では処理Aが10回行われる。0から9までに数が10コあるから10回の繰り返しである。for文のこのような書き方を数学の公式のように覚えておくと良い。</p>
+
+  <p>
+    <a href="programmingCourse01.html">第1回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse02.html">第2回へ</a>
+  </p>
+</div>
+</body>
+<html>
+
