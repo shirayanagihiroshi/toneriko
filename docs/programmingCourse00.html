@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第0回</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse00.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第0回</h1>
+  <p>第0回の目標：アルゴリズムとその表現方法を確認する。</p>
+
+  <h2>1.アルゴリズム</h2>
+  <p>何かをするときの手順を<span class="stronger">アルゴリズム</span>という。
+  <ul>
+    <li>玉ねぎ、ジャガイモ、人参、肉を一口大に切る</li>
+    <li>コンロに火をつける</li>
+    <li>鍋に油を入れて、火にかける</li>
+    <li>玉ねぎ、ジャガイモ、人参、肉を鍋に入れる</li>
+    <li>玉ねぎ、ジャガイモ、人参、肉をいためる</li>
+    <li>鍋に水を加え煮込む</li>
+    <li>鍋にカレールーを加え煮込む</li>
+    <li>コンロの火を消す</li>
+  </ul>
+  <p>たとえば上はカレーを作るときの手順であるから、これはカレーを作るアルゴリズムである。</p>
+  <h2>2.フローチャート</h2>
+  <p>アルゴリズムを表現する方法の一つとして、<span class="stronger">フローチャート</span>がある。</p>
+  <div class="mermaid">
+    graph TB
+    A([開始])
+    B[玉ねぎ、ジャガイモ、人参、肉を一口大に切る]
+    C[コンロに火をつける]
+    D[鍋に油を入れて、火にかける]
+    E[玉ねぎ、ジャガイモ、人参、肉を鍋に入れる]
+    F[玉ねぎ、ジャガイモ、人参、肉をいためる]
+    G[鍋に水を加え煮込む]
+    H[鍋にカレールーを加え煮込む]
+    I[コンロの火を消す]
+    J([終了])
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+  </div>
+  <p>上はカレーを作るアルゴリズムをフローチャートで表現したものである。</p>
+  <p>フローチャートの書き方にはルールがあり、そのうちいくつかを示す。</p>
+  <p>開始/終了：手順の開始または終了は下のように丸で表す。</p>
+  <img src="img/programmingCourse00.01.png">
+  <p>処理：手順のひとつひとつは下のように四角で表す。</p>
+  <img src="img/programmingCourse00.02.png">
+  <p>条件分岐：場合によって手順を変える場合、下のようにひし形で表す。</p>
+  <img src="img/programmingCourse00.03.png">
+  <p>くりかえし：くりかえしを下のように書くこともある</p>
+  <img src="img/programmingCourse00.04.png">
+  <p>これらを矢印でつないで、手順を図示するのがフローチャートの書き方である。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 何かをするときの手順を何というか</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>2.プログラミング</h2>
+  <p>コンピュータが処理できるようアルゴリズムを記述することを<span class="stronger">プログラミング</span>という。</p>
+  <p>プログラミングにはプログラミング言語を用いる。プログラミング言語で書かれたアルゴリズムを<span class="stronger">プログラム</span>という。</p>
+  <p>なお、コンピュータが処理できるのは機械語で書かれたものだけであるが、プログラミング言語で書かれたアルゴリズムは機械語に変換することができる。この変換を<span class="stronger">コンパイル</span>という。人間が明示的にコンパイルするタイプのプログラミング言語と、自動的にコンパイルされるタイプのプログラミング言語がある。</p>
+  <p>C言語という古くから有名なプログラミング言語があり、VBAやpythonやjavascriptは基本的な文法がC言語に似ている。この講座ではjavascriptを題材にプログラミングをしてみる。javascriptは自動的にコンパイルがなされるタイプの言語である。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> アルゴリズムを記述することを何というか</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <h2>3.アルゴリズムとプログラム</h2>
+
+  <p>アルゴリズムとプログラムは似ているが少し違う。<span class="stronger">アルゴリズムの方が抽象的</span>であり、同じアルゴリズムを別々のプログラミング言語で書くと、別々のプログラムが出来上がる。</p>
+  <p>ちなみに、同じアルゴリズムを一つのプログラミング言語で書くとしても、正しい書き方が何通りもあることが多い。</p>
+  <p>高校生の情報の学習としては、特定のプログラミング言語の文法を覚えるというよりは、アルゴリズムを理解したり、作り出したりする力をつけて欲しいわけである。</p>
+  <p>例えば数学では2次関数のグラフの頂点の座標を求める手順が知られているが、これはアルゴリズムの1例であり、その気になって探せばアルゴリズムは身の回りに沢山あることに気づく。</p>
+  <p>つまり、いわゆる普通の勉強を通してでもアルゴリズムを理解したり、作りだしたりする力は鍛えられるのであるが、具体的なプログラミング言語を用いてプログラミングすることで、かなり直接的にそれらを訓練することができる。</p>
+  <p>次回以降でjavascriptの文法を紹介する。(文法を覚えないとプログラミングできないので)覚えて欲しいが、その上でアルゴリズムを問うていることに注意して欲しい。</p>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> アルゴリズムとプログラムのうち、抽象的なのはどちらか？</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p>
+    <a href="index.html">目次へ</a> <a href="programmingCourse01.html">第1回へ</a>
+  </p>
+</div>
+</body>
+<html>
+
