@@ -13,36 +13,53 @@
   // score : 配点
   // kind  : 0 指定の解のみ許容
   //         1 順不同でよい(この場合は上記scoreをそれぞれに与える)
-  answer = [{ans  : [5],         score : 2, kind : 0},
-             {ans : [1,1,0,0],   score : 2, kind : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [1,9,0],     score : 3, kind : 0},
-             {ans : [6,0],       score : 2, kind : 0},
-             {ans : [5,3],       score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [5],         score : 3, kind : 0},
-             {ans : [2,1,5,3],   score : 3, kind : 0},
-             {ans : [5,7,3],     score : 3, kind : 0},
-
-             {ans : [1,7],       score : 2, kind : 0},
-             {ans : [1,2,5],     score : 3, kind : 0},
-             {ans : [2],         score : 3, kind : 0},
-             {ans : [1],         score : 3, kind : 0},
-             {ans : ['-',5,1,3,3,3], score : 4, kind  : 0},
-             {ans : [3],         score : 3, kind : 0},
-             {ans : [3,4],       score : 2, kind : 1},
-             {ans : [4],         score : 2, kind : 0},
-             {ans : [1,4,6],     score : 2, kind : 1},
-
-             {ans : [3],         score : 2, kind : 0},
+  answer = [{ans  : [9],         score : 2, kind : 0},
              {ans : [6],         score : 2, kind : 0},
+             {ans : [5],         score : 2, kind : 0},
+             {ans : [7],         score : 2, kind : 0},
+             {ans : [1],         score : 2, kind : 0},
+             {ans : [2],         score : 2, kind : 0},
+             {ans : [4],         score : 2, kind : 0},
+             {ans : [4],         score : 2, kind : 0},
+             {ans : [2],         score : 2, kind : 0},
              {ans : [3],         score : 2, kind : 0},
-             {ans : [2,1],       score : 2, kind : 0},
-             {ans : [1,6,8,0],   score : 3, kind : 0},
-             {ans : [5,4,0],     score : 3, kind : 0},
-             {ans : [2,9,4,0],   score : 3, kind : 0},
-             {ans : [5,7,9,6],   score : 3, kind : 0}
+             {ans : [5],         score : 2, kind : 0},
+             {ans : [7],         score : 2, kind : 0},
+
+             {ans : [8],         score : 2, kind : 0},
+             {ans : [5],         score : 2, kind : 0},
+             {ans : [2],         score : 2, kind : 0},
+             {ans : [4],         score : 2, kind : 0},
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [4],         score : 2, kind : 0},
+             {ans : ['A'],       score : 2, kind : 0},
+             {ans : [7],         score : 2, kind : 0},
+             {ans : [8],         score : 2, kind : 0},
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [9],         score : 2, kind : 0},
+             {ans : [2],         score : 2, kind : 0},
+             {ans : [5],         score : 2, kind : 0},
+
+             {ans : [4],         score : 3, kind : 0},
+             {ans : [4],         score : 3, kind : 0},
+             {ans : [1],         score : 3, kind : 0},
+             {ans : [3],         score : 3, kind : 0},
+             {ans : [1],         score : 2, kind : 0},
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [5],         score : 3, kind : 0},
+             {ans : [1],         score : 3, kind : 0},
+             {ans : [3],         score : 3, kind : 0},
+             {ans : [5],         score : 2, kind : 0},
+             {ans : [5],         score : 2, kind : 0},
+             {ans : [2],         score : 3, kind : 0},
+             {ans : [5],         score : 3, kind : 0},
+
+             {ans : [3],         score : 2, kind : 0},
+             {ans : [1],         score : 2, kind : 0},
+             {ans : [6],         score : 2, kind : 0},
+             {ans : [2],         score : 3, kind : 0},
+             {ans : [4],         score : 3, kind : 0},
+             {ans : [4],         score : 3, kind : 0}
            ];
 
 //------ユーティリティメソッドs--------
@@ -61,6 +78,7 @@
        for (i = 0; i < records.length; i++) {
          let markPos = 2, //マー君の仕様上、最初は通番、次はIDで、2から回答の内容
              personScore = 0,
+             personStr = "",
              record = records[i].split(','); // さらにコンマで区切る。これがマーク単位。
                                              // 一人分を採点できる形にしたもの
          // 答えを設定したかたまり毎のloop
@@ -79,6 +97,9 @@
              }
              if (!incorrectFlg) {
                personScore += answer[j].score;
+               personStr += String(answer[j].score) + ",";
+             } else {
+               personStr += String(0) + ",";
              }
 
            // 順不同
@@ -99,7 +120,7 @@
          }
          // 結果を書き込み
          if (i != 0) {
-           fs.appendFileSync(outputFile, record[0] + ',' + record[1] + ',' + String(personScore) + '\n');
+           fs.appendFileSync(outputFile, record[0] + ',' + record[1] + ',' + personStr + String(personScore) + '\n');
          }
        }
      }
