@@ -39,6 +39,24 @@
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
 
+  <h2>1-2.条件分岐(if文)で値を比較するときの補足</h2>
+  <p>1.の補足で触れたように、=は変数への値の代入の命令である。</p>
+  <p>if文の条件として、<span class="stronger">値が等しい</span>という関係を表す際には<span class="stronger">==</span>を用いる。</p>
+  <pre class="prettyprint lang-js linenums">
+  if (x == 10) {
+    // xの値が10に等しいときに、この部分の処理が行われる。
+  } else {
+    // xの値が10に等しくないときに、この部分の処理が行われる。
+  }
+  </pre>
+  <p>なお、//をコメントアウトという。この行の//以降はjavascriptが解釈する命令として無視される。つまり、ソースコードを読む人間向けにコメントを書く際に用いるものである。</p>
+  <p>また、複数行にまたがってコメントアウトしたい場合は/*と*/で挟む。</p>
+  <p class="reidaibox"><span class="reidai">例題1-2</span> 変数yの値が10に等しいときはyの値を10倍し、そうでなければyの値に2を加える処理を書け。(yは宣言されていて、既に何かの値が代入されているとする)</p>
+  <textarea id="inputBox012"></textarea>
+  <button onClick="kakunin012()">確認する</button>
+  <div id="result012">結果:</div>
+
+
   <h2>2.繰り返し処理(for文)についての補足</h2>
   <p>まずfor文の構造の復習である。</p>
   <img src="img/programmingCourse01.5.01.png">

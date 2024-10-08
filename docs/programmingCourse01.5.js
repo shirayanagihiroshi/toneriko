@@ -16,6 +16,25 @@ function kakunin01() {
   });
 }
 
+// 例題1-2　実行してみてチェックする
+function kakunin012() {
+  confirmationTemplate('#inputBox012', '#result012', function (testStr) {
+    let codeStr =
+      'function test (z) {'  + // 関数にして呼んでチェック
+      'let y = z;'          +
+      testStr               +
+      'return y;'           +
+      '}'                   +
+      'if(test(10) == 100 && test(1) == 3 && test(2) == 4 && test(21) == 23) {'+
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}
+
 // 例題2　文字列チェックと実行してみてチェックの併用
 function kakunin02() {
   confirmationTemplate('#inputBox02', '#result02', function (testStr) {
