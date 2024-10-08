@@ -114,7 +114,8 @@
   myTriangle = triangleArea(5, 8);
   console.log(myTriangle);
   </pre>
-  <p>上の例では、1～3行目でtriangleAreaという関数を定義している。関数を定義するタイミングでは、関数の中身の処理は実行されない。5行目でtriangleArea関数を呼び出しており、このとき初めて関数の中身である2行目の命令が実行される。つまり、パラメータの辺(side)と高さ(height)から三角形の面積を計算して返す。関数から返された値はmyTriangle変数に格納され、6行目で表示される。</p>
+  <p>上の例では、1～3行目でtriangleAreaという関数を定義している。関数を定義するタイミングでは、関数の中身の処理は実行されない。5行目でtriangleArea関数を呼び出しており、このとき初めて関数の中身である2行目の命令が実行される。つまり、パラメータの辺(side)と高さ(height)から三角形の面積を計算して返す。</p>
+  <p>2行目で使われている<span class="stronger">return</span>の命令は関数内での<span class="stronger">計算結果を関数の呼び元に返す</span>ものである。<span class="stronger">return命令を書き忘れると計算結果が捨てられてしまうので注意が必要。</span>上の例ではreturnされた面積の値はmyTriangle変数に格納され、6行目で表示される。</p>
   <pre class="prettyprint lang-js linenums">
   function showWarning(str) {
     console.log("warning!!" + str);
@@ -125,7 +126,7 @@
   showWarning("関数を");
   showWarning("呼びます");
   </pre>
-  <p>関数は値を返さなくてもよい。上の例では、1～4行目でshowWarningという関数を定義している。この関数はstrというパラメータを引き受けるが、特になにも返却しない(3行目のreturnの後に何も指定していないことに注目)。なおこれを実行するとコンソールに以下の内容が表示される。</p>
+  <p>必要がなければ関数は値を返さなくてもよい。上の例では、1～4行目でshowWarningという関数を定義している。この関数はstrというパラメータを引き受けるが、特になにも返却しない(3行目のreturnの後に何も指定していないことに注目)。なおこれを実行するとコンソールに以下の内容が表示される。</p>
   <pre>
  warning!!何度か
  warning!!関数を
