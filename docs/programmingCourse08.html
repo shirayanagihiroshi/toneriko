@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第8回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse08.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第8回</h1>
+  <p>第8回の目標：プログラミングを通して画像処理の概念を学ぶ</p>
+
+  <h2>1.画像の種類</h2>
+  <p>画像データの保持の仕方として<span class="stronger">ラスタ形式</span>と<span class="stronger">ベクタ形式</span>がある。</p>
+  <p><span class="stronger">ラスタ形式</span>は画像を点(画素)の集まりとして表現する。写真のような画像に適している。</p>
+  <p><span class="stronger">ベクタ形式</span>は画像を数式や座標で表現する。設計図やロゴのデザインなどに適している。</p>
+  <p>今回は<span class="stronger">ラスタ形式</span>を扱うが、特定のファイルフォーマットで実装する話でなく、概念的な話である。</p>
+  <h2>2.画像表示の準備（四角形の描画について）</h2>
+  <p>四角形の描画は以下のように行う。</p>
+  <p>HTML</p>
+  <pre class="prettyprint lang-js linenums">
+  ～省略～
+
+  &lt;canvas id="ID1248" width="100" height="100"&gt;&lt;/canvas&gt;
+
+  ～省略～
+  </pre>
+
+  <p>javascript</p>
+  <pre class="prettyprint lang-js linenums">
+  let canvas, context;
+
+  canvas = document.getElementById('ID1248');
+  context = canvas.getContext('2d');
+
+  context.fillStyle = "rgb(255, 255, 255)";
+  context.fillRect(50, 10, 30, 30);
+  </pre>
+
+  <p>描画された結果は以下である。</p>
+  <canvas id="ID1248" width="100" height="100"></canvas>
+  <p>canvasは絵を書くキャンバスである。ここからコンテキストというものを介してfillRectの命令で描画をしている。</p>
+  <p>fillRectは長方形を塗りつぶす関数で、4つのパラメータを引き受ける。</p>
+  <ul>
+    <li>1つ目のパラメータ：キャンパスの左端からの距離</li>
+    <li>2つ目のパラメータ：キャンパスの上端からの距離</li>
+    <li>3つ目のパラメータ：塗りつぶす長方形の横の長さ</li>
+    <li>4つ目のパラメータ：塗りつぶす長方形の縦の長さ</li>
+  </ul>
+
+  <p>fillStyleはその後のfillRectで塗りつぶす際の色を指定している。Red, Green, Blue の順に0～255で指定する。rgb(0,0,0)は黒、rgb(255,255,255)は白である。</p>
+  <p>図示するとこうなる。</p>
+  <img src="programmingCourse08_01.png">
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 四角形を塗りつぶせ。以下に(見えないが)ElementIdが"ID1249"である150×150のキャンバスがある。このキャンパスの好き位置に好きな大きさの四角形を塗れ。確認するボタンを押すとテキストエリアの命令が実行される。</p>
+  <canvas id="ID1249" width="150" height="150"></canvas>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>3.画像表示の準備その2（描画関数の導入）</h2>
+  <p>小さな四角形を並べて、絵を書くことを考える。</p>
+  <canvas id="ID1250" width="100" height="10"></canvas>
+  <p>上は10pxの四角形を横に10個並べて描画したものである。なお、その際、色を少しずつ変えている。</p>
+  <p>このような処理を簡単にするために、描画用の関数を容易する。</p>
+
+  <pre class="prettyprint lang-js linenums">
+  function fillSquare(x, y, r, g, b, context) {
+    context.fillStyle = "rgb(" + String(r) + "," + String(g) + "," + String(b) + ")";
+    context.fillRect(x, y, 10, 10);
+  }
+  </pre>
+
+  <p>fillSquare関数は6つのパラメータを引き受ける。</p>
+  <ul>
+    <li>1つ目のパラメータ：キャンパスの左端からの距離</li>
+    <li>2つ目のパラメータ：キャンパスの上端からの距離</li>
+    <li>3つ目のパラメータ：塗りつぶす正方形の色(赤)</li>
+    <li>4つ目のパラメータ：塗りつぶす正方形の色(緑)</li>
+    <li>5つ目のパラメータ：塗りつぶす正方形の色(青)</li>
+    <li>6つ目のパラメータ：コンテキスト</li>
+  </ul>
+
+  <p>fillSquareをパラメータを少しずつ変え、くりかえし呼ぶことで上記の描画をしている。</p>
+  <pre class="prettyprint lang-js linenums">
+  for (i = 0; i < 10; i++) {
+    fillSquare(10 * i, 0, 20 * i, 0, 20 * i, context);
+  }
+  </pre>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> fillSquareをくりかえし呼ぶことで描画せよ。以下にElementIdが"ID1251"である100×10のキャンバスがある。確認するボタンを押すとテキストエリアの命令が実行される。</p>
+  <canvas id="ID1251" width="100" height="10"></canvas>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <h2>4.画像表示</h2>
+  <p>さて、ここまで小さな正方形を並べて絵を描く準備をしてきた。いよいよ画像を表示してみよう。</p>
+  <p>gazoData変数には<span class="stronger">配列のデータ</span>が保存されている。この配列の各データは0または1である。0であれば白の四角を、1であれば黒の四角を描画するとする。</p>
+  <img src="programmingCourse08_02.png">
+  <p>上の図のように、配列に格納されている値に応じた、白または黒の四角を横に順に50個ずつ並べていくと画像が現れるこどが分かるだろう。配列のサイズ的に、縦にも50個並べればよい。</p>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> gazoData変数に保存されいるデータ、上のルールに従って画像として表示せよ。以下にElementIdが"ID1252"である500×500のキャンバスがある。</p>
+  <canvas id="ID1252" width="500" height="500"></canvas>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p>
+    <a href="programmingCourse07.html">第7回へ</a> <a href="index.html">目次へ</a>
+  </p>
+</div>
+</body>
+<html>
+
