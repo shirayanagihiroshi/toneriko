@@ -65,7 +65,7 @@
   <p>小さな四角形を並べて、絵を書くことを考える。</p>
   <canvas id="ID1250" width="100" height="10"></canvas>
   <p>上は10pxの四角形を横に10個並べて描画したものである。なお、その際、色を少しずつ変えている。</p>
-  <p>このような処理を簡単にするために、描画用の関数を容易する。</p>
+  <p>このような処理を簡単にするために、描画用の関数を用意する。</p>
 
   <pre class="prettyprint lang-js linenums">
   function fillSquare(x, y, r, g, b, context) {
@@ -97,19 +97,37 @@
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
 
+  <h2>3-2.画像表示の準備その3（2重ループ）</h2>
+  <p>上では、小さな四角形を横に並べた。プログラムとしてはfor文を用いて、キャンバスの左端からの距離(つまりx座標!)をずらしながら、繰り返し正方形を描画したわけである。</p>
+  <p>画像を表示するためには、横だけでなく、縦にも正方形を並べる必要がある。このようなときに便利なのが<span class="stronger">2重ループ</span>である。<p>
+  <p><span class="stronger">2重ループ</span>はfor文の中でfor文を使うだけであり、以下のように書く。<p>
+  <pre class="prettyprint lang-js linenums">
+  let i, j;
+
+  for (j = 0; j < 10; j++) {
+    for (i = 0; i < 10; i++) {
+      fillSquare(10 * i, 10 * j, 0, 0, 0, context);
+    }
+  }
+  </pre>
+  <canvas id="ID1254" width="100" height="100"></canvas>
+  <p>上のように、10px×10pxの黒い正方形を縦横に10個ずつ並んで描画される。<p>
+  <p><span class="stronger">2重ループ</span>では<span class="stronger">ループカウンタを2つ</span>使う。iはキャンバスの左端からの距離(x座標)を10pxずつずらすために、jはキャンバスの上端からの距離(y座標)を10pxずつずらすため使用している。<p>
+  <p>つまり、内側のforで横一列が描画され、外側のforでそれを繰り返すことにより、面を描画している。<p>
+
   <h2>4.画像表示</h2>
   <p>さて、ここまで小さな正方形を並べて絵を描く準備をしてきた。いよいよ画像を表示してみよう。</p>
   <p>gazoData変数には<span class="stronger">配列のデータ</span>が保存されている。この配列の各データは0または1である。0であれば白の四角を、1であれば黒の四角を描画するとする。</p>
   <img src="programmingCourse08_02.png">
   <p>上の図のように、配列に格納されている値に応じた、白または黒の四角を横に順に50個ずつ並べていくと画像が現れるこどが分かるだろう。配列のサイズ的に、縦にも50個並べればよい。</p>
 
-  <p class="reidaibox"><span class="reidai">例題3</span> gazoData変数に保存されいるデータ、上のルールに従って画像として表示せよ。以下にElementIdが"ID1252"である500×500のキャンバスがある。</p>
+  <p class="reidaibox"><span class="reidai">例題3</span> gazoData変数に保存されているデータ、上のルールに従って画像として表示せよ。以下にElementIdが"ID1252"である500×500のキャンバスがある。</p>
   <canvas id="ID1252" width="500" height="500"></canvas>
   <textarea id="inputBox03"></textarea>
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
 
-  <p class="reidaibox"><span class="reidai">例題4</span> colorData変数に保存されいるデータを画像として表示せよ。colorDataは配列であり、0は白、1は赤、2は緑、3は青とする。また、横に40個、縦に40個の四角を並べるとする。以下にElementIdが"ID1253"である400×400のキャンバスがある。</p>
+  <p class="reidaibox"><span class="reidai">例題4</span> colorData変数に保存されているデータを画像として表示せよ。colorDataは配列であり、0は白、1は赤、2は緑、3は青とする。また、横に40個、縦に40個の四角を並べるとする。以下にElementIdが"ID1253"である400×400のキャンバスがある。</p>
   <canvas id="ID1253" width="400" height="400"></canvas>
   <textarea id="inputBox04"></textarea>
   <button onClick="kakunin04()">確認する</button>

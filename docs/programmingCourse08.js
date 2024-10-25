@@ -16,7 +16,10 @@ const colorData = colorDataStr.split('');
 
 window.onload = function () {
   // 最初から表示される
-  let canvas, context, i;
+  let canvas, context,
+      canvas2, context2,
+      canvas3, context3,
+      i, j;
 
   // 2.画像表示の準備（四角形の描画について）
   canvas = document.getElementById('ID1248');
@@ -32,6 +35,18 @@ window.onload = function () {
 
   for (i = 0; i < 10; i++) {
     fillSquare(10 * i, 0, 20 * i, 0, 20 * i, context2);
+  }
+
+  
+  // 3-2.画像表示の準備その3（2重ループ）
+  canvas3 = document.getElementById('ID1254');
+  context3 = canvas3.getContext('2d');
+
+  for (j = 0; j < 10; j++) {
+    for (i = 0; i < 10; i++) {
+      console.log("i;",i, "j:",j);
+      fillSquare(10 * i, 10 * j, 0, 0, 0, context3);
+    }
   }
 }
 
