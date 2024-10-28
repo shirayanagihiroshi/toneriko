@@ -51,6 +51,11 @@ window.onload = function () {
 }
 
 function kakunin01() {
+  let canvasClear, contextClear;
+  canvasClear = document.getElementById('ID1249');
+  contextClear = canvasClear.getContext('2d');
+  contextClear.clearRect(0, 0, 150, 150);
+
   let textField = document.querySelector('#inputBox01');
 
   Function (textField.value)();
@@ -59,6 +64,11 @@ function kakunin01() {
 }
 
 function kakunin02() {
+  let canvasClear, contextClear;
+  canvasClear = document.getElementById('ID1251');
+  contextClear = canvasClear.getContext('2d');
+  contextClear.clearRect(0, 0, 100, 10);
+
   let textField = document.querySelector('#inputBox02');
 
   Function (textField.value)();
@@ -67,6 +77,11 @@ function kakunin02() {
 }
 
 function kakunin03() {
+  let canvasClear, contextClear;
+  canvasClear = document.getElementById('ID1252');
+  contextClear = canvasClear.getContext('2d');
+  contextClear.clearRect(0, 0, 500, 500);
+
   let textField = document.querySelector('#inputBox03');
 
   Function (textField.value)();
@@ -75,6 +90,11 @@ function kakunin03() {
 }
 
 function kakunin04() {
+  let canvasClear, contextClear;
+  canvasClear = document.getElementById('ID1253');
+  contextClear = canvasClear.getContext('2d');
+  contextClear.clearRect(0, 0, 400, 400);
+
   let textField = document.querySelector('#inputBox04');
 
   Function (textField.value)();
