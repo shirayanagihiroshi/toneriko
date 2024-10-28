@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第9回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse09.js"></script>
+</head>
+<body>
+<div class="box1">
+
+<!--    <li>元のデータ200px×200pxの画像を表し、配列を表す変数に格納されている。0は白、1は黒を表す。(第8回参照)</li> -->
+
+  <h1>プログラミング講座 第9回</h1>
+  <p>第9回の目標：プログラミングを通してデータの圧縮/展開の概念を学ぶ</p>
+
+  <h2>1.データの圧縮/展開</h2>
+  <p>デジタルデータの内容をなるべく保ちながら、データ量を減らすことを<span class="stronger">データの圧縮</span>という。</p>
+  <p>逆に圧縮されたデータを元に戻すことを<span class="stronger">データの展開</span>や<span class="stronger">データの解凍</span>という。</p>
+  <p>展開したときに、完全に元に戻るタイプの圧縮を<span class="stronger">可逆圧縮</span>、完全に元にもどらないタイプの圧縮を<span class="stronger">非可逆圧縮</span>という。</p>
+
+  <p>実際に使われる圧縮/展開のアルゴリズムには複雑なものもあるが、ここでは<span class="stronger">可逆圧縮</span>のうちの簡単なアルゴリズムを扱うことにする。</p>
+  <p>以下のような圧縮/展開のルールを考える。</p>
+  <ul>
+    <li>配列に0または1のデータが格納されているとする。</li>
+    <li>例えば元のデータが 0, 0, 0, 0, 0 と0が5個並ぶ場合は、圧縮後のデータは 0 5 とする。</li>
+    <li>例えば元のデータが 1, 1, 1 と1が3個並ぶ場合は、圧縮後のデータは 1 3 とする。</li>
+    <li>圧縮後のデータの配列のうち、奇数番目は元データの1or0を表し、偶数番目は並ぶデータの個数を表す。</li>
+    <li>圧縮前が0, 0, 1, 1, 1, 0, 0, 0, 0 であれば、圧縮後は0, 2, 1, 3, 0, 4 である。</li>
+  </ul>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 圧縮前のデータが1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1 であるとすると、圧縮後のデータはどうなるか。,で区切って表せ。</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 圧縮後のデータが1, 2, 0, 4, 1, 3, 0, 2 であるとすると、圧縮前のデータは何であったか。,で区切って表せ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <h2>2.展開のアルゴリズム</h2>
+  <p>今回のルールにおける、展開のアルゴリズムを考える。</p>
+  <p>元データの奇数番目は0か1であるはずで、それを偶数番目の数の個数分用意すればよい。</p>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> 圧縮前のデータを受け取り、圧縮後のデータを返す関数myExpandを定義せよ。</p>
+  <pre class="prettyprint lang-js linenums">
+  // ヒント
+  function myExpand (srcArray) {
+    let expandArray = [];
+
+    // 配列expandArray に0を追加するには expandArray.push(0);
+    // 配列expandArray に1を追加するには expandArray.push(1);
+    // と書く。これらを必要な回数繰り返すこと
+
+    return expandArray;
+  }
+  </pre>
+
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p>
+    <a href="programmingCourse08.html">第8回へ</a> <a href="index.html">目次へ</a>
+  </p>
+</div>
+</body>
+<html>
+
