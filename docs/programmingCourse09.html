@@ -24,9 +24,9 @@
   <p>以下のような圧縮/展開のルールを考える。</p>
   <ul>
     <li>配列に0または1のデータが格納されているとする。</li>
-    <li>例えば元のデータが 0, 0, 0, 0, 0 と0が5個並ぶ場合は、圧縮後のデータは 0 5 とする。</li>
-    <li>例えば元のデータが 1, 1, 1 と1が3個並ぶ場合は、圧縮後のデータは 1 3 とする。</li>
-    <li>圧縮後のデータの配列のうち、奇数番目は元データの1or0を表し、偶数番目は並ぶデータの個数を表す。</li>
+    <li>例えば元のデータが 0, 0, 0, 0, 0 と0が5個並ぶ場合は、圧縮後のデータは 0, 5 とする。</li>
+    <li>例えば元のデータが 1, 1, 1 と1が3個並ぶ場合は、圧縮後のデータは 1, 3 とする。</li>
+    <li>圧縮後のデータの配列のうち、0番目、2番目、4番目・・・は元データの1 or 0を表し、1番目、3番目、5番目・・・は並ぶデータの個数を表す。</li>
     <li>圧縮前が0, 0, 1, 1, 1, 0, 0, 0, 0 であれば、圧縮後は0, 2, 1, 3, 0, 4 である。</li>
   </ul>
 
@@ -40,27 +40,62 @@
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
 
-  <h2>2.展開のアルゴリズム</h2>
-  <p>今回のルールにおける、展開のアルゴリズムを考える。</p>
-  <p>元データの奇数番目は0か1であるはずで、それを偶数番目の数の個数分用意すればよい。</p>
-
-  <p class="reidaibox"><span class="reidai">例題3</span> 圧縮前のデータを受け取り、圧縮後のデータを返す関数myExpandを定義せよ。</p>
+  <h2>2.配列に値を追加する簡単な方法</h2>
+  <p>配列の〇番目に値を代入するという、今まで扱ってきた方法でも配列に値を追加することができるが、もう少し簡単な方法がある。</p>
   <pre class="prettyprint lang-js linenums">
-  // ヒント
-  function myExpand (srcArray) {
-    let expandArray = [];
+  let array = [];  // ちなみにarrayは配列の意味
 
-    // 配列expandArray に0を追加するには expandArray.push(0);
-    // 配列expandArray に1を追加するには expandArray.push(1);
-    // と書く。これらを必要な回数繰り返すこと
+  array.push(5);
+  array.push(6);
+  array.push(7);
+  array.push(8);
+  </pre>
+  <p>上のコードを実行すると、arrayは [5, 6, 7, 8] になる。つまり、pushしたものは配列の末尾に挿入される。このコードと下のコードは同じ結果になる。</p>
 
-    return expandArray;
-  }
+  <pre class="prettyprint lang-js linenums">
+  let array = [];
+
+  array[0] = 5; // これが配列の〇番目に値を代入するという今までの書き方
+  array[1] = 6;
+  array[2] = 7;
+  array[3] = 8;
   </pre>
 
+  <p class="reidaibox"><span class="reidai">例題3</span> 変数 array0903 が既に宣言され、配列として初期化されている([] が代入されている)とする。pushを用いてこの配列に30個の0を挿入せよ。</p>
   <textarea id="inputBox03"></textarea>
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
+
+  <p>また、配列名.length で配列の長さを取得できる。下のコードではxに4が代入される。</p>
+  <pre class="prettyprint lang-js linenums">
+  let array = ["りんご", "ばなな", "柿", "みかん"];
+  let x = array.length;
+  </pre>
+
+  <h2>3.展開のアルゴリズム</h2>
+  <p>今回のルールにおける、展開のアルゴリズムを考える。</p>
+  <p>今回のルールで圧縮されたデータは、0番目、2番目、4番目・・・が元データの1 or 0を表し、1番目、3番目、5番目・・・は並ぶデータの個数を表す。</p>
+  <p class="reidaibox"><span class="reidai">例題4</span> 圧縮後のデータが 変数 array0904 に保存されている。これを展開したデータをexpand0904に格納せよ。変数expand0904は既に[]で初期化されているとする。</p>
+  <p>下のコードはヒントである。</p>
+  <pre class="prettyprint lang-js linenums">
+  let i,j;
+
+  // 配列のデータ2つ分で意味を成すから、j を2ずつ大きくして繰り返す
+  for (j = 0; j < array0904.length; j = j + 2) {
+    expand0904.push( 配列に追加するものを指定する ); //これを必要な回数分繰り返す
+  }
+  </pre>
+
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <h2>4.画像を展開して表示しよう</h2>
+  <p>0,1が並ぶデータを画像データだと思えば、今回の話は画像の圧縮/展開の話だと思える。</p>
+  <p class="reidaibox"><span class="reidai">例題4</span> array0905は配列であり、今回のルールで圧縮されたデータが格納されている。第8回の画像処理と同様に0を白、1を黒だとし、縦横にそれぞれ40個の正方形を並べて画像として表示せよ。以下にElementIdが"ID1255"である400×400のキャンバスがある。fillSquare関数は既に定義されているとする。</p>
+  <canvas id="ID1255" width="400" height="400"></canvas>
+  <textarea id="inputBox05"></textarea>
+  <button onClick="kakunin05()">確認する</button>
 
   <p>
     <a href="programmingCourse08.html">第8回へ</a> <a href="index.html">目次へ</a>

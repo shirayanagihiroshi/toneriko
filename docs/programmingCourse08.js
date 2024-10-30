@@ -44,7 +44,7 @@ window.onload = function () {
 
   for (j = 0; j < 10; j++) {
     for (i = 0; i < 10; i++) {
-      console.log("i;",i, "j:",j);
+      //console.log("i;",i, "j:",j);
       fillSquare(10 * i, 10 * j, 0, 0, 0, context3);
     }
   }
