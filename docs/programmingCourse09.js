@@ -68,6 +68,8 @@ function kakunin03() {
   confirmationTemplate('#inputBox03', '#result03', function (testStr) {
     let pattern = /push/;
 
+    array0903 = [];
+
     if (testStr.match(pattern)) {
       // ユーザの入力内容を実行
       Function (testStr)();
