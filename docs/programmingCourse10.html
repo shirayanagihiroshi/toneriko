@@ -11,7 +11,7 @@
 <div class="box1">
 
   <h1>プログラミング講座 第10回</h1>
-  <p>第10回の目標：待ち行列のシミュレーションを通してシミュレーションの良さを感じる</p>
+  <p>第10回の目標：待ち行列の例を通してシミュレーションの良さを感じる</p>
 
   <h2>1.モデル化</h2>
   <p>概念を簡潔に表現したものを<span class="stronger">モデル</span>という。</p>
@@ -20,7 +20,33 @@
   <h2>2.シミュレーション</h2>
   <p>モデルを使って試してみることを<span class="stronger">シミュレーション</span>という。</p>
 
+  <p>文化祭で飲食店の模擬店をするとしよう。このときの、品物を用意する時間と、お店に並ぶ客の人数をシミュレーションしてみる。</p>
+
+  <p>1人分を用意するのに
+    <select id="ID1257">
+      <option>0.1</option>
+      <option>0.5</option>
+      <option>1</option>
+      <option selected>2</option>
+      <option>3</option>
+    </select>
+    分かかり、
+  </p>
+  <p>ランダム（
+    <select id="ID1258">
+      <option>0.1</option>
+      <option>0.5</option>
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+    分間隔程度）でお客さんが来るとする。
+  </p>
+  <p>
+    <button onclick="buttonClick()">開始（1分を1秒で再生）</button>
+  </p>
   <canvas id="ID1256" width="500" height="100"></canvas>
+  <p id="ID1259">お客さんの平均待ち時間は</p>
 
 
   <p>
