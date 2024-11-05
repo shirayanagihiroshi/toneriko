@@ -14,18 +14,23 @@
   <p>第10回の目標：待ち行列の例を通してシミュレーションの良さを感じる</p>
 
   <h2>1.モデル化</h2>
-  <p>概念を簡潔に表現したものを<span class="stronger">モデル</span>という。</p>
+  <p>物理的/社会的に現実に起こることは複雑である。複雑なものを単純化し簡潔に表現したものを<span class="stronger">モデル</span>という。</p>
   <p><span class="stronger">モデル</span>には実在するモノでできた<span class="stronger">実物モデル</span>と図や表、数式で表された<span class="stronger">論理モデル</span>がある。</p>
+  <p>対象のどのような性質を知りたいのか、明確にするのが大事である。すべての性質が本物と同じであれば、それは本物である。</p>
+  <p>今注目している性質以外のものを切り捨てるなどして<span class="stronger">単純化</span>することで、分かりやすくするのかモデル化の意義である。</p>
+  <p>高校生が日々学んでいるのは、化学の、歴史の、語学の・・・様々な概念のモデルを自らの頭の中に構築する作業であるともいえる。</p>
 
   <h2>2.シミュレーション</h2>
   <p>モデルを使って試してみることを<span class="stronger">シミュレーション</span>という。</p>
 
-  <p>文化祭で飲食店の模擬店をするとしよう。このときの、品物を用意する時間と、お店に並ぶ客の人数をシミュレーションしてみる。</p>
+  <p>文化祭で飲食店の模擬店をするとしよう。このときの<span class="stronger">品物を用意する時間</span>と、<span class="stronger">お店に並ぶ客の人数</span>の<span class="stronger">関係</span>をシミュレーションしてみる。</p>
+  <p>待ち行列の理論はそれなりに複雑なものであるが、実際にプログラムで待ち行列を発生させてみることで、（比較的簡単に）待ち時間が予想できる。</p>
 
   <p>1人分を用意するのに
     <select id="ID1257">
       <option>0.1</option>
-      <option>0.5</option>
+      <option>0.3</option>
+      <option>0.6</option>
       <option>1</option>
       <option selected>2</option>
       <option>3</option>
@@ -35,7 +40,8 @@
   <p>ランダム（
     <select id="ID1258">
       <option>0.1</option>
-      <option>0.5</option>
+      <option>0.3</option>
+      <option>0.6</option>
       <option selected>1</option>
       <option>2</option>
       <option>3</option>
@@ -45,9 +51,13 @@
   <p>
     <button onclick="buttonClick()">開始（1分を1秒で再生）</button>
   </p>
-  <canvas id="ID1256" width="500" height="100"></canvas>
+  <canvas id="ID1256" width="500" height="80"></canvas>
   <p id="ID1259">お客さんの平均待ち時間は</p>
 
+  <p class="reidaibox"><span class="reidai">例題1</span> 資産運用シミュレーションをする。100万円を年利2%で預けるとし、複利で計算する。（複利とは、元々のお金と利子のそれぞれ利子がつく、つまり100万円が1年後には102万円になるが、2年後には102万円*1.02で104万400円になるものである。）100万円が50年後にいくらになっているか、返す関数 after50years()を定義せよ。ただし、金額は毎年小数第1位で四捨五入して整数値にするとする。ヒント：Math.round()で四捨五入できる。Math.round(1.5)は2である。</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
 
   <p>
     <a href="programmingCourse09.html">第9回へ</a> <a href="index.html">目次へ</a>

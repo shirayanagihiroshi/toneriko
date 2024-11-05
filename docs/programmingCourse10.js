@@ -31,7 +31,7 @@
   function viewPersons() {
     let i;
 
-    context.clearRect(0, 0, 500, 100);
+    context.clearRect(0, 0, 500, 80);
 
     for (i = 0; i < waitList.length; i++) {
       drawPersonA(20*i, 0, waitList[i], context);
@@ -106,6 +106,7 @@
   function buttonClick(){
     clearTimeout(kyakuTimerId);
     clearTimeout(miseTimerId);
+    clearTimeout(countupId);
     
     let kyaku = document.getElementById('ID1258');
     let interval = getRandam(100,Number(kyaku.value)*1000*2);
@@ -120,4 +121,24 @@
 window.onload = function () {
   canvas = document.getElementById('ID1256');
   context = canvas.getContext('2d');
+
+  let yen = 1000000;
+  let i;
+}
+
+// 例題1　実行してみてチェックする
+function kakunin01() {
+  confirmationTemplate('#inputBox01', '#result01', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(after50years() == 2691593) {' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
 }
