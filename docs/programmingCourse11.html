@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第11回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse11.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第11回</h1>
+  <p>第11回の目標：IPアドレスに関する理解を深める。</p>
+
+  <h2>1.IPアドレス</h2>
+  <p>ネットワークを介して他のコンピュータと通信をする際には、各コンピュータを何らかの方法で識別する必要がある。</p>
+  <p><span class="stronger">インターネット上</span>の各コンピュータを識別するIDを<span class="stronger">IPアドレス</span>という。</p>
+  <p><span class="stronger">IPアドレス</span>には<span class="stronger">バージョン4</span>と<span class="stronger">バージョン6</span>があり、それぞれ<span class="stronger">IPv4</span>、<span class="stronger">IPv6</span>と呼ぶ。</p>
+
+  <h2>2.IPv4</h2>
+  <p><span class="stronger">32bit</span>のデータである。</h2>
+  <p>そのままでは人間は読みにくいので、11000000.10101000.01100100.00001010 のように8bitずつの4つに区切って表すことがある。</p>
+  <p>それでもまだ読みにくいので、2進数を10進数に変換して、192.168.100.10 のように表すことが多い。
+  <p>10進数にしても分かりにくい人向けに、IPアドレスに対して"www.hogehoge.co.jp"のような文字列を対応させ、そちらを使うこともある。この文字列を<span class="stronger">ドメイン名</span>という。</p>
+
+  <h2>3.IPv6</h2>
+  <p>32bitのデータで2の32乗個のパターンを表現できる。それはおよそ43億であるが、世界のコンピュータが増えたことで、IPv4が足りなくなってきている。</p>
+  <p>そこで<span class="stronger">128bit</span>の<span class="stronger">IPv6</span>が作られた。が、これを書いている2024年の段階ではまだIPv4が主流であるようだ。ここではIPv6について詳しく触れない。</p>
+
+  <h2>4.MACアドレス</h2>
+  <p>通信処理は複雑であり、通信プロトコルは階層になっている。IPアドレスはOSI階層モデルでいう第3層のネットワーク層で使われる。他にも第2層のデータリンク層で使われるMACアドレスがある。ここではMACアドレスについて詳しく触れない。</p>
+
+  <h2>5.IPv4 再度</h2>
+  <p>32bitのIPv4を8bitずつの4つに区切った1つ分で、2の8乗通りのパターンを、つまり、0から255を表せる。</p>
+  <p class="reidaibox"><span class="reidai">例題1</span> 長さが8の配列（配列のどの値も1か0とする）をパラメータとして引き受けて、それを2進数とみなし、10進数に変換したものを返す関数convert10を定義せよ。</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <h2>5.サブネットマスク</h2>
+  <p>同じのネットワーク内のコンピュータへデータを送るときと、別のネットワークのコンピュータへデータを送るときでは違う処理がなされる。同じネットワーク内のコンピュータへは比較的容易にデータを送ることができる。</p>
+  <p>ネットワーク同士をつなぐ中継装置を<span class="stronger">ルータ</span>というが、別のネットワークへデータを送る際には、まずルータへデータを送ることになる。ルータは経路の情報を持っていて、ルーター間でデータが送られていって、結果的に対象のネットワークの対象のコンピュータへデータが届けられる。</p>
+  <p>IPv4には<span class="stronger">ネットワークのID</span>を意味する部分と、ネットワーク内の<span class="stronger">コンピュータのID</span>を意味する部分がある。</p>
+  <p>IPv4のどこでネットワークのIDとコンピュータのID</span>が区切られるかを表すのが<span class="stronger">サブネットマスク</span>である。</p>
+  <p>例えば、IPv4が以下であり</p>
+  <p>11000000.10101000.01100100.00001010</p>
+  <p>サブネットマスクが以下であるとする</p>
+  <p>11111111.11111111.11111111.00000000</p>
+  <p><span class="stronger">サブネットマスクが1であるところがネットワークのID</span>であるから、IPv4の先頭から24bit(つまり11000000.10101000.01100100)がネットワークのIDである。</p>
+  <p><span class="stronger">ネットワークのID以外の部分がコンピュータのID</span>であるから、IPv4の末尾の8bit(つまり00001010)がコンピュータのIDである。</p>
+  <p>2進数は人間には辛いので普通は10進数で書くが、上の例は10進数で以下のように表される。</p>
+  <p>IPアドレス:192.168.100.10</p>
+  <p>サブネットマスク:255.255.255.0</p>
+
+  <p>サブネットマスクは先頭からどこかまで1が並び、その後0が並ぶ。区切りは8bitずつの位置とは限らない。例えば下のようなこともある。</p>
+  <p>11111111.11111111.11111111.11000000 (10進数で255.255.255.192)</p>
+  <p>また、</p>
+  <p>11000000.10101000.01100100.00001010(192.168.100.10)と11000000.10101000.01100100.10000010(192.168.100.130)は</p>
+  <p>サブネットマスクを</p>
+  <p>11111111.11111111.11111111.00000000 (255.255.255.0)だと思うと同じネットワークであるが
+  <p>11111111.11111111.11111111.11000000 (255.255.255.192)だと思うと異なるネットワークにあることがわかる。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 長さが32の配列（配列のどの値も1か0とする）3つをパラメータとして引き受けて、それを2進数とみなし、1つめはコンピュータAのIPv4、2つめはコンピュータBのIPv4、3つめはサブネットマスクとする。コンピュータAとコンピュータBが同じネットワークにあればtrueを、そうでなければfalseを返す関数sameNetworkを定義せよ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+
+  <p>
+    <a href="programmingCourse10.html">第10回へ</a> <a href="index.html">目次へ</a>
+  </p>
+</div>
+</body>
+<html>
+
