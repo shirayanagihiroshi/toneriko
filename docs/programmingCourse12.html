@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第12回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse12.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第12回</h1>
+  <p>第12回の目標：プログラミングを通して暗号化について理解を深める。</p>
+
+  <h2>1.暗号化</h2>
+  <p>データを特別な知識なしでは読めないような形に変換することを<span class="stronger">暗号化</span>という。暗号化されたデータに対して、暗号化されていないデータを<span class="stronger">平文</span>ということがある。</p>
+
+  <h2>2.復号</h2>
+  <p>暗号化されたデータを元に戻すことを<span class="stronger">復号</span>という。</p>
+
+  <h2>3.鍵</h2>
+  <p>暗号化/復号に使うデータや手順を<span class="stronger">鍵</span>という。</p>
+
+  <h2>4.今回扱う暗号化のルールについて</h2>
+  <p>鍵が無くても読めてしまう暗号化には意味がなく、実用的な暗号化には数学的な理論を背景に持つ複雑なアルゴリズムが用いられる。</p>
+  <p>今回は（現代では実用的ではない）簡単な暗号化/復号を扱う。ルールは以下である</p>
+
+  <ul>
+    <li>日本語のひらながのみで文を書くとする。</li>
+    <li>暗号化には、ひらがなのそれぞれの文字を50音順に<span class="stronger">後方</span>へ3つずらす。例えば「あ」は「え」に変換される。</li>
+    <li>復号には、ひらがなのそれぞれの文字を50音順に<span class="stronger">前方</span>へ3つずらす。例えば「か」は「う」に変換される。</li>
+    <li>50音順を調べるために、配列dictionaryを使う。dictionary = ["あ", "い", "う", "え", "お", "か", "き", "く",・・・が既に定義されているとする。</li>
+    <li>配列dictionaryに存在しない文字は暗号化/復号でスキップする。</li>
+    <li>後方や前方へずらした結果、配列をはみ出てしまうケースに備えて、配列の末尾に"A","B","C"を付加しておく。つまり、配列の外にはみ出る心配をしなくてよい。</li>
+  </ul>
+
+  <h2>5.文字列の比較</h2>
+  <p>数値が等しいかどうか判定するには==を用いた。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x = 0;
+  let y = 0;
+
+  if (x == 10) {
+    y = 100;
+  } else {
+    y = 200;
+  }
+  </pre>
+  <p>上の例では、yに200が代入される。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x = "きのこ";
+  let y = 0;
+
+  if (x == "きのこ") {
+    y = 100;
+  } else {
+    y = 200;
+  }
+  </pre>
+  <p>文字列の比較も==で行うことができる。上の例では、yに100が代入される。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 今回の暗号化のルールで文字列「い」を暗号化するとどうなるか</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 今回の暗号化のルールで文字列「えく」を復号するとどうなるか</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> パラメータとして文字列を受け取り、今回の暗号化のルールで暗号化した文字列を返す関数myEncryptを定義せよ。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題4</span> パラメータとして文字列を受け取り、今回の暗号化のルールで復号した文字列を返す関数myDecryptを定義せよ。</p>
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <p>
+    <a href="programmingCourse11.html">第11回へ</a> <a href="index.html">目次へ</a>
+  </p>
+</div>
+</body>
+<html>
+
