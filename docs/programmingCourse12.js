@@ -29,4 +29,44 @@ function kakunin02() {
   });
 }
 
+// 例題3　実行してみてチェックする
+function kakunin03() {
+  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(myEncrypt("ほし")                       == "まず" &&' +
+      '   myEncrypt("あおぞら")                   == "えきちれ" &&' +
+      '   myEncrypt("うくらいな")                 == "かげれおね" &&' +
+      '   myEncrypt("ひかるげんじ")               == "ふぎわさCせ" &&' +
+      '   myEncrypt("ちゅうしんきょくげんていり") == "っらかずCぐるげさCどおろ" ){ ' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}
 
+// 例題4　実行してみてチェックする
+function kakunin04() {
+  confirmationTemplate('#inputBox04', '#result04', function (testStr) {
+    let codeStr =
+      testStr               +
+      ';'                   +
+      'let r;'              +
+      'if(myDecrypt("かも")               == "うみ" &&' +
+      '   myDecrypt("つおざC")            == "だいこん" &&' +
+      '   myDecrypt("かねけぴお")         == "うなぎぱい" &&' +
+      '   myDecrypt("えろぜにどをぜ")     == "ありすとてれす" &&' +
+      '   myDecrypt("へぎCたCぞおどおろ") == "ふかんぜんせいていり" ){ ' +
+      '  r = true;'         +
+      '} else {'            +
+      '  r = false;'        +
+      '}'                   +
+      'return r';
+    return Function (codeStr)();
+  });
+}

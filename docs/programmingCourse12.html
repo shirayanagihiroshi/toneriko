@@ -66,6 +66,18 @@
   </pre>
   <p><span class="stronger">文字列の比較も==で行うことができる。</span>上の例では、yに100が代入される。</p>
 
+  <h2>7.文字列の分解</h2>
+  <p>文字列を一文字ずつに分解するには次のようsplit関数を使う。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x, myStr, myArr;
+
+  myStr = "まいう";
+  myArr = myStr.split('');
+  x = myArr.length;
+  </pre>
+  <p>上の処理によりmyArr には ["ま","い","う"] が代入される。split関数に渡しているパラメータは空文字列であり、これは全部バラバラにしろという意味である。また、配列の長さは4行目のように配列名.lengthで取得できる。この例ではxに3が代入される。</p>
+
+
   <p class="reidaibox"><span class="reidai">例題1</span> 今回の暗号化のルールで文字列「ほし」を暗号化するとどうなるか</p>
   <textarea id="inputBox01"></textarea>
   <button onClick="kakunin01()">確認する</button>
