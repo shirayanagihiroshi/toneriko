@@ -49,9 +49,15 @@
     let array1 = [4,3,2]
 
     array1.sort(); // このようにしてリストを小さい順に並び替えられる。
-                   // この命令が実行されると[2,3,4]になる
+                   // この命令が実行されるとarray1は[2,3,4]になる
   </pre>
   <p>なお、配列.sort()では、要素を文字列に変換し、アルファベット順みたいな感じで並び替える。sort()に関数を渡すことで別の並び替えも可能である(<a href="programmingCourse04.html#highOrderFunction" target="_blank">高階関数を参照</a>)が、あまり気にしなくてよい。</p>
+  <p>また、割り算は/で計算できるが、商はMath.floor( / )で、余りは%で求められる。</p>
+  <pre class="prettyprint lang-js linenums">
+    let x = 30 / 4;             // xには7.5が代入される。
+    let y = Math.floor(30 / 4); // yには30を4で割った商の7が代入される。
+    let z = 30 % 4;             // zには30を4で割った余りの2が代入される。
+  </pre>
 
   <p class="reidaibox"><span class="reidai">例題3</span> パラメータとして1桁の整数値からなる配列を引き受け、中央値を返す関数 myMedianを定義せよ </p>
   <textarea id="inputBox03"></textarea>
@@ -89,6 +95,15 @@
   <p>相関係数は\( -1 \leqq r \leqq 1 \)の範囲の値をとり、1に近いほど正の相関が強く、-1に近いほど負の相関が強い。また相関がないときは0に近い値をとる。</p>
 
   <p class="reidaibox"><span class="reidai">例題5</span> \( [ [x_1,y_1], [x_2,y_2], \cdots, [x_n,y_n] ] \)のようなデータ(長さ2の配列の配列)をパラメータとして受け取り、相関係数を返す関数myCCを定義せよ。</p>
+
+  <pre class="prettyprint lang-js linenums">
+    // 配列の配列の扱い方
+    let x = [[5,3], [6,2], [4,7]];
+
+    let y = x[0];    // yには配列xの0番目つまり、[5,3]が代入される。yは配列である。
+    let z = x[0][1]; // zには配列x[0]の1番目つまり3が代入される。zは配列でなく値である。
+  </pre>
+
   <textarea id="inputBox05"></textarea>
   <button onClick="kakunin05()">確認する</button>
   <div id="result05">結果:</div>
