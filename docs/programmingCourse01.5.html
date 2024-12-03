@@ -88,18 +88,20 @@
   </pre>
   <p>同じ形の式が繰り返されているところがポイントである。ただし、sumと足されている値は1ずつ大きくなっている。これをfor文で書くと</p>
   <pre class="prettyprint lang-js linenums">
+  sum =  0;
+
   for (i = 0; i <= 10; i++) {
     sum =  sum + i;
   }
   </pre>
   <p>である。一つ前の例では沢山あった sum =  sum + □ が1行だけになっていることが分かる。また、いくつまで足すのかを柔軟に変更できるようになったのにも注意しよう。</p>
 
-  <p class="reidaibox"><span class="reidai">例題2</span> for文を使って、変数sumに0から20までの数を足せ。</p>
+  <p class="reidaibox"><span class="reidai">例題2</span> for文を使って、変数sumに0から20までの数を足せ。(変数sumとiは宣言されていて、既に何かの値が代入されているとする)</p>
   <textarea id="inputBox02"></textarea>
   <button onClick="kakunin02()">確認する</button>
   <div id="result02">結果:</div>
 
-  <p class="reidaibox"><span class="reidai">例題3</span> for文を使って、変数sumに20から30までの数を足せ。</p>
+  <p class="reidaibox"><span class="reidai">例題3</span> for文を使って、変数sumに20から30までの数を足せ。(変数sumとiは宣言されていて、既に何かの値が代入されているとする)</p>
   <textarea id="inputBox03"></textarea>
   <button onClick="kakunin03()">確認する</button>
   <div id="result03">結果:</div>
