@@ -19,7 +19,7 @@
 
   <h2>1.繰り返し(while)</h2>
   <p><span class="stronger">while文</span>でも繰り返す処理を行える。
-  <p>whileに続く丸括弧の中に繰り返しが続行されるための条件を書く。下記の例では、変数iの値が10より小さいあいだ、3行目と4行目が繰り返し実行される。3行目のconsole.log(i)は変数iの値をログとして表示する命令である。4行目のi++を行わないと無限ループに陥るため、注意が必要である。
+  <p>whileに続く丸括弧の中に繰り返しが続行されるための条件を書く。下記の例では、変数iの値が10より小さいあいだ、3行目と4行目が繰り返し実行される。3行目のconsole.log(i)は変数iの値をコンソールへログとして表示する命令である。4行目のi++を行わないと無限ループに陥るため、注意が必要である。
   <p>例</p>
   <pre class="prettyprint lang-js linenums">
     i = 0;
@@ -108,14 +108,14 @@
   <p>数学と同じように関数を利用できる。</p>
   <pre class="prettyprint lang-js linenums">
   function triangleArea(side, height) {
-    return side * angle * 0.5;
+    return side * height * 0.5;
   }
 
   myTriangle = triangleArea(5, 8);
   console.log(myTriangle);
   </pre>
   <p>上の例では、1～3行目でtriangleAreaという関数を定義している。関数を定義するタイミングでは、関数の中身の処理は実行されない。5行目でtriangleArea関数を呼び出しており、このとき初めて関数の中身である2行目の命令が実行される。つまり、パラメータの辺(side)と高さ(height)から三角形の面積を計算して返す。</p>
-  <p>2行目で使われている<span class="stronger">return</span>の命令は関数内での<span class="stronger">計算結果を関数の呼び元に返す</span>ものである。<span class="stronger">return命令を書き忘れると計算結果が捨てられてしまうので注意が必要。</span>上の例ではreturnされた面積の値はmyTriangle変数に格納され、6行目で表示される。</p>
+  <p>2行目で使われている<span class="stronger">return</span>の命令は関数内での<span class="stronger">計算結果を関数の呼び元に返す</span>ものである。<span class="stronger">return命令を書き忘れると計算結果が捨てられてしまうので注意が必要。</span>上の例ではreturnされた面積の値はmyTriangle変数に格納され、6行目でコンソールに20と表示される。</p>
   <pre class="prettyprint lang-js linenums">
   function showWarning(str) {
     console.log("warning!!" + str);
@@ -145,9 +145,8 @@
     いろいろな処理
   }
   </pre>
-  <p>上の例で、関数isOddNumberは1つのパラメータを受け取る(1行目)。その名前がcheckTargetである。checkTargetの名前は関数の外部では特に意味がないので、関数を定義する人が自由に決めてよい。</p>
-  <p>isOddNumberを呼ぶ人はパラメータを渡す訳だが(上の例だと9行目)、それらが関数内部でどのように名づけられるか気にしない。</p>
-  <p>名前がなんであってもプログラムは動くのであるが、関数やパラメータが何を意味するのか、分かりやすい名前をつけることはプログラムを作る上で非常に大事なことである。</p>
+  <p>上の例で、関数isOddNumberは1つのパラメータを受け取る(1行目)。それがcheckTargetである。関数へ渡すパラメータを決めるのは関数を呼ぶ側である。関数へ渡されるパラメータの値は関数が呼ばれるときにならないと分からない。</p>
+  <p>isOddNumberを呼ぶ人はパラメータを渡す。上の例だと9行目である。このとき、varXの値がcheckTargetの値として設定される。</p>
   <p class="reidaibox"><span class="reidai">例題4</span> 入力\(x\)に対して\(x^2 - 3x + 4\)を出力する関数myMathを定義せよ。</p>
 
   <textarea id="inputBox04"></textarea>
