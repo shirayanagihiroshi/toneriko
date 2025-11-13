@@ -91,7 +91,7 @@ function kakunin05() {
 
 // 例題6　文字列チェックと実行してみてチェックの併用
 function kakunin06() {
-  confirmationTemplate('#inputBox06', '#result06', function (testStr) {
+  confirmationTemplateEx('#inputBox06', '#result06', function (testStr) {
     let pattern = /for/;
 
     if (testStr.match(pattern)) {
@@ -107,7 +107,32 @@ function kakunin06() {
         '  r = false;'        +
         '}'                   +
         'return r';
-      return  Function (codeStr)();
+      return  codeStr;
+    } else {
+      return false;
+    }
+  });
+}
+
+// 例題7　文字列チェックと実行してみてチェックの併用
+function kakunin07() {
+  confirmationTemplateEx('#inputBox07', '#result07', function (testStr) {
+    let pattern = /for/;
+
+    if (testStr.match(pattern)) {
+      let codeStr =
+        'function test () {' + // 関数にして呼んでチェック
+        testStr               +
+        ';'                   +
+        'return y;'           +
+        '}'                   +
+        'if (test()==80) {'   +
+        '  r = true;'         +
+        '} else {'            +
+        '  r = false;'        +
+        '}'                   +
+        'return r';
+      return  codeStr;
     } else {
       return false;
     }

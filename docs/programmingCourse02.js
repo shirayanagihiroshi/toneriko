@@ -1,6 +1,6 @@
 // 例題1　文字列チェックと実行してみてチェックの併用
 function kakunin01() {
-  confirmationTemplate('#inputBox01', '#result01', function (testStr) {
+  confirmationTemplateEx('#inputBox01', '#result01', function (testStr) {
     let pattern = /while/;
 
     if (testStr.match(pattern)) {
@@ -15,7 +15,7 @@ function kakunin01() {
         '  r = false;'        +
         '}'                   +
         'return r';
-      return  Function (codeStr)();
+      return  codeStr;
     } else {
       return false;
     }
@@ -41,7 +41,7 @@ function kakunin02() {
 
 // 例題3　実行してみてチェックする
 function kakunin03() {
-  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
+  confirmationTemplateEx('#inputBox03', '#result03', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -61,7 +61,7 @@ function kakunin03() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
@@ -88,7 +88,7 @@ function kakunin04() {
 
 // 例題5　実行してみてチェックする
 function kakunin05() {
-  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+  confirmationTemplateEx('#inputBox05', '#result05', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -103,6 +103,6 @@ function kakunin05() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
