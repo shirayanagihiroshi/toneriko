@@ -19,7 +19,7 @@ function kakunin01() {
 
 // 例題2　実行してみてチェックする
 function kakunin02() {
-  confirmationTemplate('#inputBox02', '#result02', function (testStr) {
+  confirmationTemplateEx('#inputBox02', '#result02', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -35,42 +35,33 @@ function kakunin02() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
 // 例題3　実行してみてチェックする
 function kakunin03() {
-  reidai3Answer = function (paraA,paraB) {
-    let i,
-      returnValue = 1;
-    for(i = 0; i < paraB; i++) {
-      returnValue = returnValue * paraA;
-    }
-    return returnValue;
-  };
-
-  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
+  confirmationTemplateEx('#inputBox03', '#result03', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
       'let r;'              +
-      'if( myExp(2,0) == reidai3Answer(2,0) && ' +
-      '    myExp(3,1) == reidai3Answer(3,1) && ' +
-      '    myExp(4,2) == reidai3Answer(4,2) && ' +
-      '    myExp(5,3) == reidai3Answer(5,3) ) {'  +
+      'if( myExp(2,0) == 1   && ' +
+      '    myExp(3,1) == 3   && ' +
+      '    myExp(4,2) == 16  && ' +
+      '    myExp(5,3) == 125 ) {'  +
       '  r = true;'         +
       '} else {'            +
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
 // 例題4　実行してみてチェックする
 function kakunin04() {
-  confirmationTemplate('#inputBox04', '#result04', function (testStr) {
+  confirmationTemplateEx('#inputBox04', '#result04', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -84,13 +75,13 @@ function kakunin04() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
 // 例題5　実行してみてチェックする
 function kakunin05() {
-  confirmationTemplate('#inputBox05', '#result05', function (testStr) {
+  confirmationTemplateEx('#inputBox05', '#result05', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -107,7 +98,7 @@ function kakunin05() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
