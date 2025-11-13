@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>javascript プログラミング講座 - 基本文法まとめ</title>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <style>
+    .syntax-item {
+      margin-bottom: 2em;
+      border-left: 4px solid #ccc;
+      padding-left: 1em;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+    .legend {
+      background-color: #eef;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+    }
+    /* ▼▼▼ 追加したスタイル ▼▼▼ */
+    pre em {
+      color: #007bff; /* 目立つ青色 */
+      font-style: normal; /* 斜体（イタリック）にしない */
+      font-weight: bold;  /* 少し太字にする */
+    }
+  </style>
+</head>
+<body>
+<div class="box1">
+
+  <h1>基本文法まとめ</h1>
+  <p>基本的な文法をまとめたページです。コーディングの際に見返して活用してください。</p>
+  <div class="legend">
+    <p><strong>表記について</strong></p>
+    <p><code>let</code> や <code>if</code> のような部分は、そのまま記述するJavaScriptのキーワードです。</p>
+    <p><em style="color: #007bff; font-weight: bold;">太字の青色</em>で示された部分は、開発者が内容に応じて任意に記述する部分を表します。</p>
+  </div>
+  <p><a href="index.html">目次に戻る</a></p>
+
+  <hr>
+
+  <h2>目次</h2>
+  <ul>
+    <li><a href="#variables">変数</a></li>
+    <li><a href="#control-flow">制御構文（条件分岐と繰り返し）</a></li>
+    <li><a href="#arrays">配列</a></li>
+    <li><a href="#functions">関数</a></li>
+    <li><a href="#scope">変数のスコープ</a></li>
+    <li><a href="#comments">コメント</a></li>
+  </ul>
+
+  <hr>
+
+  <section id="variables">
+    <h2>変数</h2>
+    <div class="syntax-item">
+      <h3>変数の宣言 (let)</h3>
+      <p>これから使う変数を「宣言」します。値は後から変更（再代入）できます。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>let <em>変数名</em>;
+</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre >let hensuu;</pre>
+    </div>
+    <div class="syntax-item">
+      <h3>変数への値の代入 (=)</h3>
+      <p>変数に値（数値や文字列など）を代入します。プログラミングの <code>=</code> は「等しい」ではなく「代入」を意味します。右側の値を計算し、左側の変数に格納します。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code><em>変数名</em> = <em>値や式</em>;</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre >x = x + 2;</pre>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="control-flow">
+    <h2>制御構文（条件分岐と繰り返し）</h2>
+    <div class="syntax-item">
+      <h3>if (条件分岐)</h3>
+      <p>条件によって処理の流れを変えます。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>if (<em>条件式1</em>) {
+  <em>条件式1が真のときの処理</em>
+} else if (<em>条件式2</em>) {
+  <em>条件式2が真のときの処理</em>
+} else {
+  <em>すべての条件が偽のときの処理</em>
+}</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre>
+if (year >= 18) {
+  customer = "成人";
+} else if (year >= 6){
+  customer = "子ども";
+} else {
+  customer = "赤ちゃん";
+}
+</pre>
+    </div>
+    <div class="syntax-item">
+      <h3>for (繰り返し)</h3>
+      <p>特定の処理を繰り返します。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>for (<em>カウンター変数</em> = <em>初期値</em>; <em>繰り返しが続く条件</em>; <em>カウンター更新処理</em>) {
+  <em>繰り返したいメインの処理</em>
+}</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre>
+for (i = 0; i < 10; i++) {
+  arr[i] = i * 2;
+}
+</pre>
+    </div>
+    <div class="syntax-item">
+      <h3>while (繰り返し)</h3>
+      <p>特定の処理を繰り返します。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>while (<em>継続条件</em>) {
+  <em>繰り返したいメインの処理</em>
+}</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre class="prettyprint lang-js linenums">
+let i = 0;
+while (i < 10) {
+  arr[i] = 0;
+  i++;
+}
+</pre>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="arrays">
+    <h2>配列</h2>
+    <div class="syntax-item">
+      <h3>配列の作成とアクセス</h3>
+      <p>複数の値を格納できるデータ構造です。インデックス（0から始まる番号）を指定して各データにアクセスします。</p>
+      <p><strong>構文：</strong></p>
+      <pre>
+<em>配列名</em>[<em>インデックス</em>]</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre class="prettyprint lang-js linenums">
+fruits[0] = "柿";
+fruits[1] = "りんご";
+fruits[2] = "みかん";
+</pre>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="functions">
+    <h2>関数</h2>
+    <div class="syntax-item">
+      <h3>関数の定義と呼び出し</h3>
+      <p>一連の処理を一つにまとめ、名前をつけたものです。引数（ひきすう）を受け取ったり、<code>return</code> で結果を返すことができます。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>
+//関数の定義
+function <em>関数名</em>(<em>引数1</em>, <em>引数2</em>, ...) {
+  <em>実行する処理</em>
+  return <em>戻り値</em>;
+}
+
+// 関数の呼び出し
+<em>関数名</em>(<em>値1</em>, <em>値2</em>, ...);</code></pre>
+      <p><strong>コード例：</strong></p>
+      <pre class="prettyprint lang-js linenums">
+// 関数の定義
+function math(x) {
+  let value = x * x + 3 * x + 4;
+  return value;
+}
+
+// 関数の呼び出し
+y = math(2); // y へ14が代入される
+</pre>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="scope">
+    <h2>変数のスコープ</h2>
+    <div class="syntax-item">
+      <h3>ブロックスコープ</h3>
+      <p><code>{ }</code> で囲まれたブロックの中で <code>let</code> で宣言された変数は、そのブロック内でしか使えません。この有効範囲をスコープと呼びます。</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="comments">
+    <h2>コメント</h2>
+    <div class="syntax-item">
+      <h3>コメントの書き方</h3>
+      <p>プログラムの動作に影響を与えない、人間向けのメモです。</p>
+      <p><strong>構文：</strong></p>
+      <pre><code>// 1行コメント
+
+/*
+  複数行
+  コメント
+*/</code></pre>
+    </div>
+  </section>
+
+  <hr>
+  <p><a href="index.html">目次に戻る</a></p>
+
+</div>
+</body>
+</html>
