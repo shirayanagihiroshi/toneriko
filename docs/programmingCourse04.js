@@ -20,7 +20,7 @@ function kakunin01() {
 
 // 例題2　実行してみてチェックする
 function kakunin02() {
-  confirmationTemplate('#inputBox02', '#result02', function (testStr) {
+  confirmationTemplateEx('#inputBox02', '#result02', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -51,13 +51,13 @@ function kakunin02() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
 // 例題3　実行してみてチェックする
 function kakunin03() {
-  confirmationTemplate('#inputBox03', '#result03', function (testStr) {
+  confirmationTemplateEx('#inputBox03', '#result03', function (testStr) {
     let codeStr =
       testStr               +
       ';'                   +
@@ -94,7 +94,7 @@ function kakunin03() {
       '  r = false;'        +
       '}'                   +
       'return r';
-    return Function (codeStr)();
+    return codeStr;
   });
 }
 
