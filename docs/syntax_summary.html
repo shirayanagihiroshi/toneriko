@@ -27,6 +27,9 @@
       font-style: normal; /* 斜体（イタリック）にしない */
       font-weight: bold;  /* 少し太字にする */
     }
+    body {
+      font-size : 1rem;
+    }
   </style>
 </head>
 <body>
@@ -37,7 +40,7 @@
   <div class="legend">
     <p><strong>表記について</strong></p>
     <p><code>let</code> や <code>if</code> のような部分は、そのまま記述するJavaScriptのキーワードです。</p>
-    <p><em style="color: #007bff; font-weight: bold;">太字の青色</em>で示された部分は、開発者が内容に応じて任意に記述する部分を表します。</p>
+    <p><em style="color: #007bff; font-weight: bold;">太字の青色</em>で示された部分は、君たちが自由に名前をつけたり、必要な処理を書いたりしてよい部分です。</p>
   </div>
   <p><a href="index.html">目次に戻る</a></p>
 
@@ -59,7 +62,7 @@
     <h2>変数</h2>
     <div class="syntax-item">
       <h3>変数の宣言 (let)</h3>
-      <p>これから使う変数を「宣言」します。値は後から変更（再代入）できます。</p>
+      <p>これから使う変数を「宣言」します。</p>
       <p><strong>構文：</strong></p>
       <pre><code>let <em>変数名</em>;
 </code></pre>
@@ -81,15 +84,15 @@
   <section id="control-flow">
     <h2>制御構文（条件分岐と繰り返し）</h2>
     <div class="syntax-item">
-      <h3>if (条件分岐)</h3>
+      <h3>条件分岐 (if)</h3>
       <p>条件によって処理の流れを変えます。</p>
       <p><strong>構文：</strong></p>
       <pre><code>if (<em>条件式1</em>) {
-  <em>条件式1が真のときの処理</em>
+  <em>条件式1が真のときの処理たち</em>
 } else if (<em>条件式2</em>) {
-  <em>条件式2が真のときの処理</em>
+  <em>条件式2が真のときの処理たち</em>
 } else {
-  <em>すべての条件が偽のときの処理</em>
+  <em>すべての条件が偽のときの処理たち</em>
 }</code></pre>
       <p><strong>コード例：</strong></p>
       <pre>
@@ -103,11 +106,11 @@ if (year >= 18) {
 </pre>
     </div>
     <div class="syntax-item">
-      <h3>for (繰り返し)</h3>
+      <h3>繰り返し (for)</h3>
       <p>特定の処理を繰り返します。</p>
       <p><strong>構文：</strong></p>
-      <pre><code>for (<em>カウンター変数</em> = <em>初期値</em>; <em>繰り返しが続く条件</em>; <em>カウンター更新処理</em>) {
-  <em>繰り返したいメインの処理</em>
+      <pre><code>for (<em>インデックス</em> = <em>初期値</em>; <em>繰り返しが続く条件</em>; <em>インデックス更新処理</em>) {
+  <em>繰り返したい処理たち</em>
 }</code></pre>
       <p><strong>コード例：</strong></p>
       <pre>
@@ -117,11 +120,11 @@ for (i = 0; i < 10; i++) {
 </pre>
     </div>
     <div class="syntax-item">
-      <h3>while (繰り返し)</h3>
+      <h3>繰り返し (while)</h3>
       <p>特定の処理を繰り返します。</p>
       <p><strong>構文：</strong></p>
       <pre><code>while (<em>継続条件</em>) {
-  <em>繰り返したいメインの処理</em>
+  <em>繰り返したい処理たち</em>
 }</code></pre>
       <p><strong>コード例：</strong></p>
       <pre class="prettyprint lang-js linenums">
@@ -143,9 +146,17 @@ while (i < 10) {
       <p>複数の値を格納できるデータ構造です。インデックス（0から始まる番号）を指定して各データにアクセスします。</p>
       <p><strong>構文：</strong></p>
       <pre>
+//配列の定義
+<em>let</em> <em>配列名</em> = [<em>配列の長さ</em>]
+
+//配列のデータを使う
 <em>配列名</em>[<em>インデックス</em>]</code></pre>
       <p><strong>コード例：</strong></p>
       <pre class="prettyprint lang-js linenums">
+//配列の定義
+let fruits = [3]; // 3個のデータを格納できる配列を用意する。
+
+//配列へデータを格納する
 fruits[0] = "柿";
 fruits[1] = "りんご";
 fruits[2] = "みかん";
@@ -159,12 +170,12 @@ fruits[2] = "みかん";
     <h2>関数</h2>
     <div class="syntax-item">
       <h3>関数の定義と呼び出し</h3>
-      <p>一連の処理を一つにまとめ、名前をつけたものです。引数（ひきすう）を受け取ったり、<code>return</code> で結果を返すことができます。</p>
+      <p>一連の処理に名前をつけたものです。引数（ひきすう）を受け取ったり、<code>return</code> で結果を返すことができます。</p>
       <p><strong>構文：</strong></p>
       <pre><code>
 //関数の定義
 function <em>関数名</em>(<em>引数1</em>, <em>引数2</em>, ...) {
-  <em>実行する処理</em>
+  <em>関数が呼ばれたときに実行される処理たち</em>
   return <em>戻り値</em>;
 }
 
@@ -173,13 +184,13 @@ function <em>関数名</em>(<em>引数1</em>, <em>引数2</em>, ...) {
       <p><strong>コード例：</strong></p>
       <pre class="prettyprint lang-js linenums">
 // 関数の定義
-function math(x) {
+function nijikansuu(x) {
   let value = x * x + 3 * x + 4;
   return value;
 }
 
 // 関数の呼び出し
-y = math(2); // y へ14が代入される
+y = nijikansuu(2); // y へ14が代入される
 </pre>
     </div>
   </section>
