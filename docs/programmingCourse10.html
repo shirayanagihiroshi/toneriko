@@ -11,11 +11,10 @@
 <div class="box1">
 
   <h1>プログラミング講座 第10回</h1>
-  <p>第10回の目標：待ち行列の例を通してシミュレーションの良さを感じる</p>
+  <p>第10回の目標：ガチャのシミュレーションの例を通してシミュレーションの良さを感じる</p>
 
   <h2>1.モデル化</h2>
   <p>物理的/社会的に現実に起こることは複雑である。複雑なものを単純化し簡潔に表現したものを<span class="stronger">モデル</span>という。</p>
-  <p><span class="stronger">モデル</span>には実在するモノでできた<span class="stronger">実物モデル</span>と図や表、数式で表された<span class="stronger">論理モデル</span>がある。</p>
   <p>対象のどのような性質を知りたいのか、明確にするのが大事である。すべての性質が本物と同じであれば、それは本物である。</p>
   <p>今注目している性質以外のものを切り捨てるなどして<span class="stronger">単純化</span>することで、分かりやすくするのかモデル化の意義である。</p>
   <p>高校生が日々学んでいるのは、化学の、歴史の、語学の・・・様々な概念のモデルを自らの頭の中に構築する作業であるともいえる。</p>
@@ -23,41 +22,23 @@
   <h2>2.シミュレーション</h2>
   <p>モデルを使って試してみることを<span class="stronger">シミュレーション</span>という。</p>
 
-  <p>文化祭で飲食店の模擬店をするとしよう。このときの<span class="stronger">品物を用意する時間</span>と、<span class="stronger">お店に並ぶ客の人数</span>の<span class="stronger">関係</span>をシミュレーションしてみる。</p>
-  <p>待ち行列の理論はそれなりに複雑なものであるが、実際にプログラムで待ち行列を発生させてみることで、（比較的簡単に）待ち時間が予想できる。</p>
+  <p>ガチャを作って、それを引いてみよう。</p>
+  <p>以降では1から100までの値をランダムで返す関数getRandom1to100()を使用してよい。ただしこれはjavascriptの標準の関数で使える関数でなく、この講座でだけ使える関数である。</p>
 
-  <p>1人分を用意するのに
-    <select id="ID1257">
-      <option>0.1</option>
-      <option>0.3</option>
-      <option>0.6</option>
-      <option>1</option>
-      <option selected>2</option>
-      <option>3</option>
-    </select>
-    分かかり、
-  </p>
-  <p>ランダム（
-    <select id="ID1258">
-      <option>0.1</option>
-      <option>0.3</option>
-      <option>0.6</option>
-      <option selected>1</option>
-      <option>2</option>
-      <option>3</option>
-    </select>
-    分間隔程度）でお客さんが来るとする。
-  </p>
-  <p>
-    <button onclick="buttonClick()">開始（1分を1秒で再生）</button>
-  </p>
-  <canvas id="ID1256" width="500" height="80"></canvas>
-  <p id="ID1259">お客さんの平均待ち時間は</p>
-
-  <p class="reidaibox"><span class="reidai">例題1</span> 資産運用シミュレーションをする。100万円を年利2%で預けるとし、複利で計算する。（複利とは、元々のお金と利子のそれぞれ利子がつく、つまり100万円が1年後には102万円になるが、2年後には102万円*1.02で104万400円になるものである。）100万円が50年後にいくらになっているか、返す関数 after50years()を定義せよ。ただし、金額は毎年小数第1位で四捨五入して整数値にするとする。ヒント：Math.round()で四捨五入できる。Math.round(1.5)は2である。</p>
+  <p class="reidaibox"><span class="reidai">例題1</span> 1% の確率で当たるガチャを1回引く関数oneGatyaを定義せよ。oneGatyaは引数を受け取らず、あたりの場合は1、外れの場合は0を戻り値とせよ。ヒント：1から100の中の好きな値を一つ選んであたりとすればよい。</p>
   <textarea id="inputBox01"></textarea>
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 1% の確率で当たるガチャを100回引く関数gatyaを定義せよ。例題1の解答欄にoneGatyaが完成している必要がある。gatyaはoneGatyaを100回呼び、n回目に始めてあたりが出たのであれば、nを返す。あたりが出なかったのであれば、0を返す。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> 1% の確率で当たるガチャを100回引くときに、当たる確率の理論値を計算して戻り値とする関数realPを定義せよ。ヒント：累乗は**で計算できる。2の3乗は2**3である。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
 
   <p>
     <a href="programmingCourse09.html">第9回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse11.html">第11回へ</a>
