@@ -42,20 +42,26 @@ function kakunin02() {
 // 例題3　実行してみてチェックする
 function kakunin03() {
   confirmationTemplateEx('#inputBox03', '#result03', function (testStr) {
-    let codeStr =
-      testStr               +
-      ';'                   +
-      'let r;'              +
-      'if( myExp(2,0) == 1   && ' +
-      '    myExp(3,1) == 3   && ' +
-      '    myExp(4,2) == 16  && ' +
-      '    myExp(5,3) == 125 ) {'  +
-      '  r = true;'         +
-      '} else {'            +
-      '  r = false;'        +
-      '}'                   +
-      'return r';
-    return codeStr;
+    let pattern = /\*\*/;
+
+    if (!testStr.match(pattern)) {
+      let codeStr =
+        testStr               +
+        ';'                   +
+        'let r;'              +
+        'if( myExp(2,0) == 1   && ' +
+        '    myExp(3,1) == 3   && ' +
+        '    myExp(4,2) == 16  && ' +
+        '    myExp(5,3) == 125 ) {'  +
+        '  r = true;'         +
+        '} else {'            +
+        '  r = false;'        +
+        '}'                   +
+        'return r';
+      return  codeStr;
+    } else {
+      return false;
+    }
   });
 }
 
