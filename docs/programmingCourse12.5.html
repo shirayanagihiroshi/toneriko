@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第12.5回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse12.5.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第12.5回</h1>
+  <p>第12.5回の目標：プログラミングを通して暗号化について理解を深める。</p>
+
+  <h2>1.共通鍵暗号と公開鍵暗号</h2>
+  <p>暗号化の技術には共通鍵暗号方式と公開鍵暗号方式がある。</p>
+
+  <h2>2.共通鍵暗号</h2>
+  <p>暗号化と復号に同じ鍵を使う方式の暗号を<span class="stronger">共通鍵暗号</span>という。事前に鍵を安全な方法で相手に渡さなければならないという問題や、やり取りをする相手の人数分の鍵を用意しなければならないという問題がある。</p>
+
+  <h2>2.公開鍵暗号</h2>
+  <p>対となる2つの鍵を使い、それぞれでデータの暗号化と復号を行う方式の暗号を<span class="stronger">公開鍵暗号</span>という。データの暗号化を行う鍵は広く公開してよい。こちらを<span class="stronger">公開鍵</span>という。データの復号を行う鍵は本人だけが持ち秘密にしなければいけない。こちらを<span class="stronger">秘密鍵</span>という。</p>
+
+  <h2>3.公開鍵暗号の処理の流れ</h2>
+  <ol>
+    <li>受信者が公開鍵、秘密鍵のペアを作成する。</li>
+    <li>受信者が公開鍵を公開する。</li>
+    <li>送信者は、受信者の公開鍵を用いてデータを暗号化し、送信する。</li>
+    <li>受信者は秘密鍵を用いてデータを復号する。</li>
+  </ol>
+
+  <h2>4.RSA暗号</h2>
+  <p>RSA暗号は公開鍵暗号の一種である。Ronald Linn <span class="stronger">R</span>ivestさん、Adi <span class="stronger">S</span>hamirさん、Leonard Max <span class="stronger">A</span>dlemanさんらによって作られたため、このように呼ばれている。</p>
+  <p>今回はRSA暗号でのやり取りを体験してみよう。</p>
+
+  <h2>5.ワーク</h2>
+  <ol>
+    <li>
+      (受信者が行うこと)公開鍵、秘密鍵のペアを作成する
+      <p>素数p
+        <select id="primep">
+          <option value="859" seleced>859</option>
+          <option value="863">863</option>
+          <option value="877">877</option>
+          <option value="881">881</option>
+          <option value="883">883</option>
+          <option value="887">887</option>
+          <option value="907">907</option>
+          <option value="911">911</option>
+          <option value="919">919</option>
+          <option value="929">929</option>
+          <option value="937">937</option>
+          <option value="941">941</option>
+          <option value="947">947</option>
+          <option value="953">953</option>
+          <option value="967">967</option>
+          <option value="971">971</option>
+          <option value="977">977</option>
+          <option value="983">983</option>
+          <option value="991">991</option>
+          <option value="997">997</option>
+        </select>
+        素数q
+        <select id="primeq">
+          <option value="859" seleced>859</option>
+          <option value="863">863</option>
+          <option value="877">877</option>
+          <option value="881">881</option>
+          <option value="883">883</option>
+          <option value="887">887</option>
+          <option value="907">907</option>
+          <option value="911">911</option>
+          <option value="919">919</option>
+          <option value="929">929</option>
+          <option value="937">937</option>
+          <option value="941">941</option>
+          <option value="947">947</option>
+          <option value="953">953</option>
+          <option value="967">967</option>
+          <option value="971">971</option>
+          <option value="977">977</option>
+          <option value="983">983</option>
+          <option value="991">991</option>
+          <option value="997">997</option>
+        </select>
+        公開鍵
+        <select id="koukaikey">
+          <option value="859" seleced>859</option>
+          <option value="863">863</option>
+          <option value="877">877</option>
+          <option value="881">881</option>
+          <option value="883">883</option>
+          <option value="887">887</option>
+          <option value="907">907</option>
+          <option value="911">911</option>
+          <option value="919">919</option>
+          <option value="929">929</option>
+          <option value="937">937</option>
+          <option value="941">941</option>
+          <option value="947">947</option>
+          <option value="953">953</option>
+          <option value="967">967</option>
+          <option value="971">971</option>
+          <option value="977">977</option>
+          <option value="983">983</option>
+          <option value="991">991</option>
+          <option value="997">997</option>
+        </select>
+        <button onclick="generatekey()">鍵を生成する</button>
+      </p>
+      公開鍵<input type="text" id="koukaikeym"  size="8">
+    </li>
+    <li>受信者が公開鍵を公開する。</li>
+    <li>送信者は、受信者の公開鍵を用いてデータを暗号化し、送信する。</li>
+    <li>受信者は秘密鍵を用いてデータを復号する。</li>
+  </ol>
+
+  <h2>6.文字列の比較</h2>
+  <p>数値が等しいかどうか判定するには==を用いた。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x = 0;
+  let y = 0;
+
+  if (x == 10) {
+    y = 100;
+  } else {
+    y = 200;
+  }
+  </pre>
+  <p>上の例では、yに200が代入される。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x = "きのこ";
+  let y = 0;
+
+  if (x == "きのこ") {
+    y = 100;
+  } else {
+    y = 200;
+  }
+  </pre>
+  <p><span class="stronger">文字列の比較も==で行うことができる。</span>上の例では、yに100が代入される。</p>
+
+  <h2>7.文字列の分解</h2>
+  <p>文字列を一文字ずつに分解するには次のようsplit関数を使う。</p>
+  <pre class="prettyprint lang-js linenums">
+  let x, myStr, myArr;
+
+  myStr = "まいう";
+  myArr = myStr.split('');
+  x = myArr.length;
+  </pre>
+  <p>上の処理によりmyArr には ["ま","い","う"] が代入される。split関数に渡しているパラメータは空文字列であり、これは全部バラバラにしろという意味である。また、配列の長さは4行目のように配列名.lengthで取得できる。この例ではxに3が代入される。</p>
+
+
+  <p class="reidaibox"><span class="reidai">例題1</span> 今回の暗号化のルールで文字列「ほし」を暗号化するとどうなるか</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 今回の暗号化のルールで文字列「ぎき」を復号するとどうなるか</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> パラメータとして文字列を受け取り、今回の暗号化のルールで暗号化した文字列を返す関数myEncryptを定義せよ。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題4</span> パラメータとして文字列を受け取り、今回の暗号化のルールで復号した文字列を返す関数myDecryptを定義せよ。</p>
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <p>
+    <a href="programmingCourse11.html">第11回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse13.html">第13回へ</a>
+  </p>
+</div>
+</body>
+<html>
+
