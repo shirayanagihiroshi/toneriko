@@ -27,154 +27,134 @@
     <li>受信者が公開鍵、秘密鍵のペアを作成する。</li>
     <li>受信者が公開鍵を公開する。</li>
     <li>送信者は、受信者の公開鍵を用いてデータを暗号化し、送信する。</li>
-    <li>受信者は秘密鍵を用いてデータを復号する。</li>
+    <li>受信者は秘密鍵を用いて受け取ったデータを復号する。</li>
   </ol>
 
   <h2>4.RSA暗号</h2>
   <p>RSA暗号は公開鍵暗号の一種である。Ronald Linn <span class="stronger">R</span>ivestさん、Adi <span class="stronger">S</span>hamirさん、Leonard Max <span class="stronger">A</span>dlemanさんらによって作られたため、このように呼ばれている。</p>
   <p>今回はRSA暗号でのやり取りを体験してみよう。</p>
 
-  <h2>5.ワーク</h2>
+  <h2>5.RSAの送信/受信を体験する</h2>
   <ol>
     <li>
-      (受信者が行うこと)公開鍵、秘密鍵のペアを作成する
+      (受信者が行うこと)公開鍵、秘密鍵のペアを作成する。<span class="stronger">p,q,eは異なる数を選ぶ。</span>
       <p>素数p
-        <select id="primep">
-          <option value="859" seleced>859</option>
-          <option value="863">863</option>
-          <option value="877">877</option>
-          <option value="881">881</option>
-          <option value="883">883</option>
-          <option value="887">887</option>
-          <option value="907">907</option>
-          <option value="911">911</option>
-          <option value="919">919</option>
-          <option value="929">929</option>
-          <option value="937">937</option>
-          <option value="941">941</option>
-          <option value="947">947</option>
-          <option value="953">953</option>
-          <option value="967">967</option>
-          <option value="971">971</option>
-          <option value="977">977</option>
-          <option value="983">983</option>
-          <option value="991">991</option>
-          <option value="997">997</option>
+        <select id="primep" class="jyushinhimitsu">
+          <option value="10007" seleced>10007</option>
+          <option value="10009">10009</option>
+          <option value="10037">10037</option>
+          <option value="10039">10039</option>
+          <option value="10061">10061</option>
+          <option value="10067">10067</option>
+          <option value="10069">10069</option>
+          <option value="10079">10079</option>
+          <option value="10091">10091</option>
+          <option value="10093">10093</option>
+          <option value="10099">10099</option>
+          <option value="10103">10103</option>
+          <option value="10111">10111</option>
+          <option value="10133">10133</option>
+          <option value="10139">10139</option>
+          <option value="10141">10141</option>
+          <option value="10151">10151</option>
+          <option value="10159">10159</option>
+          <option value="10163">10163</option>
+          <option value="10169">10169</option>
         </select>
         素数q
-        <select id="primeq">
-          <option value="859" seleced>859</option>
-          <option value="863">863</option>
-          <option value="877">877</option>
-          <option value="881">881</option>
-          <option value="883">883</option>
-          <option value="887">887</option>
-          <option value="907">907</option>
-          <option value="911">911</option>
-          <option value="919">919</option>
-          <option value="929">929</option>
-          <option value="937">937</option>
-          <option value="941">941</option>
-          <option value="947">947</option>
-          <option value="953">953</option>
-          <option value="967">967</option>
-          <option value="971">971</option>
-          <option value="977">977</option>
-          <option value="983">983</option>
-          <option value="991">991</option>
-          <option value="997">997</option>
+        <select id="primeq" class="jyushinhimitsu">
+          <option value="10007" seleced>10007</option>
+          <option value="10009">10009</option>
+          <option value="10037">10037</option>
+          <option value="10039">10039</option>
+          <option value="10061">10061</option>
+          <option value="10067">10067</option>
+          <option value="10069">10069</option>
+          <option value="10079">10079</option>
+          <option value="10091">10091</option>
+          <option value="10093">10093</option>
+          <option value="10099">10099</option>
+          <option value="10103">10103</option>
+          <option value="10111">10111</option>
+          <option value="10133">10133</option>
+          <option value="10139">10139</option>
+          <option value="10141">10141</option>
+          <option value="10151">10151</option>
+          <option value="10159">10159</option>
+          <option value="10163">10163</option>
+          <option value="10169">10169</option>
         </select>
-        公開鍵
+        公開鍵 e 
         <select id="koukaikey">
-          <option value="859" seleced>859</option>
-          <option value="863">863</option>
-          <option value="877">877</option>
-          <option value="881">881</option>
-          <option value="883">883</option>
-          <option value="887">887</option>
-          <option value="907">907</option>
-          <option value="911">911</option>
-          <option value="919">919</option>
-          <option value="929">929</option>
-          <option value="937">937</option>
-          <option value="941">941</option>
-          <option value="947">947</option>
-          <option value="953">953</option>
-          <option value="967">967</option>
-          <option value="971">971</option>
-          <option value="977">977</option>
-          <option value="983">983</option>
-          <option value="991">991</option>
-          <option value="997">997</option>
+          <option value="10007" seleced>10007</option>
+          <option value="10009">10009</option>
+          <option value="10037">10037</option>
+          <option value="10039">10039</option>
+          <option value="10061">10061</option>
+          <option value="10067">10067</option>
+          <option value="10069">10069</option>
+          <option value="10079">10079</option>
+          <option value="10091">10091</option>
+          <option value="10093">10093</option>
+          <option value="10099">10099</option>
+          <option value="10103">10103</option>
+          <option value="10111">10111</option>
+          <option value="10133">10133</option>
+          <option value="10139">10139</option>
+          <option value="10141">10141</option>
+          <option value="10151">10151</option>
+          <option value="10159">10159</option>
+          <option value="10163">10163</option>
+          <option value="10169">10169</option>
         </select>
-        <button onclick="generatekey()">鍵を生成する</button>
+        <button onclick="generatekey()">鍵を生成する</button><br>
+        (受信者の)秘密の情報を隠す<input type="checkbox" id="hidejyushin">
       </p>
-      公開鍵<input type="text" id="koukaikeym"  size="8">
+      公開鍵 n <input type="text" id="koukaikeym"  size="10">
+      公開鍵 e <input type="text" id="koukaikeye"  size="10">
+      秘密鍵 <input type="text" class="jyushinhimitsu" id="himitsukey"  size="10">
     </li>
-    <li>受信者が公開鍵を公開する。</li>
-    <li>送信者は、受信者の公開鍵を用いてデータを暗号化し、送信する。</li>
-    <li>受信者は秘密鍵を用いてデータを復号する。</li>
+    <li>送信者は、受信者の公開鍵を用いてデータを暗号化し、送信する。<span class="stronger">元の文はひらがなで4文字までとする。</span>
+      <p>
+        公開鍵 n <input type="text" id="koukaikeymsoushin"  size="10">
+        公開鍵 e <input type="text" id="koukaikeyesoushin"  size="10">
+      </p>
+      <p>
+        元の文 <input type="text" id="motobun" class="soushinhimitsu" size="10">
+        <button onclick="generatesoushindata()">送信データを作成する</button><br>
+        (送信者の)秘密の情報を隠す<input type="checkbox" id="hidesoushin">
+      </p>
+      <p>
+        元の文を数値化 <input type="text" id="suutikabun" class="soushinhimitsu" size="10">
+      </p>
+      <p>
+        暗号化した文 <input type="text" id="angoubun"  size="10">
+      </p>
+    </li>
+
+    <li>受信者は公開鍵と秘密鍵を用いてデータを復号する。
+      <p>
+        公開鍵 n <input type="text" id="koukaikeyfukugou"  size="10">
+      </p>
+      <p>
+        秘密鍵 <input type="text" class="jyushinhimitsu" id="himitsukey2"  size="10">
+      </p>
+      <p>
+        暗号化した文 <input type="text" id="angoubun2"  size="10">
+        <button onclick="fukugou()">復号する</button>
+      </p>
+      <p>
+        復号した文 <input type="text" id="fukugou"  size="10">
+      </p>
+      <p>
+        復号文をひらがなに <input type="text" id="fukugou2"  size="10">
+      </p>
+
+    </li>
   </ol>
 
-  <h2>6.文字列の比較</h2>
-  <p>数値が等しいかどうか判定するには==を用いた。</p>
-  <pre class="prettyprint lang-js linenums">
-  let x = 0;
-  let y = 0;
-
-  if (x == 10) {
-    y = 100;
-  } else {
-    y = 200;
-  }
-  </pre>
-  <p>上の例では、yに200が代入される。</p>
-  <pre class="prettyprint lang-js linenums">
-  let x = "きのこ";
-  let y = 0;
-
-  if (x == "きのこ") {
-    y = 100;
-  } else {
-    y = 200;
-  }
-  </pre>
-  <p><span class="stronger">文字列の比較も==で行うことができる。</span>上の例では、yに100が代入される。</p>
-
-  <h2>7.文字列の分解</h2>
-  <p>文字列を一文字ずつに分解するには次のようsplit関数を使う。</p>
-  <pre class="prettyprint lang-js linenums">
-  let x, myStr, myArr;
-
-  myStr = "まいう";
-  myArr = myStr.split('');
-  x = myArr.length;
-  </pre>
-  <p>上の処理によりmyArr には ["ま","い","う"] が代入される。split関数に渡しているパラメータは空文字列であり、これは全部バラバラにしろという意味である。また、配列の長さは4行目のように配列名.lengthで取得できる。この例ではxに3が代入される。</p>
-
-
-  <p class="reidaibox"><span class="reidai">例題1</span> 今回の暗号化のルールで文字列「ほし」を暗号化するとどうなるか</p>
-  <textarea id="inputBox01"></textarea>
-  <button onClick="kakunin01()">確認する</button>
-  <div id="result01">結果:</div>
-
-  <p class="reidaibox"><span class="reidai">例題2</span> 今回の暗号化のルールで文字列「ぎき」を復号するとどうなるか</p>
-  <textarea id="inputBox02"></textarea>
-  <button onClick="kakunin02()">確認する</button>
-  <div id="result02">結果:</div>
-
-  <p class="reidaibox"><span class="reidai">例題3</span> パラメータとして文字列を受け取り、今回の暗号化のルールで暗号化した文字列を返す関数myEncryptを定義せよ。</p>
-  <textarea id="inputBox03"></textarea>
-  <button onClick="kakunin03()">確認する</button>
-  <div id="result03">結果:</div>
-
-  <p class="reidaibox"><span class="reidai">例題4</span> パラメータとして文字列を受け取り、今回の暗号化のルールで復号した文字列を返す関数myDecryptを定義せよ。</p>
-  <textarea id="inputBox04"></textarea>
-  <button onClick="kakunin04()">確認する</button>
-  <div id="result04">結果:</div>
-
   <p>
-    <a href="programmingCourse11.html">第11回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse13.html">第13回へ</a>
+    <a href="programmingCourse12.html">第12回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse13.html">第13回へ</a>
   </p>
 </div>
 </body>
