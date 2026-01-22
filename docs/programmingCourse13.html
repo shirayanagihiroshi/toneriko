@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
   <title>javascript プログラミング講座 第13回</title>
   <meta charset="utf-8">
@@ -7,111 +8,36 @@
   <link rel="stylesheet" href="programmingCourse.css">
   <script src="programmingCourse.js"></script>
   <script src="programmingCourse13.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
 </head>
+
 <body>
 <div class="box1">
-
   <h1>プログラミング講座 第13回</h1>
-  <p>第13回の目標：プログラミングを通してデータの分析について理解を深める。</p>
+  <p>第13回の目標：プログラミングを通してデータベースについて理解を深める。</p>
 
-  <h2>1.代表値</h2>
-  <p>データの特徴を表す数値を<span class="stronger">代表値</span>という。</p>
-  <p>代表値には、平均値や最頻値や中央値などがある。</p>
+  <h2>1.データベースの概要</h2>
+  <p><span class="stronger">データベース(DataBase,DB)</span>とはデータを構造化して蓄積し、利用しやすいようにするものである。2025年時点では<span class="stronger">関係データベース(Relational DataBase,RDB)</span>が多く使われている。</p>
 
-  <h2>2.平均値</h2>
-  <p>データの和をデータの個数で割ったもの。</p>
-  <p>\( x_1, x_2, \cdots , x_n \) の平均値を\( \overline{x} \)とすると\( \overline{x} = \frac{1}{n}(x_1 + x_2 + \cdots + x_n) \)である。</p>
+  <h2>2.DBMSの機能</h2>
+  <p>DBが倉庫だとすると、倉庫を管理する存在として<span class="stronger">データベースマネージメントシステム(DBMS)</span>がある。DBMSがデータを操作する機能を提供しており、データを操作する命令を記述する言語は<span class="stronger">SQL(Structured Query Language)</span>とよばれる。</p>
 
-  <p class="reidaibox"><span class="reidai">例題1</span> パラメータとして数値からなる配列を引き受け、各数値の平均値を返す関数 myAverageを定義せよ</p>
-  <pre class="prettyprint lang-js linenums">
-  function myAverage(arr) {
-    let n = arr.length; // このようにしてパラメータの配列の要素数を取得できる
+  <p>また、例えばAさんがBさんにお金を1000円振り込むとする。Aさんの口座から1000円引く操作とBさんの口座に100足す操作はかならずセットで行われなければならないことが分かるだろう。このように操作のかたまりを決めて、それが全部行われる（またはエラー時にはまったく行われない）ようにするような気の利いた機能などをDBMSは持っている。が、この講座では詳しく触れない。</p>
 
-  }
-  </pre>
+  <h2>3.SQLの基本</h2>
+  <p>工事中です</p>
 
+  <h2>4.SQLを書いて、DBを操作してみよう</h2>
+  <p>工事中です</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> DBを操作します</p>
   <textarea id="inputBox01"></textarea>
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
 
-  <h2>3.最頻値</h2>
-  <p>データで最も個数の多い値。これは質的データを扱うときに使うものである。</p>
-
-  <p class="reidaibox"><span class="reidai">例題2</span> パラメータとして値が"りんご"or"みかん"or"ぶどう"からなる配列を引き受け、その最頻値を返す関数 myModeを定義せよ。ただし、最頻値が1つのケースで動けばよいとする</p>
-  <textarea id="inputBox02"></textarea>
-  <button onClick="kakunin02()">確認する</button>
-  <div id="result02">結果:</div>
-
-  <h2>4.中央値</h2>
-  <p>データを小さい順にならべたときに中央にくる値。データが奇数個であれば中央のデータの値であり、データが偶数個であれば中央に並ぶ2個の平均値である。</p>
-  <p>並び替えは以下のようにすることができる。</p>
-  <pre class="prettyprint lang-js linenums">
-    let array1 = [4,3,2]
-
-    array1.sort(); // このようにしてリストを小さい順に並び替えられる。
-                   // この命令が実行されるとarray1は[2,3,4]になる
-  </pre>
-  <p>なお、配列.sort()では、要素を文字列に変換し、アルファベット順みたいな感じで並び替える。sort()に関数を渡すことで別の並び替えも可能である(<a href="programmingCourse04.html#highOrderFunction" target="_blank">高階関数を参照</a>)が、あまり気にしなくてよい。</p>
-  <p>また、割り算は/で計算できるが、商はMath.floor( / )で、余りは%で求められる。</p>
-  <pre class="prettyprint lang-js linenums">
-    let x = 30 / 4;             // xには7.5が代入される。
-    let y = Math.floor(30 / 4); // yには30を4で割った商の7が代入される。
-    let z = 30 % 4;             // zには30を4で割った余りの2が代入される。
-  </pre>
-
-  <p class="reidaibox"><span class="reidai">例題3</span> パラメータとして1桁の整数値からなる配列を引き受け、中央値を返す関数 myMedianを定義せよ </p>
-  <textarea id="inputBox03"></textarea>
-  <button onClick="kakunin03()">確認する</button>
-  <div id="result03">結果:</div>
-
-  <h2>5.四分位数（しぶんいすう）</h2>
-  <p>データを小さい順に並べたときに、データを4等分する位置にある3つの値をそれぞれ第1四分位数、第2四分位数、第3四分位数という。第2四分位数は中央値に等しい。</p>
-  <p>下のような箱ひげ図として表現されることが多い。</p>
-  <img src="programmingCourse13_01.png">
-
-  <h2>6.分散</h2>
-  <p><span class="stronger">分散</span>はデータの散らばり具合を表す代表値である。</p>
-  <p>\( x_1, x_2, \cdots , x_n \) の分散を\( s^2 \) とすると、\( s^2 = \frac{1}{n} \{ (x_1 - \overline{x})^2 + (x_2 - \overline{x})^2 + \cdots  + (x_n - \overline{x})^2 \} \)である。</p>
-  <p>なお、上の式で登場する\( (x_1 - \overline{x}) , (x_2 - \overline{x}) \cdots , (x_n - \overline{x}) \)を偏差という。</p>
-
-  <p class="reidaibox"><span class="reidai">例題4</span> パラメータとして数値からなる配列を引き受け、分散を返す関数 myVarianceを定義せよ </p>
-  <textarea id="inputBox04"></textarea>
-  <button onClick="kakunin04()">確認する</button>
-  <div id="result04">結果:</div>
-
-  <h2>7.標準偏差</h2>
-  <p>\( \sqrt{分散} \)を<span class="stronger">標準偏差</span>という</p>
-
-  <p>なお、ルートは以下のように計算する。</p>
-  <pre class="prettyprint lang-js linenums">
-  let x = 16;
-  y = Math.sqrt(x); //ルートx を計算してyに代入する。ここではyは4になる
-  </pre>
-
-  <h2>8.相関係数</h2>
-  <p>\( (x_1, y_1), (x_2, y_2), \cdots ,(x_n, y_n) \)に対して\( \frac{1}{n} \{ (x_1 - \overline{x})(y_1 - \overline{y}) + (x_2 - \overline{x})(y_2 - \overline{y}) + \cdots + (x_n - \overline{x})(y_n - \overline{y}) \} \)を<span class="stronger">共分散</span>といい、\( s_{xy} \)と書く。</p>
-  <p>\( s_{xy} \)とxの標準偏差\( s_x \) ,yの標準偏差\( s_y \) を用いて定義した \( r = \dfrac{s_{xy}}{s_x s_y} \)を<span class="stronger">相関係数</span>という。</p>
-
-  <p>相関係数は\( -1 \leqq r \leqq 1 \)の範囲の値をとり、1に近いほど正の相関が強く、-1に近いほど負の相関が強い。また相関がないときは0に近い値をとる。</p>
-
-  <p class="reidaibox"><span class="reidai">例題5</span> \( [ [x_1,y_1], [x_2,y_2], \cdots, [x_n,y_n] ] \)のようなデータ(長さ2の配列の配列)をパラメータとして受け取り、相関係数を返す関数myCCを定義せよ。</p>
-
-  <pre class="prettyprint lang-js linenums">
-    // 配列の配列の扱い方
-    let x = [[5,3], [6,2], [4,7]];
-
-    let y = x[0];    // yには配列xの0番目つまり、[5,3]が代入される。yは配列である。
-    let z = x[0][1]; // zには配列x[0]の1番目つまり3が代入される。zは配列でなく値である。
-  </pre>
-
-  <textarea id="inputBox05"></textarea>
-  <button onClick="kakunin05()">確認する</button>
-  <div id="result05">結果:</div>
-
   <p>
-    <a href="programmingCourse12.5.html">第12.5回へ</a> <a href="index.html">目次へ</a>
+    <a href="programmingCourse12.5.html">第12.5回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse14.html">第14回へ</a>
   </p>
 </div>
 </body>
-<html>
-
+</html>
