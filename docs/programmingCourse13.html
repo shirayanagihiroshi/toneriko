@@ -17,18 +17,53 @@
   <p>第13回の目標：プログラミングを通してデータベースについて理解を深める。</p>
 
   <h2>1.データベースの概要</h2>
-  <p><span class="stronger">データベース(DataBase,DB)</span>とはデータを構造化して蓄積し、利用しやすいようにするものである。2025年時点では<span class="stronger">関係データベース(Relational DataBase,RDB)</span>が多く使われている。</p>
+  <p><span class="stronger">データベース(DataBase,DB)</span>とはデータを構造化して蓄積し、利用しやすいようにするものである。2025年時点では<span class="stronger">関係データベース(Relational DataBase,RDB)</span>が多く使われている。以降はRDBの説明である。</p>
 
-  <h2>2.DBMSの機能</h2>
+  <h2>2.RDBの基本</h2>
+  <h3>2-1.テーブル</h3>
+  <table border="1" class="BGstronger">
+    <tr><td>生徒ID</td><td>氏名</td><td>住所</td></tr>
+    <tr><td>1001</td><td>A子</td><td>MM町</td></tr>
+    <tr><td>1002</td><td>B子</td><td>NN町</td></tr>
+    <tr><td>1003</td><td>C子</td><td>OO町</td></tr>
+  </table>
+  <p>RDBではエクセルの表のようなデータを扱う。表を<span class="stronger">テーブル</span>という。普通データベースはいくつものテーブルを持つ。<p>
+  <h3>2-2.カラム</h2>
+  <table border="1">
+    <tr><td>生徒ID</td><td class="BGstronger">氏名</td><td>住所</td></tr>
+    <tr><td>1001</td><td class="BGstronger">A子</td><td>MM町</td></tr>
+    <tr><td>1002</td><td class="BGstronger">B子</td><td>NN町</td></tr>
+    <tr><td>1003</td><td class="BGstronger">C子</td><td>OO町</td></tr>
+  </table>
+  <p>表の列を<span class="stronger">カラム</span>や<span class="stronger">フィールド</span>という。この講座ではカラムと呼ぶことにする。カラム毎に数値を保存する、文字列を保存する等のルールが決まっていて、そうでないデータは保存できない。<p>
+  <h3>2-3.レコード</h3>
+  <table border="1">
+    <tr><td>生徒ID</td><td>氏名</td><td>住所</td></tr>
+    <tr><td>1001</td><td>A子</td><td>MM町</td></tr>
+    <tr class="BGstronger"><td>1002</td><td>B子</td><td>NN町</td></tr>
+    <tr><td>1003</td><td>C子</td><td>OO町</td></tr>
+  </table>
+  <p>テーブルにおける行を<span class="stronger">レコード</span>や<span class="stronger">ロウ</span>という。この講座ではレコードと呼ぶことにする。エクセル等の表計算ソフトではせいぜい数千行のデータを扱うが、データベースではそれより多くのデータを扱うことができる。<p>
+  <h3>2-4.フィールド</h3>
+  <table border="1">
+    <tr><td>生徒ID</td><td>氏名</td><td>住所</td></tr>
+    <tr><td>1001</td><td>A子</td><td>MM町</td></tr>
+    <tr><td>1002</td><td>B子</td><td>NN町</td></tr>
+    <tr><td>1003</td><td class="BGstronger">C子</td><td>OO町</td></tr>
+  </table>
+  <p>フィールドという用語には少々注意が必要で、2-2の意味で(つまりカラムと同じ意味で)フィールドということもあれば、表における一つのセルの値を指すこともある。<p>
+  
+
+  <h2>3.DBMSの機能</h2>
   <p>DBが倉庫だとすると、倉庫を管理する存在として<span class="stronger">データベースマネージメントシステム(DBMS)</span>がある。DBMSがデータを操作する機能を提供しており、データを操作する命令を記述する言語は<span class="stronger">SQL(Structured Query Language)</span>とよばれる。</p>
 
   <p>また、例えばAさんがBさんにお金を1000円振り込むとする。Aさんの口座から1000円引く操作とBさんの口座に100足す操作はかならずセットで行われなければならないことが分かるだろう。このように操作のかたまりを決めて、それが全部行われる（またはエラー時にはまったく行われない）ようにするような気の利いた機能などをDBMSは持っている。が、この講座では詳しく触れない。</p>
 
-  <h2>3.SQLの基本</h2>
+  <h2>4.SQLの基本</h2>
   <p>工事中です</p>
 
-  <h2>4.SQLを書いて、DBを操作してみよう</h2>
-  <p>工事中です</p>
+  <h2>5.SQLを書いて、DBを操作してみよう</h2>
+
 
   <p class="reidaibox"><span class="reidai">例題1</span> DBを操作します</p>
   <textarea id="inputBox01"></textarea>
