@@ -7,14 +7,14 @@ const prepare = [
   "CREATE TABLE students (studentID INT, name TEXT, address TEXT, height INT, weight INT);",
   "INSERT INTO students VALUES (1001, 'A子', 'HH町', 150, 50);",
   "INSERT INTO students VALUES (1002, 'B子', 'HH町', 162, 58);",
-  "INSERT INTO students VALUES (1003, 'C子', 'HH町', 149, 51);",
+  "INSERT INTO students VALUES (1003, 'C子', 'II町', 149, 51);",
   "INSERT INTO students VALUES (1004, 'D子', 'II町', 155, 53);",
-  "INSERT INTO students VALUES (1005, 'E子', 'II町', 144, 48);",
+  "INSERT INTO students VALUES (1005, 'E子', 'MM町', 144, 48);",
   "INSERT INTO students VALUES (1006, 'A男', 'HH町', 160, 62);",
-  "INSERT INTO students VALUES (1007, 'B男', 'HH町', 158, 59);",
-  "INSERT INTO students VALUES (1008, 'C男', 'HH町', 170, 65);",
-  "INSERT INTO students VALUES (1009, 'D男', 'HH町', 154, 49);",
-  "INSERT INTO students VALUES (1010, 'E男', 'II町', 161, 57);",
+  "INSERT INTO students VALUES (1007, 'B男', 'II町', 158, 59);",
+  "INSERT INTO students VALUES (1008, 'C男', 'MM町', 170, 65);",
+  "INSERT INTO students VALUES (1009, 'D男', 'KK町', 154, 49);",
+  "INSERT INTO students VALUES (1010, 'E男', 'KK町', 161, 57);",
   ];
 
 // ページの読み込み完了時にデータベースを初期化する
@@ -136,4 +136,9 @@ function kakunin03() {
 // 例題4　SQLを実行してチェックする
 function kakunin04() {
   sqlPracticeSelect("inputBox04", "result04");
+}
+
+// 例題5　SQLを実行してチェックする
+function kakunin05() {
+  sqlPracticeSelect("inputBox05", "result05");
 }

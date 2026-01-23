@@ -60,7 +60,9 @@
   <p>他にも、例えばAさんがBさんにお金を1000円振り込むとする。Aさんの口座から1000円を引く操作とBさんの口座に1000円を足す操作はかならずセットで行われなければならないことが分かるだろう。このように操作のかたまりを決めて、それが全部行われる（またはエラー時にはまったく行われない）ようにするような気の利いた機能などをDBMSは持っている。が、この講座では詳しく触れない。</p>
 
   <h2>4.SQLの基本</h2>
-  <p>SQLはデータベースに「こういうデータが欲しい」「このデータを追加して」と命令するための言語である。データベースに対する命令を<span class="stronger">クエリ</span>ということもある。</p>
+  <p>SQLはDBMSに「こういうデータが欲しい」「このデータを追加して」と命令するための言語である。DBMSに対する命令を<span class="stronger">クエリ</span>ということもある。</p>
+  <p>SQLの文法はこれまで学んできたjavascriptとは<span class="stronger">別</span>である。新たな言語を覚えるのを大変に感じる人もいるかもしれないが、SQLの文法は簡単であるので心配はいらない。</p>
+  <p>SQLは大文字と小文字を区別しないが、SQLのキーワードは大文字、テーブル名やカラム名は小文字で書くのが慣例である。</p>
 
   <h3>4-1.SELECT</h3>
   <p>まずはデータベースからデータを取り出すため命令を扱う。</p>
@@ -90,20 +92,20 @@
   <h3>4-3.SELECT(レコードを指定)</h3>
 
   <pre class="prettyprint lang-js linenums">
-  SELECT * FROM students where address = 'HH町';
+  SELECT * FROM students WHERE address = 'HH町';
   </pre>
 
-  <p>SELECT文ではすべてのレコードを取得しなくともよい。上記でstudentsテーブルのaddressが'HH町'であるデータを取得できる。</p>
-  <p>SQLの文法はjavascriptの文法とは異なり、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値は'で挟まなくてよい。使える演算子をいくつか示す。</p>
+  <p>SELECT文ではすべてのレコードを取得しなくともよい。上記でstudentsテーブルのaddressが HH町 であるデータを取得できる。</p>
+  <p>SQLにおいて、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値は挟まなくてよい。使える比較演算子をいくつか示す。</p>
   <table border=1>
-    <tr><td>演算子</td><td>意味</td></tr>
+    <tr><td>比較演算子</td><td>意味</td></tr>
     <tr><td>A=B</td><td>AとBが等しい</td></tr>
     <tr><td>A<>B</td><td>AとBが等しくない</td></tr>
     <tr><td>A>B</td><td>AがBより大きい</td></tr>
     <tr><td>A>=B</td><td>AがB以上である</td></tr>
     <tr><td>A&lt;B</td><td>AがBより小さい</td></tr>
     <tr><td>A&lt;=B</td><td>AがB以下である</td></tr>
-    <tr><td>A between B and C</td><td>AがBとCの間にある(境界は含む)</td></tr>
+    <tr><td>A BETWEEN B AND C</td><td>AがBとCの間にある(境界は含む)</td></tr>
   </table>
 
   <p class="reidaibox"><span class="reidai">例題3</span> studentsテーブルのすべてのカラムをweightが55以上のもののみ取得せよ。</p>
@@ -117,6 +119,19 @@
   <div id="result04">結果:</div>
 
   <h3>4-4.SELECT(複数条件)</h3>
+  <p>WHERE節では複数の条件を指定することもできる。</p>
+
+  <pre class="prettyprint lang-js linenums">
+  SELECT * FROM students WHERE height >= 160 AND weight >= 60;
+  </pre>
+  <p>上記でheightが160以上でかつweightが60以上のレコードを取得することができる。</p>
+  <p>この例のANDのようなもの論理演算子というが、ANDのほか、OR、NOTも使える。</p>
+
+studentID,name,address
+  <p class="reidaibox"><span class="reidai">例題5</span> studentsテーブルのstudentID,name,addressをaddressが HH町 かまたは II町 であるもののみ取得せよ。</p>
+  <textarea id="inputBox05"></textarea>
+  <button onClick="kakunin05()">確認する</button>
+  <div id="result05">結果:</div>
 
   <p>
     <a href="programmingCourse12.5.html">第12.5回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse14.html">第14回へ</a>
