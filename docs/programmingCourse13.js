@@ -4,17 +4,43 @@
 let db;
 
 const prepare = [
-  "CREATE TABLE students (studentID INT, name TEXT, address TEXT, height INT, weight INT);",
-  "INSERT INTO students VALUES (1001, 'A子', 'HH町', 150, 50);",
-  "INSERT INTO students VALUES (1002, 'B子', 'HH町', 162, 58);",
-  "INSERT INTO students VALUES (1003, 'C子', 'II町', 149, 51);",
-  "INSERT INTO students VALUES (1004, 'D子', 'II町', 155, 53);",
-  "INSERT INTO students VALUES (1005, 'E子', 'MM町', 144, 48);",
-  "INSERT INTO students VALUES (1006, 'A男', 'HH町', 160, 62);",
-  "INSERT INTO students VALUES (1007, 'B男', 'II町', 158, 59);",
-  "INSERT INTO students VALUES (1008, 'C男', 'MM町', 170, 65);",
-  "INSERT INTO students VALUES (1009, 'D男', 'KK町', 154, 49);",
-  "INSERT INTO students VALUES (1010, 'E男', 'KK町', 161, 57);",
+  "CREATE TABLE students (studentID INT, name TEXT, address TEXT, height INT, weight INT, clubID INT);",
+  "INSERT INTO students VALUES (1001, 'A子', 'HH町', 150, 50, 1);",
+  "INSERT INTO students VALUES (1002, 'B子', 'HH町', 162, 58, 3);",
+  "INSERT INTO students VALUES (1003, 'C子', 'II町', 149, 51, 4);",
+  "INSERT INTO students VALUES (1004, 'D子', 'II町', 155, 53, 4);",
+  "INSERT INTO students VALUES (1005, 'E子', 'MM町', 144, 48, NULL);",
+  "INSERT INTO students VALUES (1006, 'A男', 'HH町', 160, 62, NULL);",
+  "INSERT INTO students VALUES (1007, 'B男', 'II町', 158, 59, 1);",
+  "INSERT INTO students VALUES (1008, 'C男', 'MM町', 170, 65, 3);",
+  "INSERT INTO students VALUES (1009, 'D男', 'KK町', 154, 49, NULL);",
+  "INSERT INTO students VALUES (1010, 'E男', 'KK町', 161, 57, 4);",
+  "CREATE TABLE club (clubID INT, clubname TEXT);",
+  "INSERT INTO club VALUES (1, 'ソフトボール部');",
+  "INSERT INTO club VALUES (2, 'ラクロス部');",
+  "INSERT INTO club VALUES (3, '協議プログラミング部');",
+  "INSERT INTO club VALUES (4, '学食研究会');",
+  "CREATE TABLE composition (studentID INT, nendo INT, gakunen INT, class INT, bangou INT);",
+  "INSERT INTO composition VALUES (1001, 2024, 1, 1, 1);",
+  "INSERT INTO composition VALUES (1002, 2024, 1, 1, 2);",
+  "INSERT INTO composition VALUES (1003, 2024, 1, 1, 3);",
+  "INSERT INTO composition VALUES (1004, 2024, 1, 1, 4);",
+  "INSERT INTO composition VALUES (1005, 2024, 1, 1, 5);",
+  "INSERT INTO composition VALUES (1006, 2024, 1, 2, 1);",
+  "INSERT INTO composition VALUES (1007, 2024, 1, 2, 2);",
+  "INSERT INTO composition VALUES (1008, 2024, 1, 2, 3);",
+  "INSERT INTO composition VALUES (1009, 2024, 1, 2, 4);",
+  "INSERT INTO composition VALUES (1010, 2024, 1, 2, 5);",
+  "INSERT INTO composition VALUES (1001, 2025, 2, 1, 1);",
+  "INSERT INTO composition VALUES (1002, 2025, 2, 2, 1);",
+  "INSERT INTO composition VALUES (1003, 2025, 2, 2, 2);",
+  "INSERT INTO composition VALUES (1004, 2025, 2, 1, 2);",
+  "INSERT INTO composition VALUES (1005, 2025, 2, 2, 3);",
+  "INSERT INTO composition VALUES (1006, 2025, 2, 1, 3);",
+  "INSERT INTO composition VALUES (1007, 2025, 2, 1, 4);",
+  "INSERT INTO composition VALUES (1008, 2025, 2, 2, 4);",
+  "INSERT INTO composition VALUES (1009, 2025, 2, 1, 5);",
+  "INSERT INTO composition VALUES (1010, 2025, 2, 2, 5);"
   ];
 
 // ページの読み込み完了時にデータベースを初期化する
@@ -141,4 +167,24 @@ function kakunin04() {
 // 例題5　SQLを実行してチェックする
 function kakunin05() {
   sqlPracticeSelect("inputBox05", "result05");
+}
+
+// 例題6　SQLを実行してチェックする
+function kakunin06() {
+  sqlPracticeSelect("inputBox06", "result06");
+}
+
+// 例題7　SQLを実行してチェックする
+function kakunin07() {
+  sqlPracticeSelect("inputBox07", "result07");
+}
+
+// 例題8　SQLを実行してチェックする
+function kakunin08() {
+  sqlPracticeSelect("inputBox08", "result08");
+}
+
+// 例題9　SQLを実行してチェックする
+function kakunin09() {
+  sqlPracticeSelect("inputBox09", "result09");
 }
