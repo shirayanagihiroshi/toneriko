@@ -74,13 +74,49 @@
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
 
-  <h2>5.SQLを書いて、DBを操作してみよう</h2>
+  <h3>4-2.SELECT(カラムを指定)</h3>
 
+  <pre class="prettyprint lang-js linenums">
+  SELECT studentID, name FROM students;
+  </pre>
 
-  <p class="reidaibox"><span class="reidai">例題1</span> DBを操作します</p>
-  <textarea id="inputBox01"></textarea>
-  <button onClick="kakunin01()">確認する</button>
-  <div id="result01">結果:</div>
+  <p>SELECT文ではすべてのカラムを取得しなくともよい。上記でstudentsテーブルのstudentIDとnameのカラムを取得することができる。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> studentsテーブルのstudentID, name, addressのカラムを取得せよ。</p>
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <h3>4-3.SELECT(レコードを指定)</h3>
+
+  <pre class="prettyprint lang-js linenums">
+  SELECT * FROM students where address = 'HH町';
+  </pre>
+
+  <p>SELECT文ではすべてのレコードを取得しなくともよい。上記でstudentsテーブルのaddressが'HH町'であるデータを取得できる。</p>
+  <p>SQLの文法はjavascriptの文法とは異なり、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値は'で挟まなくてよい。使える演算子をいくつか示す。</p>
+  <table border=1>
+    <tr><td>演算子</td><td>意味</td></tr>
+    <tr><td>A=B</td><td>AとBが等しい</td></tr>
+    <tr><td>A<>B</td><td>AとBが等しくない</td></tr>
+    <tr><td>A>B</td><td>AがBより大きい</td></tr>
+    <tr><td>A>=B</td><td>AがB以上である</td></tr>
+    <tr><td>A&lt;B</td><td>AがBより小さい</td></tr>
+    <tr><td>A&lt;=B</td><td>AがB以下である</td></tr>
+    <tr><td>A between B and C</td><td>AがBとCの間にある(境界は含む)</td></tr>
+  </table>
+
+  <p class="reidaibox"><span class="reidai">例題3</span> studentsテーブルのすべてのカラムをweightが55以上のもののみ取得せよ。</p>
+  <textarea id="inputBox03"></textarea>
+  <button onClick="kakunin03()">確認する</button>
+  <div id="result03">結果:</div>
+
+  <p class="reidaibox"><span class="reidai">例題4</span> studentsテーブルのstudentID, name, heightをheightが150から160までのもののみ取得せよ。</p>
+  <textarea id="inputBox04"></textarea>
+  <button onClick="kakunin04()">確認する</button>
+  <div id="result04">結果:</div>
+
+  <h3>4-4.SELECT(複数条件)</h3>
 
   <p>
     <a href="programmingCourse12.5.html">第12.5回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse14.html">第14回へ</a>
