@@ -35,7 +35,7 @@
     <tr><td>1002</td><td class="BGstronger">B子</td><td>NN町</td></tr>
     <tr><td>1003</td><td class="BGstronger">C子</td><td>OO町</td></tr>
   </table>
-  <p>表の列を<span class="stronger">カラム</span>や<span class="stronger">フィールド</span>という。この講座ではカラムと呼ぶことにする。<p>
+  <p>表の列を<span class="stronger">カラム</span>や<span class="stronger">フィールド</span>という。この講座ではカラムと呼ぶことにする。通常、カラムごとに数値のデータが格納されるとか、文字列のデータが格納されるなどのデータの型が決まっている。<p>
   <h3>2-3.レコード</h3>
   <table border="1">
     <tr><td>生徒ID</td><td>氏名</td><td>住所</td></tr>
@@ -97,6 +97,7 @@
   </pre>
 
   <p>SELECT文ではすべてのレコードを取得しなくともよい。上記でstudentsテーブルのaddressが HH町 であるデータを取得できる。</p>
+  <p>文法としては<span class="stronger">WHERE 絞り込み条件</span>である。</p>
   <p>SQLにおいて、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値は挟まなくてよい。使える比較演算子をいくつか示す。</p>
   <table border=1>
     <tr><td>比較演算子</td><td>意味</td></tr>
@@ -127,7 +128,7 @@
   SELECT * FROM students WHERE height >= 160 AND weight >= 60;
   </pre>
   <p>上記でheightが160以上でかつweightが60以上のレコードを取得することができる。</p>
-  <p>この例のANDのようなもの論理演算子というが、ANDのほか、OR、NOTも使える。</p>
+  <p>この例のANDのようなもの<span class="stronger">論理演算子</span>というが、ANDのほか、OR、NOTも使える。</p>
 
   <p class="reidaibox"><span class="reidai">例題5</span> studentsテーブルのstudentID,name,addressをaddressが HH町 かまたは II町 であるもののみ取得せよ。</p>
   <textarea id="inputBox05"></textarea>
@@ -136,7 +137,7 @@
 
   <h3>4-5.SELECT(JOIN)</h3>
   <p>これまでは1つのテーブルからデータを取り出してきた。一方、実際の運用では複数のテーブルにまたがった情報が必要になることがある。</p>
-  <p>そんなときは共通のキーを基にテーブルを結合し、一つの大きなテーブルのように扱ってデータを抽出するJOIN(結合)という機能を使う。JOINにはINNER JOINとOUTER JOINがある。</p>
+  <p>そんなときは共通のキーを基にテーブルを結合し、一つの大きなテーブルのように扱ってデータを抽出する<span class="stronger">JOIN(結合)</span>という機能を使う。JOINにはINNER JOINとOUTER JOINがある。</p>
 
   <h3>4-5-1.INNER JOIN (内部結合)</h3>
   <p>INNER JOINは2つのテーブルを結合するが、キーが両方のテーブルに存在するデータたちのみ取得する。</p>
@@ -145,7 +146,8 @@
   SELECT students.name, club.clubname FROM students JOIN club ON students.clubID = club.clubID;
   </pre>
   <p>文法としては<span class="stronger">FROM</span> students <span class="stronger">JOIN</span> club <span class="stronger">ON 結合の条件</span>となっているところに注意せよ。</p>
-  <p>この例では、studentsとclubという2つのテーブルを結合している。結合するときキーになっているのがclubIDカラムである。studentsテーブルにも、clubテーブルにもclubIDカラムがあり、それらが値を持ち、さらに等しいデータのみが取得される。</p>
+  <p>そして、結合の条件は<span class="stronger">テーブル名.カラム名</span>のように、ドット(.)でつないで書くことにも注意せよ。</p>
+  <p>この例では、studentsとclubという2つのテーブルを結合している。結合するときキーになっているのがclubIDカラムである。studentsテーブルにも、clubテーブルにもclubIDカラムがある。それらが値を持ち、さらに等しいデータのみが取得される。</p>
   <p>この方法だとstudentsの全員は表示されない。studentsテーブルの何人かはclubIDを持っていない(NULL)からである。</p>
 
   <p class="reidaibox"><span class="reidai">例題6</span> studentsテーブルとclubテーブルをclubIDをキーにINNER JOINせよ。</p>
@@ -154,12 +156,13 @@
   <div id="result06">結果:</div>
 
   <h3>4-5-2.LEFT OUTER JOIN (外部結合)</h3>
-  <p>INNER JOINは両方のテーブルにキーが存在するデータたちのみ取得する方法であったのに対して、片方のテーブルを優先し、キーが見つからなかったとして強引に結合する方法OUTER JOINという。</p>
+  <p>INNER JOINは両方のテーブルにキーが存在するデータたちのみ取得する方法であった。つまりINNER JOINで2つのテーブルを結合すると、どちらのテーブルのデータも欠ける可能性がある。</p>
+  <p>これに対して、片方のテーブルを優先し、優先するテーブルのレコードはすべて含まれるようにする結合方法をOUTER JOINという。キーが無い部分はNULLとなる。</p>
 
   <pre class="prettyprint lang-js linenums">
   SELECT students.name, club.clubname FROM students LEFT JOIN club ON students.clubID = club.clubID;
   </pre>
-  <p>文法としては<span class="stronger">FROM</span> students <span class="stronger"> LEFT JOIN</span> club <span class="stronger">ON 結合の条件</span>となっている。</p>
+  <p>文法としては<span class="stronger">FROM</span> students <span class="stronger"> LEFT JOIN</span> club <span class="stronger">ON 結合の条件</span>である。文法はINNER JOINとよく似ていて、LEFTが増えただけである。</p>
   <p>この方法だと、studentsの全員が表示され、clubIDを持っていないもののclubnameはNULLになる。</p>
 
   <p class="reidaibox"><span class="reidai">例題7</span> studentsテーブルとclubテーブルをclubIDをキーにLEFT OUTER JOINせよ。</p>
@@ -168,7 +171,7 @@
   <div id="result07">結果:</div>
 
   <h3>4-6.JOIN してさらに絞り込み</h3>
-  <p>JOINとWHERE節は併用できる。WHERE節は最後に書く。</p>
+  <p>JOINとWHERE節は併用できる。WHERE節はJOIN節の後に書く。</p>
   <pre class="prettyprint lang-js linenums">
   SELECT * FROM students JOIN club ON students.clubID = club.clubID WHERE club.clubID = 1;
   </pre>
@@ -178,10 +181,30 @@
   <button onClick="kakunin08()">確認する</button>
   <div id="result08">結果:</div>
 
-  <p class="reidaibox"><span class="reidai">例題9</span> 例題を追加する。</p>
+  <h3>4-7.ORDER BY(並び替え)</h3>
+  <p>取得するレコードたちを並び変えることもできる。</p>
+
+  <pre class="prettyprint lang-js linenums">
+  SELECT * FROM students ORDER BY height ASC;
+  </pre>
+  <p>この例では、studentsテーブルのデータたちをheightの順に(小さいほうから大きいほうへ)並べて取得する。</p>
+  <p>文法としては、<span class="stronger">ORDER BY カラム名 ASC(またはDESC)</span>であることに注意せよ。またWHEREがある場合は、ORDER BY節はその後に書く。</p>
+  <p>大きいほうから小さいほうへ並べるためにはASCの代わりにDESCと書く。<span class="stronger">ASC、DESCの記載は省略してもよい</span>がその場合はASCとして扱われる。</p>
+  <p>OERDER BYの後に、コンマ(,)でつなげて複数のカラム名を書くと、書いた順に優先されて、複数の条件で並び変えることができる。まず優先度の高いカラムの値で並べ、その値が等しいときのみ優先度の低いカラムの順で並べる方式である。</p>
+
+  <p class="reidaibox"><span class="reidai">例題9</span> studentsテーブルのデータをweightの大きい順に取得せよ。</p>
   <textarea id="inputBox09"></textarea>
   <button onClick="kakunin09()">確認する</button>
   <div id="result09">結果:</div>
+
+
+  <p class="reidaibox"><span class="reidai">例題10</span> compositionテーブルには、studentIDカラム、nendoカラム(年度)、gakunenカラム(学年)、classカラム(組)、bangouカラム(出席番号)がある。すべてのカラムは数値型である。例題1などで用いたstudentsテーブルとcompositionテーブルを用いて、2025年度の名簿を表示せよ。名簿には、学年、組、出席番号、氏名が表示されるようにせよ。</p>
+  <textarea id="inputBox10"></textarea>
+  <button onClick="kakunin10()">確認する</button>
+  <div id="result10">結果:</div>
+
+  <p>ここまでSQLで最もよく使われる、データを取得する機能であるSELECT文を扱った。SELECT文には、ここで紹介した他にも合計、平均を算出する機能などがある。</p>
+  <p>SQLにはSELECT文の他にも、テーブルにレコードを追加するINSERT文、テーブルからレコードを削除するDELETE文、テーブルのレコードを更新するUPDATE文、テーブルを作成するCREATE文、テーブルを削除するDROP文などがある。</p>
 
   <p>
     <a href="programmingCourse12.5.html">第12.5回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse14.html">第14回へ</a>

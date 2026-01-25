@@ -18,7 +18,7 @@ const prepare = [
   "CREATE TABLE club (clubID INT, clubname TEXT);",
   "INSERT INTO club VALUES (1, 'ソフトボール部');",
   "INSERT INTO club VALUES (2, 'ラクロス部');",
-  "INSERT INTO club VALUES (3, '協議プログラミング部');",
+  "INSERT INTO club VALUES (3, '競技プログラミング部');",
   "INSERT INTO club VALUES (4, '学食研究会');",
   "CREATE TABLE composition (studentID INT, nendo INT, gakunen INT, class INT, bangou INT);",
   "INSERT INTO composition VALUES (1001, 2024, 1, 1, 1);",
@@ -187,4 +187,9 @@ function kakunin08() {
 // 例題9　SQLを実行してチェックする
 function kakunin09() {
   sqlPracticeSelect("inputBox09", "result09");
+}
+
+// 例題10　SQLを実行してチェックする
+function kakunin10() {
+  sqlPracticeSelect("inputBox10", "result10");
 }
