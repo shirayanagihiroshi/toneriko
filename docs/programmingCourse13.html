@@ -63,7 +63,7 @@
   <p>SQLはDBMSに「こういうデータが欲しい」「このデータを追加して」と命令するための言語である。DBMSに対する命令を<span class="stronger">クエリ</span>ということもある。</p>
   <p>SQLの文法はこれまで学んできたjavascriptとは<span class="stronger">別</span>である。新たな言語を覚えるのを大変に感じる人もいるかもしれないが、SQLの文法は簡単であるので心配はいらない。</p>
   <p>SQLは大文字と小文字を区別しないが、SQLのキーワードは大文字、テーブル名やカラム名は小文字で書くのが慣例である。</p>
-  <p>また、あるレコードのあるカラムに値が設定されていない場合、nullという特別な値になる。値が設定されていないという意味の値である。</p>
+  <p>また、あるレコードのあるカラムに値が設定されていない場合、NULLという特別な値になる。値が設定されていないという意味の値である。</p>
 
   <h3>4-1.SELECT</h3>
   <p>まずはデータベースからデータを取り出すため命令を扱う。</p>
@@ -98,7 +98,7 @@
 
   <p>SELECT文ではすべてのレコードを取得しなくともよい。上記でstudentsテーブルのaddressが HH町 であるデータを取得できる。</p>
   <p>文法としては<span class="stronger">WHERE 絞り込み条件</span>である。</p>
-  <p>SQLにおいて、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値は挟まなくてよい。使える比較演算子をいくつか示す。</p>
+  <p>SQLにおいて、<span class="stronger">等しいは=である</span>。文字列はシングルクオーテーション(')で挟む必要がある。数値はシングルクオーテーション(')で挟まない。使える比較演算子をいくつか示す。</p>
   <table border=1>
     <tr><td>比較演算子</td><td>意味</td></tr>
     <tr><td>A=B</td><td>AとBが等しい</td></tr>
@@ -146,7 +146,7 @@
   SELECT students.name, club.clubname FROM students JOIN club ON students.clubID = club.clubID;
   </pre>
   <p>文法としては<span class="stronger">FROM</span> students <span class="stronger">JOIN</span> club <span class="stronger">ON 結合の条件</span>となっているところに注意せよ。</p>
-  <p>そして、結合の条件は<span class="stronger">テーブル名.カラム名</span>のように、ドット(.)でつないで書くことにも注意せよ。</p>
+  <p>そして取得する内容や結合の条件を記述する際に、カラム名を指定するには<span class="stronger">テーブル名.カラム名</span>のように、ドット(.)でつないで書くことにも注意せよ。</p>
   <p>この例では、studentsとclubという2つのテーブルを結合している。結合するときキーになっているのがclubIDカラムである。studentsテーブルにも、clubテーブルにもclubIDカラムがある。それらが値を持ち、さらに等しいデータのみが取得される。</p>
   <p>この方法だとstudentsの全員は表示されない。studentsテーブルの何人かはclubIDを持っていない(NULL)からである。</p>
 
@@ -188,7 +188,7 @@
   SELECT * FROM students ORDER BY height ASC;
   </pre>
   <p>この例では、studentsテーブルのデータたちをheightの順に(小さいほうから大きいほうへ)並べて取得する。</p>
-  <p>文法としては、<span class="stronger">ORDER BY カラム名 ASC(またはDESC)</span>であることに注意せよ。またWHEREがある場合は、ORDER BY節はその後に書く。</p>
+  <p>文法としては、<span class="stronger">ORDER BY カラム名 ASC(またはDESC)</span>であることに注意せよ。またWHERE節がある場合は、ORDER BY節はその後に書く。</p>
   <p>大きいほうから小さいほうへ並べるためにはASCの代わりにDESCと書く。<span class="stronger">ASC、DESCの記載は省略してもよい</span>がその場合はASCとして扱われる。</p>
   <p>OERDER BYの後に、コンマ(,)でつなげて複数のカラム名を書くと、書いた順に優先されて、複数の条件で並び変えることができる。まず優先度の高いカラムの値で並べ、その値が等しいときのみ優先度の低いカラムの順で並べる方式である。</p>
 
