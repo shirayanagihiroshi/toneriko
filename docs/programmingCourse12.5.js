@@ -192,8 +192,10 @@ function generatekey () {
     let temp = solveEquation(koukaikeye, (primep - 1)*(primeq - 1));
     let obj = adjustEquation(koukaikeye, temp.x, (primep - 1)*(primeq - 1), temp.y);
     setTextbox("koukaikeym", String(primep * primeq));
+    setTextbox("koukaikeyfukugou", String(primep * primeq));
     setTextbox("koukaikeye", String(koukaikeye));
     setTextbox("himitsukey", String(obj.x));
+    setTextbox("himitsukey2", String(obj.x));
   }
 }
 
