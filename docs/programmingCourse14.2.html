@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+  <title>javascript プログラミング講座 第14.2回</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=Default"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="programmingCourse.css">
+  <script src="programmingCourse.js"></script>
+  <script src="programmingCourse14.2.js"></script>
+</head>
+<body>
+<div class="box1">
+
+  <h1>プログラミング講座 第14.2回</h1>
+  <p>第14.2回の目標：プログラミングを通してデータの分析について理解を深める。</p>
+
+  <h2>1.回帰直線</h2>
+  <p>2つのデータの関係を調べる際、予測に用いられる方を表す変数Xを<span class="stronger">独立変数</span>、予測される方を表す変数Yを<span class="stronger">従属変数</span>という。</p>
+  <p>Xが原因、Yが結果を表すと思ってもよい。</p>
+  <p>例えば気温とアイスクリームの売上の関係を調べたいとすると、気温(原因)によるアイスクリームの売上(結果)を調べることであるから、気温をX(独立変数)、売上をY(従属変数)とする。</p>
+  <p>XとYの関係を表す<span class="stronger">近似直線</span>を<span class="stronger">回帰直線</span>という。</p>
+  <img src="img/programmingCourse14.2_01.jpg">
+  <p>回帰直線を求めることは、XからYをどう予測できるのか、というXとYの関係のモデルを作ることに他ならない。<p>
+  <p>以降で、回帰直線を計算するプログラムを作ってみよう。ただし、実用的な方法ではなく、高校生がよく知っている \( y=ax+b \) の直線と<span class="stronger">どれくらい近いか</span>を地道に計算する方法でやってみる。</p>
+
+  <h2>2.残差</h2>
+  <p>データの実際の値と回帰直線による予測値との差を<span class="stronger">残差</span>という。下図のイメージである。</p>
+  <img src="img/programmingCourse14.2_02.jpg">
+  <p>プラスの差とマイナスの差が打ち消されないように残差の<span class="stronger">2乗</span>を扱う。</p>
+  <p>回帰直線とは残差の2乗の和が最小になるような近似直線である。</p>
+
+  <p class="reidaibox"><span class="reidai">例題1</span> パラメータとしてx_0, y_0, \( a \), \( b \) を引き受け、データ(x_0, y_0)と \( ax+b \) から予測される値の残差の2乗を返す関数zansaSquareを定義せよ</p>
+  <textarea id="inputBox01"></textarea>
+  <button onClick="kakunin01()">確認する</button>
+  <div id="result01">結果:</div>
+
+  <p>ここで扱うデータはオブジェクトの配列とする。各オブジェクトはxプロパティとyプロパティを持つ。</p>
+  <pre class="prettyprint lang-js linenums">
+  const mydata = [{x:20,y:22},
+                  {x:20,y:26},
+                  {x:17,y:17},
+                  ・・・
+  </pre>
+  <p>これを扱うには以下のようにする。</p>
+  <pre class="prettyprint lang-js linenums">
+  let i;
+  
+  for (i = 0; i < mydata.length; i++) {
+    mydata[i].x と mydata[i].y を使って計算する
+  }
+  ・・・
+  </pre>
+  <p>各データと回帰直線 \( ax+b \) から残差の2乗の和を計算する。\( a \) と \( b \) を少しずつ変えて残差の2乗の和を計算し、それが最小になるような \( a \) と \( b \) を求めることを考える。</p>
+
+  <p class="reidaibox"><span class="reidai">例題2</span> 各データはmydata配列に格納されているとする。例題1が完成しているとし、zansaSquareを呼んで回帰直線 \( ax+b \) の \( a \) と \( b \) を返す関数myPredictを定義せよ。ただし、\( a \) 、\( b \) はそれぞれ0.1から4まで0.01ずつ大きくして計算せよ。</p>
+
+  <p>なお、例えば \( a=1.2 \) と \( b=1.8 \) を返すには以下のようにする。</p>
+  <pre class="prettyprint lang-js linenums">
+  function zansaSquare() {
+
+    ・・・
+
+    return { a : 1.2,
+             b : 1.8 };
+  }
+  </pre>
+
+  <textarea id="inputBox02"></textarea>
+  <button onClick="kakunin02()">確認する</button>
+  <div id="result02">結果:</div>
+
+  <p>
+    <a href="programmingCourse14.html">第14回へ</a> <a href="index.html">目次へ</a> <a href="programmingCourse14.5.html">第14.5回へ</a>
+  </p>
+</div>
+</body>
+<html>
+
