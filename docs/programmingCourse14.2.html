@@ -29,7 +29,7 @@
   <p>プラスの差とマイナスの差が打ち消されないように残差の<span class="stronger">2乗</span>を扱う。</p>
   <p>回帰直線とは残差の2乗の和が最小になるような近似直線である。</p>
 
-  <p class="reidaibox"><span class="reidai">例題1</span> パラメータとしてx_0, y_0, \( a \), \( b \) を引き受け、データ(x_0, y_0)と \( ax+b \) から予測される値の残差の2乗を返す関数zansaSquareを定義せよ</p>
+  <p class="reidaibox"><span class="reidai">例題1</span> パラメータとしてx_0, y_0, \( a \), \( b \) を引き受け、データ(x_0, y_0)と \( y=ax+b \) から予測される値の残差の2乗を返す関数zansaSquareを定義せよ</p>
   <textarea id="inputBox01"></textarea>
   <button onClick="kakunin01()">確認する</button>
   <div id="result01">結果:</div>
@@ -50,9 +50,9 @@
   }
   ・・・
   </pre>
-  <p>各データと回帰直線 \( ax+b \) から残差の2乗の和を計算する。\( a \) と \( b \) を少しずつ変えて残差の2乗の和を計算し、それが最小になるような \( a \) と \( b \) を求めることを考える。</p>
+  <p>各データと回帰直線 \( y=ax+b \) から残差の2乗の和を計算する。\( a \) と \( b \) を少しずつ変えて、繰り返し残差の2乗の和を計算し、それが<span class="stronger">最小</span>になるような \( a \) と \( b \) を回帰直線の係数として採用することにする。</p>
 
-  <p class="reidaibox"><span class="reidai">例題2</span> 各データはmydata配列に格納されているとする。例題1が完成しているとし、zansaSquareを呼んで回帰直線 \( ax+b \) の \( a \) と \( b \) を返す関数myPredictを定義せよ。ただし、\( a \) 、\( b \) はそれぞれ0.1から4まで0.01ずつ大きくして計算せよ。</p>
+  <p class="reidaibox"><span class="reidai">例題2</span> 各データはmydata配列に格納されているとする。例題1が完成しているとし、zansaSquareを用いて回帰直線 \( y=ax+b \) の係数 \( a \) と \( b \) にふさわしい値を返す関数myPredictを定義せよ。ただし、\( a \) 、\( b \) はそれぞれ0.1から4まで0.01ずつ大きくして計算せよ。</p>
 
   <p>なお、例えば \( a=1.2 \) と \( b=1.8 \) を返すには以下のようにする。</p>
   <pre class="prettyprint lang-js linenums">
